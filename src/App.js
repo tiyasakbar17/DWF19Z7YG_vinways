@@ -1,20 +1,25 @@
+import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header'
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Store from './Redux/Store';
 
 
 function App() {
   return (
     <div className="Penampung">
-      <BrowserRouter>
-        <Header />
-        <Switch>
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
-        </Switch>
-      </BrowserRouter>
+      <Provider store={Store}>
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/" component={Login} />
+          </Switch>
+        </BrowserRouter>
+      </Provider>
     </div>
   );
 }
