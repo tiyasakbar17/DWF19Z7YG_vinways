@@ -1,38 +1,93 @@
-.App {
-  text-align: center;
+.Penampung {
+  background-color: #00031F;
+  width: 100%;
+  height: 900px;
+  font-size: 24px;
+  font-family: 'Avenir', 'Helvetica Neue', 'sans-serif';
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* HEADER */
+.Header {
+  position: absolute;
+  top: 60px;
+  left: 150px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: baseline;
+  clear: both;
+}
+.logo {
+  width: 29.63px;
+  height: 30px;
+}
+
+/* JARGON */
+
+.jargon {
+  font-family: 'Abhaya Libre Medium', 'Helvetica Neue', 'sans-serif';
+  font-size: 100px;
+  margin: 0;
+}
+.white {
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.green {
+  color:  #03F387;
+}
+.noMargin {
+  margin: 0;
+}
+.kaset {
+  width: 119.98px;
+  height: 120px;
+  color: #8B8B8B;
+  display: flex;
+  clear: both;
+}
+.button {
+  background-color: #03F387;
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-top: 50px;
+  font-family: 'Avenir', 'Helvetica Neue', 'sans-serif';
+  font-style: bold;
+}
+.pay {
+  font-size: 24px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Register & Login */
+
+.content {
+  background-image: url("./img/vector61-202-01 1.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 900px;
+  display: grid;
+  justify-content: center center;
+}
+.pembagi {
+  margin: auto;
+  width: 85%;
+  display: flex;
+  clear: both;
+  place-content:  space-between;
+
+}
+.ReLog {
+  width: 416px;
+  font-family: 'Avenir', 'Helvetica Neue', 'sans-serif';
+}
+.input {
+  border-radius: 5px;
+  width: 350px;
+  height: 50px;
+  margin: 10px auto;  
+}
+.regis {
+  font-size: 36px;
+}
+.tembus {
+  opacity: 25%;
 }
