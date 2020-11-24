@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header'
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Index from './pages/Index';
 import Store from './Redux/Store';
 
 
@@ -16,7 +17,7 @@ function App() {
           <Switch>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Index} />
           </Switch>
         </BrowserRouter>
       </Provider>

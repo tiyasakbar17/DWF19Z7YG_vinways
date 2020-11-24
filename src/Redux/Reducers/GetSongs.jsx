@@ -1,11 +1,11 @@
 const innitialValue = {
-    users:[{
+    users: [{
         id: 1,
         email: "tiyas.akbar@gmail.com",
         password: "dumbways.id",
         name: "Muhammad Tiyas Fachreza Akbar"
     }],
-    songs:[{
+    songs: [{
         id: 1,
         title: "Circles",
         singer: "Post Malone",
@@ -58,13 +58,16 @@ const innitialValue = {
 
 
 module.exports = {
-    GET_SONGS: (state=innitialValue, action) => {
-        switch (action.type){
+    GET_SONGS: (state = innitialValue, action) => {
+        switch (action.type) {
             case "GET_SONGS":
-            return {
-                songs:[...state.songs]
-            }
-            break;
+                return {
+                    songs: [...state.songs]
+                }
+            case "GET_USERS":
+                return {
+                    users: [...state.users]
+                }
         }
         return state;
     }

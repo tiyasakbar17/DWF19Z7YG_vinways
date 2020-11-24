@@ -1,21 +1,29 @@
 import React from 'react'
 import Jargon from '../components/Jargon'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Form, FormGroup } from 'reactstrap'
+import { connect } from 'react-redux'
 
-function Login() {
+function Login(props) {
+
+    const {users} = props
+
 
     const inntialValue = {
         email:'',
         password: '',
-        name: ''
+        name: '',
+        isLogin: false
     }
 
     const [state, setState] = React.useState(inntialValue)
 
     const submitHandler = (e)=> {
         e.preventDefault()
-        console.log(state);
+        console.log(state)
+        users.forEach(data => {
+            ((data.email===state.email && data.password===state.password) ? setState((prevState)=>({...prevState, isLogin:true})) : window.alert("Salah Email Atau Password") )
+        });
     }
 
     const changeHandler = (e)=> {
@@ -24,6 +32,7 @@ function Login() {
 
     return (
         <div className="content">
+            {state.isLogin && <Redirect to={{pathname:"/"}} />}
             <div className="pembagi">
                 <div className="awal">
                     <Jargon />
@@ -44,4 +53,12 @@ function Login() {
     )
 }
 
-export default Login
+function mapStateToProps(state) {
+    console.log(state);
+    return {
+        users:state.getSong.users
+    }
+}
+
+
+export default connect(mapStateToProps)(Login)
