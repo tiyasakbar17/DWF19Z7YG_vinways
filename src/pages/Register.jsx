@@ -3,7 +3,7 @@ import Jargon from '../components/Jargon'
 import { Link } from 'react-router-dom'
 import { Form, FormGroup } from 'reactstrap'
 
-function Register() {
+function Register(props) {
 
     const inntialValue = {
         email:'',
@@ -15,7 +15,15 @@ function Register() {
 
     const submitHandler = (e)=> {
         e.preventDefault()
-        console.log(state);
+        let id = props.data.users.length
+        let dataBaru = {
+            id: id + 1,
+            email: state.email,
+            password: state.password,
+            name: state.name
+        }
+        props.setData(prevState => ({...prevState, users:[...prevState.users, dataBaru]}))
+        setState(inntialValue)
     }
 
     const changeHandler = (e)=> {
@@ -45,4 +53,4 @@ function Register() {
     )
 }
 
-export default Register
+export default React.memo(Register)

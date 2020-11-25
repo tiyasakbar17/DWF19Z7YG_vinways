@@ -2,27 +2,24 @@ import React from 'react'
 import Jargon from '../components/Jargon'
 import { Link, Redirect } from 'react-router-dom'
 import { Form, FormGroup } from 'reactstrap'
-import { connect } from 'react-redux'
 
 function Login(props) {
 
-    const {users} = props
+    const {data} = props
 
 
     const inntialValue = {
         email:'',
         password: '',
-        name: '',
-        isLogin: false
+        name: ''
     }
 
     const [state, setState] = React.useState(inntialValue)
 
     const submitHandler = (e)=> {
         e.preventDefault()
-        console.log(state)
-        users.forEach(data => {
-            ((data.email===state.email && data.password===state.password) ? setState((prevState)=>({...prevState, isLogin:true})) : window.alert("Salah Email Atau Password") )
+        data.users.forEach(datas => {
+            ((datas.email===state.email && datas.password===state.password) ? props.setData((prevState)=>({...prevState, isLogin:true, loginData:datas})) : window.alert("Salah Email Atau Password") )
         });
     }
 
@@ -32,7 +29,7 @@ function Login(props) {
 
     return (
         <div className="content">
-            {state.isLogin && <Redirect to={{pathname:"/"}} />}
+            {data.isLogin && <Redirect to={{pathname:"/"}} />}
             <div className="pembagi">
                 <div className="awal">
                     <Jargon />
@@ -53,12 +50,4 @@ function Login(props) {
     )
 }
 
-function mapStateToProps(state) {
-    console.log(state);
-    return {
-        users:state.getSong.users
-    }
-}
-
-
-export default connect(mapStateToProps)(Login)
+export default React.memo(Login)

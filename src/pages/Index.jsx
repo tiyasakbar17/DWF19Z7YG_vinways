@@ -1,12 +1,14 @@
 import React from 'react'
-import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import CardSong from '../components/CardSong';
 import userPict from '../img/1579183327044.png'
 
 function Index(props) {
+    console.log(props);
 
     return (
         <>
+            {props.data.isLogin === false ? (<Redirect to={{pathname:"/login"}} /> ) : ""}
             <div className="headerLogin">
                 <img src={userPict} alt="foto" className="userPict" />
             </div>
@@ -15,9 +17,9 @@ function Index(props) {
 
                 </div>
                 <div className="songList">
-                    {props.songs.map(song => {
+                    {props.data.songs.map(song => {
                         return (
-                            <div className="card" key={song.id}>
+                            <div className="cardMe" key={song.id}>
                                 <CardSong state={{ title: song.title, singer: song.singer, year: song.year }} />
                             </div>
                         )
@@ -28,12 +30,4 @@ function Index(props) {
     )
 }
 
-function mapStateToProps(state) {
-    console.log(state);
-    return {
-        songs: state.getSong.songs
-    }
-}
-
-
-export default connect(mapStateToProps)(Index)
+export default React.memo(Index)

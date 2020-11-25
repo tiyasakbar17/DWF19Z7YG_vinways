@@ -15,4 +15,4 @@ function Jargon() {
     )
 }
 
-export default Jargon
+export default React.memo(Jargon)
