@@ -24,6 +24,7 @@ function Register(props) {
         }
         props.setData(prevState => ({...prevState, users:[...prevState.users, dataBaru]}))
         setState(inntialValue)
+        window.alert("Account Creater")
     }
 
     const changeHandler = (e)=> {
