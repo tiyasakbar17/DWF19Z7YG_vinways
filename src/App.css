@@ -84,6 +84,7 @@
   width: 350px;
   height: 50px;
   margin: 10px auto;  
+  border: solid 2px white;
 }
 .regis {
   font-size: 36px;
@@ -160,12 +161,54 @@
 
 .showBox {
   width: 95%;
-  height: 300px;
+  max-height: 500px;
   margin: 40px auto;
 }
 .slider {
-  height: 300px;
+  max-width: 500px;
   margin: 5px;
   border-radius: 10px;
 
+}
+
+/* Payment */
+
+.Payment {
+  position: fixed;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+  display: grid;
+  place-content: center center;
+  text-align: center;
+  background-color: #00031ffa;
+  z-index: 2;
+}
+
+.middle {
+  margin-left: 10%;
+}
+
+.closer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-content: center center;
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+.fileUpload {
+  display: none;
+}
+
+.Upload {
+  background-color:  #00031ffa;
+  border: white 2px solid;
+  font-weight: bolder;
 }

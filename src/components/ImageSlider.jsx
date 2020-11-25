@@ -7,7 +7,7 @@ function ImageSlider({ imgs }) {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 2,
+        slidesToShow: 3,
         slidesToScroll: 1,
         centerMode: true,
         autoplay: true
@@ -25,4 +25,4 @@ function ImageSlider({ imgs }) {
     )
 }
 
-export default ImageSlider
+export default React.memo(ImageSlider)

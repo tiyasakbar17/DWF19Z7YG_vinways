@@ -6,6 +6,13 @@
             "password": "dumbways",
             "name": "Muhammad Tiyas Fachreza Akbar",
             "payed": true
+        },
+        {
+            "id": 2,
+            "email": "tiyas.reza@gmail.com",
+            "password": "dumbways",
+            "name": "Muhammad Tiyas Fachreza Akbar",
+            "payed": false
         }
     ],
     "songs": [
@@ -177,5 +184,6 @@
         }
     ],
     "isLogin": false,
-    "loginData": {}
+    "loginData": {},
+    "paymentComp": false
 }
