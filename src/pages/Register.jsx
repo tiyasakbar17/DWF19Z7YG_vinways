@@ -20,7 +20,8 @@ function Register(props) {
             id: id + 1,
             email: state.email,
             password: state.password,
-            name: state.name
+            name: state.name,
+            payed: false
         }
         props.setData(prevState => ({...prevState, users:[...prevState.users, dataBaru]}))
         setState(inntialValue)

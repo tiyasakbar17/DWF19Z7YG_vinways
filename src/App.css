@@ -1,7 +1,6 @@
 .Penampung {
   background-color: #00031F;
   width: 100%;
-  height: 900px;
   font-size: 24px;
   font-family: 'Avenir', 'Helvetica Neue', 'sans-serif';
   overflow: hidden;
@@ -97,7 +96,6 @@
 
 .cardMe {
   width: 192px;
-  height:240px;
   padding: 2px 3px;
   border-radius: 10px;
   margin: 5px;
@@ -149,36 +147,25 @@
 
 
 /* INDEX */
-.konten {
-width: 100%;
-display: grid;
-clear: both;
-}
-
-
 .songList {
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-grow: 1 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  max-width: 90%;
+  margin: 0px auto;
+  padding-bottom: 100px;
   clear: both;
 }
 
 /* SLIDER */
 
 .showBox {
-  margin: 50px 0;
+  width: 95%;
+  height: 300px;
+  margin: 40px auto;
 }
-
-.show {
-  display: flex;
-  justify-content: center;
-  align-items: 'center';
-  width: 707px;
-  height: 283px;
+.slider {
+  height: 300px;
+  margin: 5px;
   border-radius: 10px;
-  clear: both;
-  margin:10px
+
 }

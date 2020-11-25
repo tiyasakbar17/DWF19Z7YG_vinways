@@ -1,0 +1,181 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "email": "tiyas.akbar@gmail.com",
+            "password": "dumbways",
+            "name": "Muhammad Tiyas Fachreza Akbar",
+            "payed": true
+        }
+    ],
+    "songs": [
+        {
+            "id": 1,
+            "title": "Black Shout",
+            "singer": "Roselia",
+            "year": "2018",
+            "img": "https://static.wikia.nocookie.net/bandori/images/9/91/BLACK_SHOUT_Blu-ray.jpg",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/6/61/03._BLACK_SHOUT_-Instrumental-.ogg"
+        },
+        {
+            "id": 2,
+            "title": "Louder",
+            "singer": "Roselia",
+            "year": "2019",
+            "img": "https://static.wikia.nocookie.net/bandori/images/b/bf/LOUDER_Cover.png",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/1/16/04._LOUDER_-Instrumental-.ogg"
+        },
+        {
+            "id": 3,
+            "title": "Re:Birth Day",
+            "singer": "Roselia",
+            "year": "2018",
+            "img": "https://static.wikia.nocookie.net/bandori/images/5/5e/Re-birth_day_Regular_edition_cover.png",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/4/42/Re_birth_day_-instrumental-_.ogg"
+        },
+        {
+            "id": 4,
+            "title": "Hidamari Rhodnite",
+            "singer": "Roselia",
+            "year": "2020",
+            "img": "https://static.wikia.nocookie.net/bandori/images/c/c2/Hidamari_Rhodonite_cover.png",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/9/9a/%E9%99%BD%E3%81%A0%E3%81%BE%E3%82%8A%E3%83%AD%E3%83%BC%E3%83%89%E3%83%8A%E3%82%A4%E3%83%88_-instrumental-_.ogg"
+        },
+        {
+            "id": 5,
+            "title": "Passionate Starmine",
+            "singer": "Roselia",
+            "year": "2018",
+            "img": "https://static.wikia.nocookie.net/bandori/images/b/be/Nesshoku_Starmine.jpg",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/d/d4/Nesshoku_Starmine_-instrumental-.ogg"
+        },
+        {
+            "id": 6,
+            "title": "Comic Panic",
+            "singer": "Afterglow",
+            "year": "2017",
+            "img": "https://static.wikia.nocookie.net/bandori/images/e/e0/COMIC_PANIC%21%21%21_Game_Cover.png",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/3/3b/COMIC_PANIC%21%21%21_-instrumental-.ogg"
+        },
+        {
+            "id": 7,
+            "title": "Sasanqua",
+            "singer": "Afterglow",
+            "year": "2020",
+            "img": "https://static.wikia.nocookie.net/bandori/images/7/71/Afterglow_7th_Single_Cover.png",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/2/20/Sasanqua_-instrumental-.ogg"
+        },
+        {
+            "id": 8,
+            "title": "True Color",
+            "singer": "Aftergloww",
+            "year": "2016",
+            "img": "https://static.wikia.nocookie.net/bandori/images/0/0c/True_color.jpg",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/9/95/True_color_-instrumental.ogg"
+        },
+        {
+            "id": 9,
+            "title": "I Love Your Way",
+            "singer": "Afterglow",
+            "year": "2019",
+            "img": "https://static.wikia.nocookie.net/bandori/images/5/51/I_love_your_way%21_Game_Cover.png",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/5/59/I_love_your_way%21_-instrumental-.ogg"
+        },
+        {
+            "id": 10,
+            "title": "Sahabat Sejati",
+            "singer": "Sheila on 7",
+            "year": "2003",
+            "img": "https://upload.wikimedia.org/wikipedia/id/f/fc/So7.jpg",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/c/ce/Mou_Ichido_Luminous_-instrumental-.ogg"
+        },
+        {
+            "id": 11,
+            "title": "Musim yang Baik",
+            "singer": "Sheila on 7",
+            "year": "2004",
+            "img": "https://upload.wikimedia.org/wikipedia/en/thumb/0/06/Musim_Yang_Baik_album_cover.jpg/220px-Musim_Yang_Baik_album_cover.jpg",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/5/53/Natsunodon%21_-instrumental-.ogg"
+        },
+        {
+            "id": 12,
+            "title": "Andai Kau Datang",
+            "singer": "Noah",
+            "year": "2019",
+            "img": "https://upload.wikimedia.org/wikipedia/en/thumb/4/45/SECOND_CHANCE_NOAH_COVER_ALBUM.jpg/220px-SECOND_CHANCE_NOAH_COVER_ALBUM.jpg",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/e/e5/Natsuzora_SUN%21_SUN%21_SEVEN%21_-Instrumental-.ogg"
+        },
+        {
+            "id": 13,
+            "title": "Seperti Seharusnya",
+            "singer": "Noah",
+            "year": "2020",
+            "img": "https://upload.wikimedia.org/wikipedia/en/f/f6/Seperti_Seharusnya.jpg",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/5/51/Hachigatsu_no_if_-instrumental-.ogg"
+        },
+        {
+            "id": 14,
+            "title": "Kita di Persimpangan Jalan",
+            "singer": "Billfold",
+            "year": "2009",
+            "img": "https://mavemagz.com/wp-content/uploads/2014/09/Billfold.jpg",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/8/8d/Tenka_Toitsu_A_to_Z%E2%98%86_-instrumental-.ogg"
+        },
+        {
+            "id": 15,
+            "title": "Karma",
+            "singer": "Cokelat",
+            "year": "2005",
+            "img": "https://img.discogs.com/kqn8NYE-abAS5tbchYacPFNtATg=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-7640600-1445729072-1890.jpeg.jpg",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/d/d0/Hashiri_Hajimeta_Bakari_no_Kimi_ni_-Instrumental-.ogg"
+        },
+        {
+            "id": 16,
+            "title": "Yang Terlupakan",
+            "singer": "Iwan Fals",
+            "year": "2000",
+            "img": "https://img.discogs.com/QiDd0rNRdwNIkZcS01dmX8jxeRA=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-8224301-1457458576-9240.jpeg.jpg",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/c/c6/R_-instrumental-.ogg"
+        },
+        {
+            "id": 17,
+            "title": "Terendap Laraku",
+            "singer": "Naff",
+            "year": "2010",
+            "img": "https://img.discogs.com/LFt5XA4UElutQr4C39WnyLeYzno=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11235971-1512443177-2029.jpeg.jpg",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/4/4f/Don%27t_be_afraid%21_-instrumental-.ogg"
+        },
+        {
+            "id": 18,
+            "title": "Manusia Bodoh",
+            "singer": "Ada Band",
+            "year": "2004",
+            "img": "https://upload.wikimedia.org/wikipedia/id/a/a7/Ada-band-harmonius_800.jpg",
+            "audio": "https://static.wikia.nocookie.net/bandori/images/a/a6/Y.O.L.O%21%21%21%21%21_-instrumental-.ogg"
+        }
+    ],
+    "thumbnails": [
+        {
+            "id": 1,
+            "img": "https://i.ytimg.com/vi/dFLiUiD4pw4/maxresdefault.jpg"
+        },
+        {
+            "id": 2,
+            "img": "https://i.ytimg.com/vi/HWgxbptCcuA/maxresdefault.jpg"
+        },
+        {
+            "id": 3,
+            "img": "https://i.ytimg.com/vi/aPCf7_Kk7L8/maxresdefault.jpg"
+        },
+        {
+            "id": 4,
+            "img": "https://i.ytimg.com/vi/4VodI3JCz0Y/maxresdefault.jpg"
+        },
+        {
+            "id": 5,
+            "img": "https://i.ytimg.com/vi/QaMHYCkt3ps/maxresdefault.jpg"
+        }
+    ],
+    "isLogin": false,
+    "loginData": {}
+}

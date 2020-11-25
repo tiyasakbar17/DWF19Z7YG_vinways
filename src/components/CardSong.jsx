@@ -7,7 +7,7 @@ import {
 function CardSong(props) {
     return (
         <Fragment>
-            <img className="CardIMG" src="https://matamatamusik.com/wp-content/uploads/2020/02/anne-marie-brit-awards-red-carpet-2017-billboard-1548-1024x677.jpg" alt="thumbnail" />
+            <img className="CardIMG" src={props.state.img} alt="thumbnail" />
             <CardBody>
                 <div className="titel">
                     <CardTitle tag="h5" className="left white">{props.state.title}</CardTitle>
