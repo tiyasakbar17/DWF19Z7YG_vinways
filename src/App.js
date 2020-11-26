@@ -6,7 +6,7 @@ import Register from './pages/Register';
 import Index from './pages/Index';
 import React from 'react'
 import Data from './API/Data.json'
-import DropDown from './components/DropDown';
+import AddMusic from './pages/AddMusic';
 
 function App() {
   const innitialValue = Data
@@ -21,6 +21,7 @@ function App() {
             <Route exact path="/register" component={() => <Register data={data} setData={setData.bind()} />} />
             <Route exact path="/login" component={() => <Login data={data} setData={setData.bind()} />} />
             <Route exact path="/" component={() => <Index data={data} setData={setData.bind()} />} />
+            <Route exact path="/addmusic" component={() => <AddMusic data={data} setData={setData.bind()} />} />
           </Switch>
         </BrowserRouter>
     </div>
