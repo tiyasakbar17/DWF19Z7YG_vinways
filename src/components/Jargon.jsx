@@ -7,7 +7,7 @@ function Jargon() {
         <div className="jargon">
             <p className="white noMargin">Listening is</p>
             <div className="kaset noMargin">
-                <img src={logo} alt="logo"/>
+                <img src={logo} alt="logo" />
                 <p className="green noMargin">Everything</p>
             </div>
             <p className="pay noMargin">pay and access millions of songs</p>

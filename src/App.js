@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import Index from './pages/Index';
 import React from 'react'
 import Data from './API/Data.json'
+import DropDown from './components/DropDown';
 
 function App() {
   const innitialValue = Data
