@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="Penampung">
         <BrowserRouter>
-          <Header />
+          <Header data={data} setData={setData.bind()} />
           <Switch>
             <Route exact path="/register" component={() => <Register data={data} setData={setData.bind()} />} />
             <Route exact path="/login" component={() => <Login data={data} setData={setData.bind()} />} />

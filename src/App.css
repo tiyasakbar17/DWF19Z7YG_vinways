@@ -1,29 +1,47 @@
 .Penampung {
-  background-color: #00031F;
+  background-color: #00031f;
   width: 100%;
   font-size: 24px;
-  font-family: 'Avenir', 'Helvetica Neue', 'sans-serif';
+  font-family: "Avenir", "Helvetica Neue", "sans-serif";
   overflow: hidden;
 }
 
 /* HEADER */
-.Header {
-  position: absolute;
-  top: 30px;
-  left: 150px;
-  display: flex;
-  align-items: baseline;
-  z-index: 99;
+
+.headerCustom {
+  width: 100%;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.1);
 }
+div.headerCustom {
+  position: absolute;
+  z-index: 99;
+  top: 0;
+}
+.userAccount {
+  margin-right: 15%;
+}
+.webLogo {
+  margin-left: 15%;
+}
+
 .logo {
   width: 29.63px;
   height: 30px;
+}
+.userPict {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px white solid;
 }
 
 /* JARGON */
 
 .jargon {
-  font-family: 'Abhaya Libre Medium', 'Helvetica Neue', 'sans-serif';
+  font-family: "Abhaya Libre Medium", "Helvetica Neue", "sans-serif";
   font-size: 100px;
   margin: 0;
 }
@@ -31,7 +49,7 @@
   color: white;
 }
 .green {
-  color:  #03F387;
+  color: #03f387;
 }
 .noMargin {
   margin: 0;
@@ -39,18 +57,18 @@
 .kaset {
   width: 119.98px;
   height: 120px;
-  color: #8B8B8B;
+  color: #8b8b8b;
   display: flex;
   clear: both;
 }
 .button {
-  background-color: #03F387;
+  background-color: #03f387;
   width: 150px;
   height: 40px;
   border-radius: 5px;
   font-size: 18px;
   margin-top: 50px;
-  font-family: 'Avenir', 'Helvetica Neue', 'sans-serif';
+  font-family: "Avenir", "Helvetica Neue", "sans-serif";
   font-style: bold;
 }
 .pay {
@@ -72,25 +90,25 @@
   width: 85%;
   display: flex;
   clear: both;
-  place-content:  space-between;
-
+  place-content: space-between;
 }
 .ReLog {
   width: 416px;
-  font-family: 'Avenir', 'Helvetica Neue', 'sans-serif';
+  font-family: "Avenir", "Helvetica Neue", "sans-serif";
 }
 .input {
   border-radius: 5px;
   width: 350px;
   height: 50px;
-  margin: 10px auto;  
+  margin: 10px auto;
   border: solid 2px white;
+  font-size: 24px;
 }
 .regis {
   font-size: 36px;
 }
 .tembus {
-  opacity: 25%;
+  background-color: #ffffff4f;
 }
 
 /* CARD */
@@ -104,6 +122,12 @@
   background-color: #363954;
   overflow: hidden;
   display: grid;
+  cursor: pointer;
+}
+
+.songList :hover {
+  transform: scale(1.1);
+  transition: 1s;
 }
 
 .titel {
@@ -119,33 +143,10 @@
   width: 60%;
 }
 .CardIMG {
-  width: 90%; 
+  width: 90%;
   border-radius: 10px;
   margin: 4px auto;
 }
-
-/* HEADER LOGIN */
-
-.headerLogin {
-  background-color: rgba(255, 255, 255, 0.1);
-  width: 100%;
-  height: 80px;
-  position: relative;
-  z-index: 1;
-  clear: both;
-}
-
-.userPict {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-  position: absolute;
-  top: 20px;
-  right: 200px;
-  border: 2px black solid;
-}
-
 
 /* INDEX */
 .songList {
@@ -161,14 +162,13 @@
 
 .showBox {
   width: 95%;
-  max-height: 500px;
-  margin: 40px auto;
+  height: 30%;
+  margin: 120px auto 40px auto;
 }
 .slider {
-  max-width: 500px;
+  width: 95%;
   margin: 5px;
   border-radius: 10px;
-
 }
 
 /* Payment */
@@ -184,6 +184,7 @@
   text-align: center;
   background-color: #00031ffa;
   z-index: 2;
+  border-radius: 15px;
 }
 
 .middle {
@@ -208,7 +209,8 @@
 }
 
 .Upload {
-  background-color:  #00031ffa;
+  background-color: #00031ffa;
   border: white 2px solid;
   font-weight: bolder;
+  cursor: pointer;
 }

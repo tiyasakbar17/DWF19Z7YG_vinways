@@ -1,7 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom';
 import CardSong from '../components/CardSong';
-import userPict from '../img/1579183327044.png';
 import { Row } from 'reactstrap';
 import ImageSlider from '../components/ImageSlider';
 import Payment from '../components/Payment';
@@ -24,9 +23,6 @@ function Index(props) {
         <>
             {props.data.paymentComp===true ? (<Payment close={props.setData} /> ):""}
             {props.data.isLogin === false ? (<Redirect to={{ pathname: "/login" }} />) : ""}
-            <div className="headerLogin">
-                <img src={userPict} alt="foto" className="userPict" />
-            </div>
             <div>
                 <Row>
                     <div className="showBox">

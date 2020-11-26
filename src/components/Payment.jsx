@@ -38,7 +38,7 @@ function Payment(props) {
                     <Col>
                         <div className="ReLog middle">
                             <Form onSubmit={(e)=> e.preventDefault()} >
-                                <input type="text" className="input tembus" name="accNumber" placeholder="Input your account number" value={state.accNumber} onChange={changeHandler} />
+                                <input type="text" className="input tembus white" name="accNumber" placeholder="Input your account number" value={state.accNumber} onChange={changeHandler} />
                                 <input onClick={focusTextInput} type="text" className="input Upload green" readOnly value="Attach proof of transfer" />
                                 <input type="file" ref={textInput} className="input fileUpload" />
                                 <button className="input button">Submit</button>
