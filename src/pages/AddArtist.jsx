@@ -1,11 +1,11 @@
 import React from 'react'
 
-function AddMusic() {
-
+function AddArtist() {
     const [state, setState] = React.useState({
-        title: '',
-        year: '',
-        singer: ''
+        name: '',
+        old: '',
+        career: '',
+        start: ''
     })
 
     const changeHandler = (e) => {
@@ -18,8 +18,6 @@ function AddMusic() {
 
     const textInput = React.createRef();
     const focusTextInput = () => { textInput.current.click() }
-    const textInput2 = React.createRef();
-    const focusTextInput2 = () => { textInput2.current.click() }
 
     return (
         <div className="kontens">
@@ -31,26 +29,22 @@ function AddMusic() {
                 </div>
                 <form onSubmit={(e) => submitHandler(e)}>
                     <div className="row mb-4">
-                        <input type="text" name="title" value={state.title} onChange={(e) => changeHandler(e)} placeholder="Title" className="form-control tembus col-8 white" />
+                        <input type="text" name="name" value={state.name} onChange={(e) => changeHandler(e)} placeholder="Title" className="form-control tembus col-8 white" />
                         <button onClick={focusTextInput} className="form-control tembus col-4 text-white" >Attach Thumbnail</button>
                         <input type="file" ref={textInput} className="fileUpload" />
                     </div>
                     <div className="row mb-4">
-                        <input type="text" value={state.year} onChange={(e) => changeHandler(e)} placeholder="Year" name="year" className="form-control tembus white" />
+                        <input type="text" value={state.old} onChange={(e) => changeHandler(e)} placeholder="Old" name="old" className="form-control tembus white" />
                     </div>
                     <div className="row mb-4">
-                        <select className="custom-select tembus white" name="singer" onChange={(e) => changeHandler(e)}>
-                            <option className="text-dark">Singer</option>
-                            <option className="text-dark" value="Tiyas">Tiyas</option>
-                            <option className="text-dark" value="Andre">Andre</option>
-                            <option className="text-dark" value="Gasi">Gasi</option>
+                        <select className="custom-select tembus white" name="career" onChange={(e) => changeHandler(e)}>
+                            <option className="text-dark">Career as</option>
+                            <option className="text-dark" value="Solo">Solo</option>
+                            <option className="text-dark" value="Group">Group</option>
                         </select>
                     </div>
                     <div className="row">
-                        <div className="form-group">
-                            <button onClick={focusTextInput2} className="col form-group form-control tembus text-center text-white" >Attache</button>
-                            <input type="file" ref={textInput2} className="fileUpload" />
-                        </div>
+                        <input type="text" name="start" onChange={(e) => changeHandler(e)} className="col form-group form-control tembus white" value={state.start} placeholder="Start a career" />
                     </div>
                     <div className="row">
                         <div className="col d-flex justify-content-center">
@@ -63,4 +57,4 @@ function AddMusic() {
     )
 }
 
-export default AddMusic
+export default AddArtist
