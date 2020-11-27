@@ -62,4 +62,4 @@ function Register() {
     )
 }
 
-export default React.memo(Register)
+export default Register

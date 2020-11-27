@@ -2,15 +2,14 @@ import React from 'react';
 import Data from '../API/Data.json';
 import Reducers from './Reducers'
 
-module.exports = {
-    AppContext: React.createContext(),
-    AppContextProvider: (props) => {
-        const [globalState, dispatch] = React.useReducer(Reducers, Data)
+export const AppContext = React.createContext();
 
-        return (
-            <AppContext.Provider value={[globalState, dispatch]}>
-                {props.children}
-            </AppContext.Provider>
-        )
-    }
+export const AppContextProvider = (props) => {
+    const [globalState, dispatch] = React.useReducer(Reducers, Data)
+
+    return (
+        <AppContext.Provider value={[globalState, dispatch]}>
+            {props.children}
+        </AppContext.Provider>
+    )
 }

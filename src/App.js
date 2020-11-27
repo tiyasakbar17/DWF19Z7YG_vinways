@@ -1,22 +1,17 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Index from "./pages/Index";
 import React from "react";
-import Data from "./API/Data.json";
 import AddMusic from "./pages/AddMusic";
 import AddArtist from "./pages/AddArtist";
 import Transaction from "./pages/Transaction";
 import { AppContextProvider } from "./Context/AppContext";
 import LoginRoute from "./components/LoginRoute";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Index from "./pages/Index";
 
 function App() {
-  const innitialValue = Data;
-
-  const [data, setData] = React.useState(innitialValue);
-
   return (
     <div className="Penampung">
       <AppContextProvider>

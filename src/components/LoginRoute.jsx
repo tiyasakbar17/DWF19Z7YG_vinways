@@ -1,8 +1,9 @@
 import React from 'react'
-import { Route, Redirect } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import { AppContext } from '../Context/AppContext';
+import Login from '../pages/Login';
 
-function LoginRoute({ component: Component, ...rest }) {
+const LoginRoute = ({ component: Component, ...rest }) => {
 
     // Cek Login
     const [globalState] = React.useContext(AppContext);
@@ -10,9 +11,10 @@ function LoginRoute({ component: Component, ...rest }) {
     return (
         <Route
             {...rest}
-            render={(props) => {
-                globalState.isLogin ? <Component {...props} /> : <Redirect to="/login" />
-            }}
+            component={globalState.isLogin ? Component : Login}
+        // render={props => {
+        //     globalState.isLogin ? <Component {...props} /> : <Redirect to="/login" />
+        // }}
         />
     );
 }

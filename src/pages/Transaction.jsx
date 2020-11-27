@@ -4,7 +4,8 @@ import { AppContext } from '../Context/AppContext'
 
 function Transaction() {
 
-    const [globalState, dispatch] = React.useContext(AppContext)
+    const [globalState] = React.useContext(AppContext);
+    const payerData = globalState.filter((user) => (user.bukti))
 
     return (
         <div className="kontens">
@@ -27,12 +28,11 @@ function Transaction() {
                         </tr>
                     </thead>
                     <tbody>
-                        {globalState.users.map((user, i) => {
-                            if (user.bukti) {
+                        {
+                            payerData.users.map((user, i) => {
                                 i += 1;
                                 return (<Table user={user} counter={i} key={user.id} />)
-                            }
-                        })}
+                            })}
                     </tbody>
                 </table>
             </div>

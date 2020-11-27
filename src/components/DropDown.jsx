@@ -4,7 +4,7 @@ import { AppContext } from '../Context/AppContext'
 
 function DropDown(props) {
 
-    const [dispatch] = React.useContext(AppContext)
+    const [, dispatch] = React.useContext(AppContext)
 
     const payHandler = () => {
         //Open Pay Comp
@@ -17,7 +17,7 @@ function DropDown(props) {
         // LOGOUT
         dispatch({
             type: "LOGOUT"
-        })
+        });
         props.setClicked(prevState => (!prevState))
     }
 

@@ -19,7 +19,7 @@ function Login() {
         e.preventDefault()
         //LOGIN
         const userData = globalState.users.find(user => (user.email === state.email && user.password === state.password))
-        userdata ? (dispatch({
+        userData ? (dispatch({
             type: "LOGIN",
             payload: userData
         })) : (window.alert("Tolong Cek Kembali Email dan Passwordnya"))
@@ -53,4 +53,4 @@ function Login() {
     )
 }
 
-export default React.memo(Login)
+export default Login;

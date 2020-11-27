@@ -10,7 +10,8 @@ const Reducers = (state, action) => {
             return {
                 ...state,
                 loginData: {},
-                isLogin: false
+                isLogin: false,
+                playerComp: false
             }
         case "REGISTER":
             return {

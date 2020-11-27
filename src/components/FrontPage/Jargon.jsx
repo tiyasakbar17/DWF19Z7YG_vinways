@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../img/Vector (2).png'
+import logo from '../../img/Vector (2).png'
 
 
 function Jargon() {

@@ -4,7 +4,7 @@ import { Row } from 'reactstrap';
 import ImageSlider from '../components/Home/ImageSlider';
 import Payment from '../components/Payment/Payment';
 import MusicPlayer from '../components/Home/MusicPlayer';
-import AppContext from '../Context/AppContext'
+import { AppContext } from '../Context/AppContext'
 
 function Index() {
 
@@ -52,4 +52,4 @@ function Index() {
     )
 }
 
-export default React.memo(Index)
+export default Index;

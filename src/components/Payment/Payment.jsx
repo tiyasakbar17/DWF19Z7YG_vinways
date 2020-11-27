@@ -1,11 +1,11 @@
 import React from 'react'
 import { Col, Form } from 'reactstrap'
 import ReactDOM from 'react-dom'
-import AppContext from '../../Context/AppContext'
+import { AppContext } from '../../Context/AppContext'
 
 function Payment(props) {
 
-    const [dispatch] = React.useContext(AppContext)
+    const [, dispatch] = React.useContext(AppContext)
 
     const [state, setState] = React.useState({
         accNumber: ''
