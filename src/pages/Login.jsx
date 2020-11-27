@@ -2,25 +2,28 @@ import React from 'react'
 import Jargon from '../components/FrontPage/Jargon'
 import { Link, Redirect } from 'react-router-dom'
 import { Form, FormGroup } from 'reactstrap'
+import { AppContext } from '../Context/AppContext'
 
-function Login(props) {
+function Login() {
 
-    const { data } = props
-
+    const [globalState, dispatch] = React.useContext(AppContext)
 
     const inntialValue = {
         email: '',
-        password: '',
-        name: ''
+        password: ''
     }
 
     const [state, setState] = React.useState(inntialValue)
 
     const submitHandler = (e) => {
         e.preventDefault()
-        data.users.forEach(datas => {
-            ((datas.email === state.email && datas.password === state.password) ? props.setData((prevState) => ({ ...prevState, isLogin: true, loginData: datas })) : window.alert("Salah Email Atau Password"))
-        });
+        //LOGIN
+        const userData = globalState.users.find(user => (user.email === state.email && user.password === state.password))
+        userdata ? (dispatch({
+            type: "LOGIN",
+            payload: userData
+        })) : (window.alert("Tolong Cek Kembali Email dan Passwordnya"))
+
     }
 
     const changeHandler = (e) => {
@@ -29,7 +32,7 @@ function Login(props) {
 
     return (
         <div className="content">
-            {data.isLogin && <Redirect to={{ pathname: "/" }} />}
+            {globalState.isLogin && <Redirect to={{ pathname: "/" }} />}
             <div className="pembagi">
                 <div className="awal">
                     <Jargon />

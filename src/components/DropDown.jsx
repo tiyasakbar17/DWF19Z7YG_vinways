@@ -1,14 +1,23 @@
 import React from 'react'
 import Pic from '../img/Polygon1.png'
+import { AppContext } from '../Context/AppContext'
 
 function DropDown(props) {
 
+    const [dispatch] = React.useContext(AppContext)
+
     const payHandler = () => {
-        props.setData(prevData => ({ ...prevData, paymentComp: true }))
+        //Open Pay Comp
+        dispatch({
+            type: "PAYMENT"
+        })
         props.setClicked(prevState => (!prevState))
     }
     const outHandler = () => {
-        props.setData(prevData => ({ ...prevData, isLogin: false }))
+        // LOGOUT
+        dispatch({
+            type: "LOGOUT"
+        })
         props.setClicked(prevState => (!prevState))
     }
 

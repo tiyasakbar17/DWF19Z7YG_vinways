@@ -2,8 +2,11 @@ import React from 'react'
 import Jargon from '../components/FrontPage/Jargon'
 import { Link } from 'react-router-dom'
 import { Form, FormGroup } from 'reactstrap'
+import { AppContext } from '../Context/AppContext'
 
 function Register() {
+
+    const [globalState, dispatch] = React.useContext(AppContext)
 
     const inntialValue = {
         email: '',
@@ -15,7 +18,7 @@ function Register() {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        let id = props.data.users.length
+        let id = globalState.users.length
         let dataBaru = {
             id: id + 1,
             email: state.email,
@@ -23,10 +26,13 @@ function Register() {
             name: state.name,
             payed: false
         }
-        // UBAH JADI DISPATCH
-        // props.setData(prevState => ({ ...prevState, users: [...prevState.users, dataBaru] }))
-        // setState(inntialValue)
-        // window.alert("Account Created")
+        // ADD USER
+        dispatch({
+            type: "REGISTER",
+            payload: dataBaru
+        })
+        setState(inntialValue)
+        window.alert("Account Created")
     }
 
     const changeHandler = (e) => {

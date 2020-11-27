@@ -1,33 +1,36 @@
 import React from 'react'
 import { Col, Form } from 'reactstrap'
 import ReactDOM from 'react-dom'
+import AppContext from '../../Context/AppContext'
 
 function Payment(props) {
 
-    const[state, setState] = React.useState({
-        accNumber : ''
+    const [dispatch] = React.useContext(AppContext)
+
+    const [state, setState] = React.useState({
+        accNumber: ''
     })
 
-    const changeHandler = (e)=>{
+    const changeHandler = (e) => {
         setState(prevState => ({
-            ...prevState, [e.target.name]:e.target.value
+            ...prevState, [e.target.name]: e.target.value
         }))
     }
 
-    const clickHandler = ()=> {
-        props.close(prevState => ({
-            ...prevState,
-            paymentComp: false
-        }))
+    const clickHandler = () => {
+        // CLOSE PAYMENT
+        dispatch({
+            type: "PAYMENT"
+        })
     }
 
     const textInput = React.createRef();
 
-    const focusTextInput = () => {textInput.current.click()}
+    const focusTextInput = () => { textInput.current.click() }
 
     return ReactDOM.createPortal(
         <div className="Payment">
-            <span onClick={()=>clickHandler()} className="closer">X</span>
+            <span onClick={() => clickHandler()} className="closer">X</span>
             <div className="holder">
                 <Col>
                     <Col>
@@ -37,7 +40,7 @@ function Payment(props) {
                     </Col>
                     <Col>
                         <div className="ReLog middle">
-                            <Form onSubmit={(e)=> e.preventDefault()} >
+                            <Form onSubmit={(e) => e.preventDefault()} >
                                 <input type="text" className="input tembus white" name="accNumber" placeholder="Input your account number" value={state.accNumber} onChange={changeHandler} />
                                 <input onClick={focusTextInput} type="text" className="input Upload green" readOnly value="Attach proof of transfer" />
                                 <input type="file" ref={textInput} className="input fileUpload" />

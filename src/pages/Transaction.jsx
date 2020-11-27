@@ -1,7 +1,10 @@
 import React from 'react'
 import Table from '../components/Transaction/Table';
+import { AppContext } from '../Context/AppContext'
 
-function Transaction(props) {
+function Transaction() {
+
+    const [globalState, dispatch] = React.useContext(AppContext)
 
     return (
         <div className="kontens">
@@ -24,7 +27,7 @@ function Transaction(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        {props.data.users.map((user, i) => {
+                        {globalState.users.map((user, i) => {
                             if (user.bukti) {
                                 i += 1;
                                 return (<Table user={user} counter={i} key={user.id} />)

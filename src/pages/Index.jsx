@@ -1,43 +1,44 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom';
 import CardSong from '../components/Home/CardSong';
 import { Row } from 'reactstrap';
 import ImageSlider from '../components/Home/ImageSlider';
 import Payment from '../components/Payment/Payment';
 import MusicPlayer from '../components/Home/MusicPlayer';
+import AppContext from '../Context/AppContext'
 
-function Index(props) {
+function Index() {
+
+    const [globalState, dispatch] = React.useContext(AppContext)
 
     const clickHandler = (song) => {
-        if (props.data.loginData.payed !== "approve") {
-            props.setData(prevState => ({
-                ...prevState,
-                paymentComp: true
-            }))
+        if (globalState.loginData.payed !== "approve") {
+            //SHOW PAYMENT
+            dispatch({
+                type: "PAYMENT"
+            })
         }
         else {
-            props.setData(prevState => ({
-                ...prevState,
-                playerComp: true,
-                musicToPlay: song
-            }))
+            // SHOW MUSIC PLAYER
+            dispatch({
+                type: "MUSIC_PLAYER",
+                payload: song
+            })
         }
     }
 
     return (
         <>
-            {props.data.paymentComp === true ? (<Payment close={props.setData} />) : ""}
-            {props.data.playerComp === true ? (<MusicPlayer song={props.data.musicToPlay} />) : ""}
-            {props.data.isLogin === false ? (<Redirect to={{ pathname: "/login" }} />) : ""}
+            {globalState.paymentComp === true ? (<Payment />) : ""}
+            {globalState.playerComp === true ? (<MusicPlayer song={globalState.musicToPlay} />) : ""}
             <div>
                 <Row>
                     <div className="showBox">
-                        <ImageSlider imgs={props.data.thumbnails} />
+                        <ImageSlider imgs={globalState.thumbnails} />
                     </div>
                 </Row>
                 <Row>
                     <div className="songList">
-                        {props.data.songs.map(song => {
+                        {globalState.songs.map(song => {
                             return (
                                 <div onClick={(song) => clickHandler(song)} className="cardMe" key={song.id}>
                                     <CardSong state={{ title: song.title, singer: song.singer, year: song.year, img: song.img }} />
