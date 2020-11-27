@@ -1,15 +1,17 @@
+import React from 'react'
 import { Route, Redirect } from "react-router-dom";
+import { AppContext } from '../Context/AppContext';
 
 function LoginRoute({ component: Component, ...rest }) {
 
-    // Pasang use Context untuk cek isLogin
-    const isLogin = true;
+    // Cek Login
+    const [state] = React.useContext(AppContext);
 
     return (
         <Route
             {...rest}
             render={(props) => {
-                isLogin ? <Component {...props} /> : <Redirect to="/login" />
+                state.isLogin ? <Component {...props} /> : <Redirect to="/login" />
             }}
         />
     );

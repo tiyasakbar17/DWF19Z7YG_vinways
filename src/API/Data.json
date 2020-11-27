@@ -205,7 +205,7 @@
             "img": "https://i.ytimg.com/vi/QaMHYCkt3ps/maxresdefault.jpg"
         }
     ],
-    "isLogin": true,
+    "isLogin": false,
     "loginData": {},
     "paymentComp": false,
     "playerComp": false,
