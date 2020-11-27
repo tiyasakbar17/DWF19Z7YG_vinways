@@ -24,7 +24,7 @@ function AddArtist() {
             <div className="container formAdd">
                 <div className="row">
                     <h1 className="green mt-5 mb-5">
-                        Add Music
+                        Add Artist
                     </h1>
                 </div>
                 <form onSubmit={(e) => submitHandler(e)}>
@@ -48,7 +48,7 @@ function AddArtist() {
                     </div>
                     <div className="row">
                         <div className="col d-flex justify-content-center">
-                            <button type="submit" className="btn btn-success text-dark submitButton">Add Music</button>
+                            <button type="submit" className="btn btn-success text-dark submitButton">Add Artist</button>
                         </div>
                     </div>
                 </form>

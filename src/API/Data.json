@@ -10,12 +10,30 @@
             "activeDay": 365
         },
         {
+            "id": 3,
+            "email": "tiyas.isme@gmail.com",
+            "password": "dumbways",
+            "name": "Muhammad Taufiq Cahyo Wiguna",
+            "payed": "",
+            "bukti": "",
+            "activeDay": 0
+        },
+        {
             "id": 2,
             "email": "tiyas.reza@gmail.com",
             "password": "dumbways",
             "name": "Andre Kurnia Tri Putra",
             "payed": "pending",
             "bukti": "bni.jpg",
+            "activeDay": 0
+        },
+        {
+            "id": 3,
+            "email": "tiyas.isme@gmail.com",
+            "password": "dumbways",
+            "name": "Muhammad Taufiq Cahyo Wiguna",
+            "payed": "",
+            "bukti": "",
             "activeDay": 0
         }
     ],
@@ -189,5 +207,7 @@
     ],
     "isLogin": true,
     "loginData": {},
-    "paymentComp": false
+    "paymentComp": false,
+    "playerComp": false,
+    "musicToPlay": ""
 }

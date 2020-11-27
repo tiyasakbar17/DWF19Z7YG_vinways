@@ -3,7 +3,7 @@
   width: 100%;
   min-height: 800px;
   font-size: 24px;
-  font-family: "Avenir", "Helvetica Neue", "sans-serif";
+  font-family: "Open Sans", sans-serif;
   overflow: hidden;
 }
 .kontens {
@@ -30,6 +30,7 @@ div.headerCustom {
 }
 .webLogo {
   margin-left: 15%;
+  font-family: serif;
 }
 
 .logo {
@@ -69,7 +70,7 @@ div.drpDown {
 /* JARGON */
 
 .jargon {
-  font-family: "Abhaya Libre Medium", "Helvetica Neue", "sans-serif";
+  font-family: "Abhaya Libre Medium", serif;
   font-size: 100px;
   margin: 0;
 }
@@ -102,7 +103,7 @@ select.white {
   border-radius: 5px;
   font-size: 18px;
   margin-top: 50px;
-  font-family: "Avenir", "Helvetica Neue", "sans-serif";
+  font-family: "Open Sans", sans-serif;
   font-style: bold;
 }
 .pay {
@@ -128,9 +129,13 @@ select.white {
 }
 .ReLog {
   width: 416px;
-  font-family: "Avenir", "Helvetica Neue", "sans-serif";
+  font-family: "Open Sans", sans-serif;
+}
+input.input {
+  padding-left: 10px;
 }
 .input {
+  padding-left: 10px;
   border-radius: 5px;
   width: 350px;
   height: 50px;
@@ -260,3 +265,13 @@ select.tembus {
 button.submitButton {
   width: 300px;
 }
+
+/* MUSIC PLAYER */
+
+/* .musicPlayer {
+  position: fixed;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  z-index: 5;
+} */

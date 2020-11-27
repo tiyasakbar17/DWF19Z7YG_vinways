@@ -25,8 +25,10 @@ function Transaction(props) {
                     </thead>
                     <tbody>
                         {props.data.users.map((user, i) => {
-                            i += 1;
-                            return (<Table user={user} counter={i} key={user.id} />)
+                            if (user.bukti) {
+                                i += 1;
+                                return (<Table user={user} counter={i} key={user.id} />)
+                            }
                         })}
                     </tbody>
                 </table>

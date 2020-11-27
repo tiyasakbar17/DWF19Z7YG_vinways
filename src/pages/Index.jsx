@@ -4,10 +4,11 @@ import CardSong from '../components/CardSong';
 import { Row } from 'reactstrap';
 import ImageSlider from '../components/ImageSlider';
 import Payment from '../components/Payment';
+import MusicPlayer from '../components/MusicPlayer';
 
 function Index(props) {
 
-    const clickHandler = () => {
+    const clickHandler = (song) => {
         if (props.data.loginData.payed !== "approve") {
             props.setData(prevState => ({
                 ...prevState,
@@ -15,13 +16,18 @@ function Index(props) {
             }))
         }
         else {
-            window.alert("kena deh")
+            props.setData(prevState => ({
+                ...prevState,
+                playerComp: true,
+                musicToPlay: song
+            }))
         }
     }
 
     return (
         <>
             {props.data.paymentComp === true ? (<Payment close={props.setData} />) : ""}
+            {props.data.playerComp === true ? (<MusicPlayer song={props.data.musicToPlay} />) : ""}
             {props.data.isLogin === false ? (<Redirect to={{ pathname: "/login" }} />) : ""}
             <div>
                 <Row>
@@ -33,7 +39,7 @@ function Index(props) {
                     <div className="songList">
                         {props.data.songs.map(song => {
                             return (
-                                <div onClick={clickHandler} className="cardMe" key={song.id}>
+                                <div onClick={(song) => clickHandler(song)} className="cardMe" key={song.id}>
                                     <CardSong state={{ title: song.title, singer: song.singer, year: song.year, img: song.img }} />
                                 </div>
                             )

@@ -7,6 +7,10 @@ function DropDown(props) {
         props.setData(prevData => ({ ...prevData, paymentComp: true }))
         props.setClicked(prevState => (!prevState))
     }
+    const outHandler = () => {
+        props.setData(prevData => ({ ...prevData, isLogin: false }))
+        props.setClicked(prevState => (!prevState))
+    }
 
     return (
         <div className="drpDown d-flex flex-column col text-center white">
@@ -15,7 +19,7 @@ function DropDown(props) {
                 <p className="pt-2">Pay</p>
             </div>
             <div class="dropdown-divider"></div>
-            <div className="col pointer">
+            <div className="col pointer" onClick={outHandler}>
                 <p className="pt-1">Logout</p>
             </div>
         </div>
