@@ -7,8 +7,8 @@ import Payment from '../components/Payment';
 
 function Index(props) {
 
-    const clickHandler = ()=> {
-        if (props.data.loginData.payed === false){
+    const clickHandler = () => {
+        if (props.data.loginData.payed !== "approve") {
             props.setData(prevState => ({
                 ...prevState,
                 paymentComp: true
@@ -21,7 +21,7 @@ function Index(props) {
 
     return (
         <>
-            {props.data.paymentComp===true ? (<Payment close={props.setData} /> ):""}
+            {props.data.paymentComp === true ? (<Payment close={props.setData} />) : ""}
             {props.data.isLogin === false ? (<Redirect to={{ pathname: "/login" }} />) : ""}
             <div>
                 <Row>
@@ -33,9 +33,9 @@ function Index(props) {
                     <div className="songList">
                         {props.data.songs.map(song => {
                             return (
-                                    <div onClick={clickHandler} className="cardMe" key={song.id}>
-                                        <CardSong state={{ title: song.title, singer: song.singer, year: song.year, img: song.img }} />
-                                    </div>
+                                <div onClick={clickHandler} className="cardMe" key={song.id}>
+                                    <CardSong state={{ title: song.title, singer: song.singer, year: song.year, img: song.img }} />
+                                </div>
                             )
                         })}
                     </div>

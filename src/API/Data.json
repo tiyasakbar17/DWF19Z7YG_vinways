@@ -5,14 +5,18 @@
             "email": "tiyas.akbar@gmail.com",
             "password": "dumbways",
             "name": "Muhammad Tiyas Fachreza Akbar",
-            "payed": true
+            "payed": "approve",
+            "bukti": "bca.jpg",
+            "activeDay": 365
         },
         {
             "id": 2,
             "email": "tiyas.reza@gmail.com",
             "password": "dumbways",
-            "name": "Muhammad Tiyas Fachreza Akbar",
-            "payed": false
+            "name": "Andre Kurnia Tri Putra",
+            "payed": "pending",
+            "bukti": "bni.jpg",
+            "activeDay": 0
         }
     ],
     "songs": [
@@ -183,7 +187,7 @@
             "img": "https://i.ytimg.com/vi/QaMHYCkt3ps/maxresdefault.jpg"
         }
     ],
-    "isLogin": false,
+    "isLogin": true,
     "loginData": {},
     "paymentComp": false
 }

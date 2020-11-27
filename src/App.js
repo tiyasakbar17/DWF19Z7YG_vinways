@@ -8,6 +8,7 @@ import React from 'react'
 import Data from './API/Data.json'
 import AddMusic from './pages/AddMusic';
 import AddArtist from './pages/AddArtist';
+import Transaction from './pages/Transaction';
 
 function App() {
   const innitialValue = Data
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/" component={() => <Index data={data} setData={setData.bind()} />} />
             <Route exact path="/addmusic" component={() => <AddMusic data={data} setData={setData.bind()} />} />
             <Route exact path="/addartist" component={() => <AddArtist data={data} setData={setData.bind()} />} />
+            <Route exact path="/transaction" component={() => <Transaction data={data} setData={setData.bind()} />} />
           </Switch>
         </BrowserRouter>
     </div>
