@@ -5,13 +5,13 @@ import { AppContext } from '../Context/AppContext';
 function LoginRoute({ component: Component, ...rest }) {
 
     // Cek Login
-    const [state] = React.useContext(AppContext);
+    const [globalState] = React.useContext(AppContext);
 
     return (
         <Route
             {...rest}
             render={(props) => {
-                state.isLogin ? <Component {...props} /> : <Redirect to="/login" />
+                globalState.isLogin ? <Component {...props} /> : <Redirect to="/login" />
             }}
         />
     );

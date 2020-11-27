@@ -8,7 +8,7 @@ import { AppContext } from '../Context/AppContext';
 
 function Header() {
 
-    const [state] = React.useContext(AppContext)
+    const [globalState] = React.useContext(AppContext)
 
     const style = {
         bgClr: { backgroundColor: "rgba(255, 255, 255, 0)" },
@@ -23,7 +23,7 @@ function Header() {
 
     return (
         <>
-            <div className="col d-flex headerCustom align-items-xl-center" style={state.isLogin ? {} : style.bgClr}>
+            <div className="col d-flex headerCustom align-items-xl-center" style={globalState.isLogin ? {} : style.bgClr}>
                 <div className="col text-left ">
                     <div className="webLogo mt-2">
                         <Link to="/login" >
@@ -37,11 +37,11 @@ function Header() {
                 </div>
                 <div className="col text-right">
                     <div className="userAccount mt-2">
-                        <img src={userPict} alt="foto" className="userPict" onClick={clickHandler} style={state.isLogin ? {} : style.cnt} />
+                        <img src={userPict} alt="foto" className="userPict" onClick={clickHandler} style={globalState.isLogin ? {} : style.cnt} />
                     </div>
                 </div>
             </div>
-            {clicked ? <DropDown setData={props.setData} setClicked={setClicked} /> : ""}
+            {clicked ? <DropDown setClicked={setClicked} /> : ""}
         </>
     )
 }

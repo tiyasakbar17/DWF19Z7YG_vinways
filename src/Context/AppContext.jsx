@@ -5,10 +5,10 @@ import Reducers from './Reducers'
 module.exports = {
     AppContext: React.createContext(),
     AppContextProvider: (props) => {
-        const [state, dispatch] = React.useReducer(Reducers, Data)
+        const [globalState, dispatch] = React.useReducer(Reducers, Data)
 
         return (
-            <AppContext.Provider value={[state, dispatch]}>
+            <AppContext.Provider value={[globalState, dispatch]}>
                 {props.children}
             </AppContext.Provider>
         )

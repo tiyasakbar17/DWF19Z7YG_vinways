@@ -1,5 +1,5 @@
 import React from 'react'
-import Jargon from '../components/Jargon'
+import Jargon from '../components/FrontPage/Jargon'
 import { Link, Redirect } from 'react-router-dom'
 import { Form, FormGroup } from 'reactstrap'
 

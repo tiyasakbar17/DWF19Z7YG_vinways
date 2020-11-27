@@ -1,10 +1,10 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom';
-import CardSong from '../components/CardSong';
+import CardSong from '../components/Home/CardSong';
 import { Row } from 'reactstrap';
-import ImageSlider from '../components/ImageSlider';
-import Payment from '../components/Payment';
-import MusicPlayer from '../components/MusicPlayer';
+import ImageSlider from '../components/Home/ImageSlider';
+import Payment from '../components/Payment/Payment';
+import MusicPlayer from '../components/Home/MusicPlayer';
 
 function Index(props) {
 
