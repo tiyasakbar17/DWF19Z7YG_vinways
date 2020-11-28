@@ -4,15 +4,21 @@ const Reducers = (state, action) => {
         case "LOGIN":
             return {
                 ...state,
-                isLogin: true,
-                loginData: action.payload
+                tempData: {
+                    ...state.tempData,
+                    isLogin: true,
+                    userLogin: action.payload
+                }
             }
         case "LOGOUT":
             return {
                 ...state,
-                loginData: {},
-                isLogin: false,
-                playerComp: false
+                tempData: {
+                    ...state.tempData,
+                    isLogin: false,
+                    userLogin: null,
+                    playerComp: false
+                },
             }
         case "REGISTER":
             return {
@@ -25,13 +31,19 @@ const Reducers = (state, action) => {
         case "PAYMENT":
             return {
                 ...state,
-                paymentComp: !state.paymentComp
+                tempData: {
+                    ...state.tempData,
+                    paymentComp: !state.tempData.paymentComp
+                }
             }
         case "MUSIC_PLAYER":
             return {
                 ...state,
-                playerComp: true,
-                musicToPlay: action.payload
+                tempData: {
+                    ...state.tempData,
+                    playerComp: true,
+                    musicToPlay: action.payload
+                }
             }
         default:
             throw new Error()

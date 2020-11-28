@@ -25,7 +25,10 @@ function Register({ action }) {
             email: state.email,
             password: state.password,
             name: state.name,
-            payed: false
+            favourite: [],
+            role: 2,
+            activeDay: 0,
+            buktiBayar: []
         }
         // ADD USER
         const cekEmail = globalState.users.find(user => (user.email === state.email))

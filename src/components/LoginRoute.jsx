@@ -11,7 +11,7 @@ const LoginRoute = ({ component: Component, ...rest }) => {
     return (
         <Route
             {...rest}
-            component={globalState.isLogin ? Component : Login}
+            component={globalState.tempData.isLogin ? Component : Login}
         // render={props => {
         //     globalState.isLogin ? <Component {...props} /> : <Redirect to="/login" />
         // }}

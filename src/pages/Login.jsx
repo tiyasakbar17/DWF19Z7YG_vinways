@@ -20,7 +20,7 @@ function Login({ action: Action }) {
         e.preventDefault()
         //LOGIN
         const userData = globalState.users.find(user => (user.email === state.email && user.password === state.password))
-        userData ? (Action.LOGIN(userData)) : (window.alert("Tolong Cek Kembali Email dan Passwordnya"))
+        userData ? (Action.LOGIN(userData.id_u)) : (window.alert("Tolong Cek Kembali Email dan Passwordnya"))
 
     }
 
@@ -30,7 +30,7 @@ function Login({ action: Action }) {
 
     return (
         <div className="content">
-            {globalState.isLogin && <Redirect to={{ pathname: "/" }} />}
+            {globalState.tempData.isLogin && <Redirect to={{ pathname: "/" }} />}
             <div className="pembagi">
                 <div className="awal">
                     <Jargon />

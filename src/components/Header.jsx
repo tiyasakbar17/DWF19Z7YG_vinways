@@ -23,7 +23,7 @@ function Header() {
 
     return (
         <>
-            <div className="col d-flex headerCustom align-items-xl-center" style={globalState.isLogin ? {} : style.bgClr}>
+            <div className="col d-flex headerCustom align-items-xl-center" style={globalState.tempData.isLogin ? {} : style.bgClr}>
                 <div className="col text-left ">
                     <div className="webLogo mt-2">
                         <Link to="/login" >
@@ -37,7 +37,7 @@ function Header() {
                 </div>
                 <div className="col text-right">
                     <div className="userAccount mt-2">
-                        <img src={userPict} alt="foto" className="userPict" onClick={clickHandler} style={globalState.isLogin ? {} : style.cnt} />
+                        <img src={userPict} alt="foto" className="userPict" onClick={clickHandler} style={globalState.tempData.isLogin ? {} : style.cnt} />
                     </div>
                 </div>
             </div>

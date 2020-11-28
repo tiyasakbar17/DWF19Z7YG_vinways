@@ -11,8 +11,11 @@ function Index({ action: Action }) {
 
     const [globalState] = React.useContext(AppContext)
 
+    const songs = [];
+    globalState.artists.map(artist => artist.songs.map(song => songs.push(song)))
     const clickHandler = (song) => {
-        if (globalState.loginData.payed !== "approve") {
+
+        if (Action.dataLogin[0].activeDay === 0) {
             //SHOW PAYMENT
             Action.PAYMENT()
         }
@@ -24,8 +27,8 @@ function Index({ action: Action }) {
 
     return (
         <>
-            {globalState.paymentComp === true ? (<Payment />) : ""}
-            {globalState.playerComp === true ? (<MusicPlayer song={globalState.musicToPlay} />) : ""}
+            {globalState.tempData.paymentComp === true ? (<Payment />) : ""}
+            {globalState.tempData.playerComp === true ? (<MusicPlayer song={globalState.tempData.musicToPlay} />) : ""}
             <div>
                 <Row>
                     <div className="showBox">
@@ -34,9 +37,10 @@ function Index({ action: Action }) {
                 </Row>
                 <Row>
                     <div className="songList">
-                        {globalState.songs.map(song => {
+                        {songs.map((song, i) => {
+                            i += 1;
                             return (
-                                <div onClick={(song) => clickHandler(song)} className="cardMe" key={song.id}>
+                                <div onClick={(song) => clickHandler(song)} className="cardMe" key={i + 1}>
                                     <CardSong state={{ title: song.title, singer: song.singer, year: song.year, img: song.img }} />
                                 </div>
                             )

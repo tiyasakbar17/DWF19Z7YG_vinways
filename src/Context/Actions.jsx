@@ -3,8 +3,9 @@ import { AppContext } from './AppContext'
 
 const Actions = (WrappedComponent) => {
     function Content(props) {
-        const [, dispatch] = React.useContext(AppContext);
+        const [globalState, dispatch] = React.useContext(AppContext);
         const Action = {
+            dataLogin: globalState.tempData.userLogin ? (globalState.users.filter(user => user.id_u === globalState.tempData.userLogin)) : [],
             LOGIN: (payload) => {
                 dispatch({
                     type: "LOGIN",

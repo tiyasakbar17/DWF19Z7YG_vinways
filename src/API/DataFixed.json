@@ -1,0 +1,87 @@
+{
+  "artists": [
+    {
+      "id_a": 1,
+      "name": "Tiyas",
+      "start": "2012-04-23T18:25:43.511Z",
+      "bornAt": "1998-04-23T18:25:43.511Z",
+      "songs": [
+        {
+          "id_s": 1,
+          "title": "Black Shout",
+          "year": "2018",
+          "img": "https://static.wikia.nocookie.net/bandori/images/9/91/BLACK_SHOUT_Blu-ray.jpg",
+          "audio": "https://static.wikia.nocookie.net/bandori/images/6/61/03._BLACK_SHOUT_-Instrumental-.ogg"
+        },
+        {
+          "id_s": 2,
+          "title": "Louder",
+          "year": "2019",
+          "img": "https://static.wikia.nocookie.net/bandori/images/b/bf/LOUDER_Cover.png",
+          "audio": "https://static.wikia.nocookie.net/bandori/images/1/16/04._LOUDER_-Instrumental-.ogg"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id_u": 1,
+      "email": "tiyas.akbar@gmail.com",
+      "password": "dumbways",
+      "name": "Muhammad Tiyas Fachreza Akbar",
+      "role": 1,
+      "favourite": [{ "id_a": 1, "id_s": 1 }],
+      "buktiBayar": [{ "id_b": 1, "img": "bca.jpg", "approved": null }],
+      "activeDay": 365
+    },
+    {
+      "id_u": 2,
+      "email": "tiyas.reza@gmail.com",
+      "password": "dumbways",
+      "name": "Andre Kurnia Tri Putra",
+      "role": 2,
+      "favourite": [{ "id_a": 1, "id_s": 1 }],
+      "buktiBayar": [{ "id_b": 1, "img": "bni.jpg", "approved": null }],
+      "activeDay": 0
+    },
+    {
+      "id_u": 3,
+      "email": "tiyas.isme@gmail.com",
+      "password": "dumbways",
+      "name": "Muhammad Taufiq Cahyo Wiguna",
+      "role": 2,
+      "favourite": [],
+      "buktiBayar": [],
+      "activeDay": 0
+    }
+  ],
+  "thumbnails": [
+    {
+      "id": 1,
+      "img": "https://i.ytimg.com/vi/dFLiUiD4pw4/maxresdefault.jpg"
+    },
+    {
+      "id": 2,
+      "img": "https://i.ytimg.com/vi/HWgxbptCcuA/maxresdefault.jpg"
+    },
+    {
+      "id": 3,
+      "img": "https://i.ytimg.com/vi/aPCf7_Kk7L8/maxresdefault.jpg"
+    },
+    {
+      "id": 4,
+      "img": "https://i.ytimg.com/vi/4VodI3JCz0Y/maxresdefault.jpg"
+    },
+    {
+      "id": 5,
+      "img": "https://i.ytimg.com/vi/QaMHYCkt3ps/maxresdefault.jpg"
+    }
+  ],
+  "tempData": {
+    "isLogin": false,
+    "userLogin": null,
+    "paymentComp": false,
+    "playerComp": false,
+    "musicToPlay": ""
+  }
+}
