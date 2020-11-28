@@ -3,10 +3,11 @@ import Jargon from '../components/FrontPage/Jargon'
 import { Link } from 'react-router-dom'
 import { Form, FormGroup } from 'reactstrap'
 import { AppContext } from '../Context/AppContext'
+import Actions from '../Context/Actions'
 
-function Register() {
+function Register({ action }) {
 
-    const [globalState, dispatch] = React.useContext(AppContext)
+    const [globalState] = React.useContext(AppContext)
 
     const inntialValue = {
         email: '',
@@ -27,10 +28,11 @@ function Register() {
             payed: false
         }
         // ADD USER
-        dispatch({
-            type: "REGISTER",
-            payload: dataBaru
-        })
+        action.REGISTER(dataBaru)
+        // dispatch({
+        //     type: "REGISTER",
+        //     payload: dataBaru
+        // })
         setState(inntialValue)
         window.alert("Account Created")
     }
@@ -62,4 +64,4 @@ function Register() {
     )
 }
 
-export default Register
+export default Actions(Register)

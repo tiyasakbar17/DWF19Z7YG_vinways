@@ -1,11 +1,9 @@
 import React from 'react'
 import { Col, Form } from 'reactstrap'
 import ReactDOM from 'react-dom'
-import { AppContext } from '../../Context/AppContext'
+import Actions from '../../Context/Actions'
 
-function Payment(props) {
-
-    const [, dispatch] = React.useContext(AppContext)
+function Payment({ action }) {
 
     const [state, setState] = React.useState({
         accNumber: ''
@@ -19,9 +17,7 @@ function Payment(props) {
 
     const clickHandler = () => {
         // CLOSE PAYMENT
-        dispatch({
-            type: "PAYMENT"
-        })
+        action.PAYMENT()
     }
 
     const textInput = React.createRef();
@@ -56,4 +52,4 @@ function Payment(props) {
 }
 
 
-export default React.memo(Payment)
+export default Actions(Payment);

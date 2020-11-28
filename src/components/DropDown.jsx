@@ -1,24 +1,18 @@
 import React from 'react'
 import Pic from '../img/Polygon1.png'
-import { AppContext } from '../Context/AppContext'
+import Actions from '../Context/Actions'
 
-function DropDown(props) {
-
-    const [, dispatch] = React.useContext(AppContext)
+function DropDown({ action, setClicked }) {
 
     const payHandler = () => {
         //Open Pay Comp
-        dispatch({
-            type: "PAYMENT"
-        })
-        props.setClicked(prevState => (!prevState))
+        action.PAYMENT()
+        setClicked(prevState => (!prevState))
     }
     const outHandler = () => {
         // LOGOUT
-        dispatch({
-            type: "LOGOUT"
-        });
-        props.setClicked(prevState => (!prevState))
+        action.LOGOUT()
+        setClicked(prevState => (!prevState))
     }
 
     return (
@@ -27,7 +21,7 @@ function DropDown(props) {
             <div onClick={payHandler} className="col pointer">
                 <p className="pt-2">Pay</p>
             </div>
-            <div class="dropdown-divider"></div>
+            <div className="dropdown-divider"></div>
             <div className="col pointer" onClick={outHandler}>
                 <p className="pt-1">Logout</p>
             </div>
@@ -35,4 +29,4 @@ function DropDown(props) {
     )
 }
 
-export default DropDown
+export default Actions(DropDown);

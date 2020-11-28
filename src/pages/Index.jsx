@@ -5,24 +5,20 @@ import ImageSlider from '../components/Home/ImageSlider';
 import Payment from '../components/Payment/Payment';
 import MusicPlayer from '../components/Home/MusicPlayer';
 import { AppContext } from '../Context/AppContext'
+import Actions from '../Context/Actions';
 
-function Index() {
+function Index({ action: Action }) {
 
-    const [globalState, dispatch] = React.useContext(AppContext)
+    const [globalState] = React.useContext(AppContext)
 
     const clickHandler = (song) => {
         if (globalState.loginData.payed !== "approve") {
             //SHOW PAYMENT
-            dispatch({
-                type: "PAYMENT"
-            })
+            Action.PAYMENT()
         }
         else {
             // SHOW MUSIC PLAYER
-            dispatch({
-                type: "MUSIC_PLAYER",
-                payload: song
-            })
+            Action.MUSICPLAYER(song)
         }
     }
 
@@ -52,4 +48,4 @@ function Index() {
     )
 }
 
-export default Index;
+export default Actions(Index);

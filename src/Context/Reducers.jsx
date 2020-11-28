@@ -1,4 +1,5 @@
 const Reducers = (state, action) => {
+    console.log("LOAD REDUCER");
     switch (action.type) {
         case "LOGIN":
             return {
