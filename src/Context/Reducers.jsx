@@ -45,6 +45,23 @@ const Reducers = (state, action) => {
                     musicToPlay: action.payload
                 }
             }
+        case "UPLOAD_PAYMENT":
+            const userUpdate = state.users.findIndex(user => user.id_u === action.payload.id_u)
+            const users = state.users
+            const id = users[userUpdate].buktiBayar.length
+            const updatedUsers = {
+                ...users[userUpdate],
+                buktiBayar: [...users[userUpdate].buktiBayar,
+                { id_b: id + 1, img: action.payload.img, approved: null }
+                ]
+            }
+            return {
+                ...state,
+                users: [...users.slice(0, userUpdate),
+                    updatedUsers,
+                ...users.slice(userUpdate + 1)
+                ]
+            }
         default:
             throw new Error()
     }

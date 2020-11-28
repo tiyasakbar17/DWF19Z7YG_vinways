@@ -1,5 +1,4 @@
 import React from 'react';
-import Data from '../API/Data.json';
 import DataFixed from '../API/DataFixed.json';
 import Reducers from './Reducers'
 

@@ -33,6 +33,15 @@ const Actions = (WrappedComponent) => {
                     type: "REGISTER",
                     payload: payload
                 })
+            },
+            UPLOADPAYMENT: (payload) => {
+                dispatch({
+                    type: "UPLOAD_PAYMENT",
+                    payload: {
+                        id_u: payload.id_u,
+                        img: payload.img
+                    }
+                })
             }
         }
         return (
