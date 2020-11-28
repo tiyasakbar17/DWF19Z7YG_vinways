@@ -6,7 +6,8 @@ import Actions from '../../Context/Actions'
 function Payment({ action }) {
 
     const [state, setState] = React.useState({
-        accNumber: ''
+        accNumber: '',
+        file: 'Attach proof of transfer',
     })
 
     const changeHandler = (e) => {
@@ -15,8 +16,20 @@ function Payment({ action }) {
         }))
     }
 
+    const fileHandler = e => {
+        setState(prevState => ({
+            ...prevState, file: e.target.files[0] ? e.target.files[0].name : "Attach proof of transfer"
+        }))
+    }
+
     const clickHandler = () => {
         // CLOSE PAYMENT
+        action.PAYMENT()
+    }
+
+    const submitHandler = e => {
+        e.preventDefault()
+        window.alert("UPLOAD SUCCESS")
         action.PAYMENT()
     }
 
@@ -36,10 +49,10 @@ function Payment({ action }) {
                     </Col>
                     <Col>
                         <div className="ReLog middle">
-                            <Form onSubmit={(e) => e.preventDefault()} >
+                            <Form onSubmit={submitHandler} >
                                 <input type="text" className="input tembus white" name="accNumber" placeholder="Input your account number" value={state.accNumber} onChange={changeHandler} />
-                                <input onClick={focusTextInput} type="text" className="input Upload green" readOnly value="Attach proof of transfer" />
-                                <input type="file" ref={textInput} className="input fileUpload" />
+                                <input onClick={focusTextInput} type="text" className="input Upload green" readOnly value={state.file} />
+                                <input type="file" onChange={fileHandler} ref={textInput} className="input fileUpload" />
                                 <button className="input button">Submit</button>
                             </Form>
                         </div>

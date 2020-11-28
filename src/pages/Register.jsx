@@ -28,13 +28,15 @@ function Register({ action }) {
             payed: false
         }
         // ADD USER
-        action.REGISTER(dataBaru)
-        // dispatch({
-        //     type: "REGISTER",
-        //     payload: dataBaru
-        // })
-        setState(inntialValue)
-        window.alert("Account Created")
+        const cekEmail = globalState.users.find(user => (user.email === state.email))
+        if (cekEmail) {
+            window.alert("Email sudah terdaftar")
+        }
+        else {
+            action.REGISTER(dataBaru)
+            window.alert("Account Created")
+            setState(inntialValue)
+        }
     }
 
     const changeHandler = (e) => {
