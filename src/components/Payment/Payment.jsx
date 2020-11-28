@@ -2,11 +2,16 @@ import React from 'react'
 import { Col, Form } from 'reactstrap'
 import ReactDOM from 'react-dom'
 import Actions from '../../Context/Actions'
+import { AppContext } from '../../Context/AppContext'
 
 function Payment({ action }) {
 
+    const [globalState] = React.useContext(AppContext);
+
+    console.log(globalState);
+
     const [state, setState] = React.useState({
-        accNumber: '',
+        email: '',
         file: 'Attach proof of transfer',
     })
 
@@ -18,7 +23,7 @@ function Payment({ action }) {
 
     const fileHandler = e => {
         setState(prevState => ({
-            ...prevState, file: e.target.files[0] ? e.target.files[0].name : "Attach proof of transfer"
+            ...prevState, file: e.target.files[0] ? e.target.files[0].name : 'Attach proof of transfer'
         }))
     }
 
@@ -29,8 +34,24 @@ function Payment({ action }) {
 
     const submitHandler = e => {
         e.preventDefault()
-        window.alert("UPLOAD SUCCESS")
-        action.PAYMENT()
+        if (state.email && state.file !== 'Attach proof of transfer') {
+            const cekEmail = globalState.users.find(user => user.email === state.email)
+            if (cekEmail) {
+                const data = {
+                    id_u: globalState.tempData.userLogin,
+                    img: state.file
+                }
+                action.UPLOADPAYMENT(data)
+                window.alert("UPLOAD SUCCESS")
+                action.PAYMENT()
+            }
+            else {
+                window.alert("CEK EMAIL BRE")
+            }
+        }
+        else {
+            window.alert("MASUKIN DULU FILE ATAU FILENYA MAN")
+        }
     }
 
     const textInput = React.createRef();
@@ -50,7 +71,7 @@ function Payment({ action }) {
                     <Col>
                         <div className="ReLog middle">
                             <Form onSubmit={submitHandler} >
-                                <input type="text" className="input tembus white" name="accNumber" placeholder="Input your account number" value={state.accNumber} onChange={changeHandler} />
+                                <input type="text" className="input tembus white" name="email" placeholder="Input your account email" value={state.email} onChange={changeHandler} />
                                 <input onClick={focusTextInput} type="text" className="input Upload green" readOnly value={state.file} />
                                 <input type="file" onChange={fileHandler} ref={textInput} className="input fileUpload" />
                                 <button className="input button">Submit</button>
