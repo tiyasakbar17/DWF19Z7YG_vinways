@@ -42,6 +42,12 @@ const Actions = (WrappedComponent) => {
                         img: payload.img
                     }
                 })
+            },
+            ADDARTIST: (payload) => {
+                dispatch({
+                    type: "ADD_ARTIST",
+                    payload: payload
+                })
             }
         }
         return (

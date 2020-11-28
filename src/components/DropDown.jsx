@@ -16,14 +16,14 @@ function DropDown({ action, setClicked }) {
     }
 
     return (
-        <div className="drpDown d-flex flex-column col text-center white">
+        <div className="d-flex flex-column col text-center white dDown">
             <img src={Pic} alt="" className="segitiga" />
-            <div onClick={payHandler} className="col pointer">
-                <p className="pt-2">Pay</p>
+            <div onClick={payHandler} className="d-flex justify-content-center align-items-center DownItem pointer">
+                <span>Pay</span>
             </div>
-            <div className="dropdown-divider"></div>
-            <div className="col pointer" onClick={outHandler}>
-                <p className="pt-1">Logout</p>
+            <div className="dropdown-divider" />
+            <div onClick={outHandler} className="d-flex justify-content-center align-items-center DownItem pointer">
+                <span>Logout</span>
             </div>
         </div>
     )

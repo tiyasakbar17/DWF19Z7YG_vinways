@@ -56,6 +56,19 @@ div.drpDown {
   top: 100px;
   right: 9%;
 }
+div.dDown {
+  width: 220px;
+  border-radius: 10px;
+  background-color: #191c35;
+  position: absolute;
+  z-index: 4;
+  top: 100px;
+  right: 9%;
+}
+.DownItem {
+  height: 60px;
+  width: 100%;
+}
 
 .segitiga {
   position: absolute;

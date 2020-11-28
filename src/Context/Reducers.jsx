@@ -62,6 +62,14 @@ const Reducers = (state, action) => {
                 ...users.slice(userUpdate + 1)
                 ]
             }
+        case "ADD_ARTIST":
+            return {
+                ...state,
+                artists: [
+                    ...state.artists,
+                    action.payload
+                ]
+            }
         default:
             throw new Error()
     }

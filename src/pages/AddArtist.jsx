@@ -1,19 +1,41 @@
 import React from 'react'
+import Actions from '../Context/Actions'
+import { AppContext } from '../Context/AppContext'
 
-function AddArtist() {
+function AddArtist({ action }) {
+
+    const [globalState] = React.useContext(AppContext);
     const [state, setState] = React.useState({
         name: '',
         old: '',
         career: '',
-        start: ''
+        start: '',
+        img: 'Attach Thumbnail',
+
     })
 
     const changeHandler = (e) => {
         setState(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
     }
+    const fileHandler = e => {
+        setState(prevState => ({
+            ...prevState, img: e.target.files[0] ? e.target.files[0].name : 'Attach Thumbnail'
+        }))
+    }
     const submitHandler = (e) => {
         e.preventDefault()
-        console.log(state);
+        const id = globalState.artists.length
+        const data = {
+            id_a: id + 1,
+            name: state.name,
+            img: state.img,
+            start: Number(state.start),
+            age: Number(state.old),
+            career: state.career,
+            songs: []
+        }
+        action.ADDARTIST(data)
+        window.alert("Artist Added")
     }
 
     const textInput = React.createRef();
@@ -29,9 +51,9 @@ function AddArtist() {
                 </div>
                 <form onSubmit={(e) => submitHandler(e)}>
                     <div className="row mb-4">
-                        <input type="text" name="name" value={state.name} onChange={(e) => changeHandler(e)} placeholder="Title" className="form-control tembus col-8 white" />
-                        <button onClick={focusTextInput} className="form-control tembus col-4 text-white" >Attach Thumbnail</button>
-                        <input type="file" ref={textInput} className="fileUpload" />
+                        <input type="text" name="name" value={state.name} onChange={(e) => changeHandler(e)} placeholder="Name" className="form-control tembus col-8 white" />
+                        <button type="button" onClick={focusTextInput} className="btn form-control pointer tembus col-4 text-white" >{state.img}</button>
+                        <input type="file" onChange={fileHandler} ref={textInput} className="fileUpload" />
                     </div>
                     <div className="row mb-4">
                         <input type="text" value={state.old} onChange={(e) => changeHandler(e)} placeholder="Old" name="old" className="form-control tembus white" />
@@ -57,4 +79,4 @@ function AddArtist() {
     )
 }
 
-export default AddArtist
+export default Actions(AddArtist);

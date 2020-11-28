@@ -3,8 +3,10 @@
     {
       "id_a": 1,
       "name": "Tiyas",
-      "start": "2012-04-23T18:25:43.511Z",
-      "bornAt": "1998-04-23T18:25:43.511Z",
+      "img": "tiyas.jpg",
+      "start": 2020,
+      "age": 17,
+      "career": "Solo",
       "songs": [
         {
           "id_s": 1,
