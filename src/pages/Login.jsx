@@ -3,10 +3,11 @@ import Jargon from '../components/FrontPage/Jargon'
 import { Link, Redirect } from 'react-router-dom'
 import { Form, FormGroup } from 'reactstrap'
 import { AppContext } from '../Context/AppContext'
+import Actions from '../Context/Actions'
 
-function Login() {
+function Login({ action: Action }) {
 
-    const [globalState, dispatch] = React.useContext(AppContext)
+    const [globalState] = React.useContext(AppContext)
 
     const inntialValue = {
         email: '',
@@ -19,10 +20,7 @@ function Login() {
         e.preventDefault()
         //LOGIN
         const userData = globalState.users.find(user => (user.email === state.email && user.password === state.password))
-        userData ? (dispatch({
-            type: "LOGIN",
-            payload: userData
-        })) : (window.alert("Tolong Cek Kembali Email dan Passwordnya"))
+        userData ? (Action.LOGIN(userData)) : (window.alert("Tolong Cek Kembali Email dan Passwordnya"))
 
     }
 
@@ -53,4 +51,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default Actions(Login);
