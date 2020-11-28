@@ -8,8 +8,6 @@ function Payment({ action }) {
 
     const [globalState] = React.useContext(AppContext);
 
-    console.log(globalState);
-
     const [state, setState] = React.useState({
         email: '',
         file: 'Attach proof of transfer',
@@ -35,8 +33,7 @@ function Payment({ action }) {
     const submitHandler = e => {
         e.preventDefault()
         if (state.email && state.file !== 'Attach proof of transfer') {
-            const cekEmail = globalState.users.find(user => user.email === state.email)
-            if (cekEmail) {
+            if (state.email === action.dataLogin[0].email) {
                 const data = {
                     id_u: globalState.tempData.userLogin,
                     img: state.file

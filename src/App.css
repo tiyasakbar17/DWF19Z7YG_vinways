@@ -229,7 +229,7 @@ select.tembus {
   display: grid;
   place-content: center center;
   text-align: center;
-  background-color: #00031ffa;
+  background-color: #00031ff6;
   z-index: 2;
   border-radius: 15px;
 }

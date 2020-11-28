@@ -2,7 +2,6 @@ import React from 'react'
 import CardSong from '../components/Home/CardSong';
 import { Row } from 'reactstrap';
 import ImageSlider from '../components/Home/ImageSlider';
-import Payment from '../components/Payment/Payment';
 import MusicPlayer from '../components/Home/MusicPlayer';
 import { AppContext } from '../Context/AppContext'
 import Actions from '../Context/Actions';
@@ -11,8 +10,6 @@ function Index({ action: Action }) {
 
     const [globalState] = React.useContext(AppContext)
 
-    const songs = [];
-    globalState.artists.map(artist => artist.songs.map(song => songs.push(song)))
     const clickHandler = (song) => {
 
         if (Action.dataLogin[0].activeDay === 0) {
@@ -27,7 +24,6 @@ function Index({ action: Action }) {
 
     return (
         <>
-            {globalState.tempData.paymentComp === true ? (<Payment />) : ""}
             {globalState.tempData.playerComp === true ? (<MusicPlayer song={globalState.tempData.musicToPlay} />) : ""}
             <div>
                 <Row>
@@ -37,14 +33,16 @@ function Index({ action: Action }) {
                 </Row>
                 <Row>
                     <div className="songList">
-                        {songs.map((song, i) => {
-                            i += 1;
-                            return (
-                                <div onClick={(song) => clickHandler(song)} className="cardMe" key={i + 1}>
-                                    <CardSong state={{ title: song.title, singer: song.singer, year: song.year, img: song.img }} />
-                                </div>
-                            )
-                        })}
+                        {
+                            globalState.artists.map(artist => artist.songs.map((song, i) => {
+                                i += 1;
+                                return (
+                                    <div onClick={(song) => clickHandler(song)} className="cardMe" key={i + 1}>
+                                        <CardSong state={{ title: song.title, singer: artist.name, year: song.year, img: song.img }} />
+                                    </div>
+                                )
+                            }))
+                        }
                     </div>
                 </Row>
             </div>

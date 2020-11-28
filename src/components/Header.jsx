@@ -4,6 +4,7 @@ import logo from '../img/Vector.png'
 import userPict from '../img/1579183327044.png';
 import DropDown from './DropDown';
 import { AppContext } from '../Context/AppContext';
+import Payment from './Payment/Payment';
 
 
 function Header() {
@@ -23,6 +24,7 @@ function Header() {
 
     return (
         <>
+            {globalState.tempData.paymentComp === true ? (<Payment />) : ""}
             <div className="col d-flex headerCustom align-items-xl-center" style={globalState.tempData.isLogin ? {} : style.bgClr}>
                 <div className="col text-left ">
                     <div className="webLogo mt-2">
