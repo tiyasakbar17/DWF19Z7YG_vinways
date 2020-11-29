@@ -71,6 +71,12 @@ const Actions = (WrappedComponent) => {
                     type: "ADD_ARTIST",
                     payload: payload
                 })
+            },
+            ADDMUSIC: (payload) => {
+                dispatch({
+                    type: "ADD_MUSIC",
+                    payload: payload
+                })
             }
         }
         return (

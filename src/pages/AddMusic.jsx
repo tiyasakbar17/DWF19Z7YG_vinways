@@ -1,19 +1,37 @@
 import React from 'react'
+import Actions from '../Context/Actions'
+import { AppContext } from '../Context/AppContext'
 
-function AddMusic() {
+function AddMusic({ action }) {
 
     const [state, setState] = React.useState({
         title: '',
         year: '',
-        singer: ''
-    })
+        singer: '',
+        img: 'Attach Thumbnail',
+        audio: 'Attach'
+    });
+
+    const [globalState] = React.useContext(AppContext);
 
     const changeHandler = (e) => {
         setState(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
     }
+    const fileHandler = (e) => {
+        setState(prevState => ({ ...prevState, [e.target.name]: e.target.files[0] ? e.target.files[0].name : e.target.name === 'img' ? 'Attach Thumbnail' : 'Attach' }))
+    }
     const submitHandler = (e) => {
         e.preventDefault()
-        console.log(state);
+        const data = {
+            id_a: Number(state.singer),
+            title: state.title,
+            year: Number(state.year),
+            img: state.img,
+            audio: state.audio
+        }
+        console.log(data);
+        action.ADDMUSIC(data)
+        window.alert("Music Added")
     }
 
     const textInput = React.createRef();
@@ -32,8 +50,8 @@ function AddMusic() {
                 <form onSubmit={(e) => submitHandler(e)}>
                     <div className="row mb-4">
                         <input type="text" name="title" value={state.title} onChange={(e) => changeHandler(e)} placeholder="Title" className="form-control tembus col-8 white" />
-                        <button onClick={focusTextInput} className="form-control tembus col-4 text-white" >Attach Thumbnail</button>
-                        <input type="file" ref={textInput} className="fileUpload" />
+                        <button type="button" onClick={focusTextInput} className="form-control tembus col-4 text-white" > {state.img} </button>
+                        <input name="img" type="file" onChange={(e) => fileHandler(e)} ref={textInput} className="fileUpload" />
                     </div>
                     <div className="row mb-4">
                         <input type="text" value={state.year} onChange={(e) => changeHandler(e)} placeholder="Year" name="year" className="form-control tembus white" />
@@ -41,15 +59,15 @@ function AddMusic() {
                     <div className="row mb-4">
                         <select className="custom-select tembus white" name="singer" onChange={(e) => changeHandler(e)}>
                             <option className="text-dark">Singer</option>
-                            <option className="text-dark" value="Tiyas">Tiyas</option>
-                            <option className="text-dark" value="Andre">Andre</option>
-                            <option className="text-dark" value="Gasi">Gasi</option>
+                            {globalState.artists.map(artist => (
+                                <option className="text-dark" value={artist.id_a} key={artist.id_a}>{artist.name}</option>
+                            ))}
                         </select>
                     </div>
                     <div className="row">
                         <div className="form-group">
-                            <button onClick={focusTextInput2} className="col form-group form-control tembus text-center text-white" >Attache</button>
-                            <input type="file" ref={textInput2} className="fileUpload" />
+                            <button type="button" onClick={focusTextInput2} className="col form-group form-control tembus text-center text-white" >{state.audio}</button>
+                            <input name="audio" type="file" onChange={(e) => fileHandler(e)} ref={textInput2} className="fileUpload" />
                         </div>
                     </div>
                     <div className="row">
@@ -63,4 +81,4 @@ function AddMusic() {
     )
 }
 
-export default AddMusic
+export default Actions(AddMusic);

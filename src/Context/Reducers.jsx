@@ -109,6 +109,21 @@ const Reducers = (state, action) => {
                     action.payload
                 ]
             }
+        case "ADD_MUSIC":
+            const indexArtist = state.artists.findIndex(artist => artist.id_a === action.payload.id_a);
+            const copyArtists = state.artists;
+            const idSongs = copyArtists[indexArtist].songs.length
+            const newSelectedArtist = {
+                ...copyArtists[indexArtist],
+                songs: [...copyArtists[indexArtist].songs, { id_s: idSongs + 1, title: action.payload.title, year: action.payload.year, img: action.payload.img, audio: action.payload.audio }]
+            }
+            // const newSongs = [...oldSelectedArtist.songs,
+            // {}]
+            return {
+                ...state,
+                artists: [...copyArtists.slice(0, indexArtist),
+                    newSelectedArtist, ...copyArtists.slice(indexArtist + 1)]
+            }
         default:
             throw new Error()
     }
