@@ -36,7 +36,7 @@ function AddArtist({ action }) {
             songs: []
         }
         action.ADDARTIST(data)
-        window.alert("Artist Added")
+        action.POPUP({ message: "An Artist Added Successfully" })
         setState(innitialValue)
     }
 

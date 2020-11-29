@@ -84,6 +84,8 @@
     "userLogin": null,
     "paymentComp": false,
     "playerComp": false,
+    "popUpComp": false,
+    "popUpMessage": "",
     "musicToPlay": ""
   }
 }

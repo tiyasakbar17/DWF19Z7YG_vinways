@@ -20,7 +20,7 @@ function Login({ action: Action }) {
         e.preventDefault()
         //LOGIN
         const userData = globalState.users.find(user => (user.email === state.email && user.password === state.password))
-        userData ? (Action.LOGIN(userData.id_u)) : (window.alert("Tolong Cek Kembali Email dan Passwordnya"))
+        userData ? (Action.LOGIN(userData.id_u)) : Action.POPUP({ message: "Check Your Email And Password" })
 
     }
 

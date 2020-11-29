@@ -281,3 +281,19 @@ button.submitButton {
   right: 0;
   z-index: 5;
 } */
+
+/* POPUP */
+
+.popUp {
+  position: fixed;
+  z-index: 100;
+  width: 742px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #191c35;
+  border-radius: 5px;
+  top: 40%;
+  left: 30%;
+}

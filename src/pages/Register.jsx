@@ -33,11 +33,11 @@ function Register({ action }) {
         // ADD USER
         const cekEmail = globalState.users.find(user => (user.email === state.email))
         if (cekEmail) {
-            window.alert("Email sudah terdaftar")
+            action.POPUP({ message: "Use Another Email" })
         }
         else {
             action.REGISTER(dataBaru)
-            window.alert("Account Created")
+            action.POPUP({ message: "Your Account Created Successfully" })
             setState(inntialValue)
         }
     }

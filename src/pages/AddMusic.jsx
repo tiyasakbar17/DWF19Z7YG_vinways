@@ -32,7 +32,7 @@ function AddMusic({ action }) {
             audio: state.audio
         }
         action.ADDMUSIC(data)
-        window.alert("Music Added")
+        action.POPUP({ message: "A Music Added Successfully" })
         setState(innitialValue)
     }
 

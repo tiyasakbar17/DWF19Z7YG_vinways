@@ -27,6 +27,12 @@ const Actions = (WrappedComponent) => {
                     type: "PAYMENT"
                 })
             },
+            POPUP: (payload) => {
+                dispatch({
+                    type: "POP_UP",
+                    payload: payload
+                })
+            },
             MUSICPLAYER: (payload) => {
                 dispatch({
                     type: "MUSIC_PLAYER",

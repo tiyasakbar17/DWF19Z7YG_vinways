@@ -40,6 +40,15 @@ const Reducers = (state, action) => {
                     paymentComp: !state.tempData.paymentComp
                 }
             }
+        case "POP_UP":
+            return {
+                ...state,
+                tempData: {
+                    ...state.tempData,
+                    popUpComp: !state.tempData.popUpComp,
+                    popUpMessage: action.payload.message
+                }
+            }
         case "MUSIC_PLAYER":
             return {
                 ...state,

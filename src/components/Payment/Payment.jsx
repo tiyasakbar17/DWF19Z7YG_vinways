@@ -39,7 +39,7 @@ function Payment({ action }) {
                     img: state.file
                 }
                 action.UPLOADPAYMENT(data)
-                window.alert("UPLOAD SUCCESS")
+                action.POPUP({ message: "Thank you for subscribing to premium, your premium package will be active after our admin approves your transaction, thank you" })
                 action.PAYMENT()
             }
             else {
