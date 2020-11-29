@@ -21,7 +21,7 @@ function Table({ user, counter, action }) {
         <tr className="white">
             <th>{counter}</th>
             <td>{user.name}</td>
-            <td>{user.bukti.img}</td>
+            <td><img src={`/img/${user.bukti.img}`} alt={user.bukti.img} className="img-thumbnail img-fluid showThumbnail" /></td>
             <td>{user.activeDay}</td>
             <td>{(user.activeDay > 0) ? <span className="green">Active</span> : <span className="text-danger">Not Active</span>}</td>
             <td>{user.bukti.approved ? (<span className="text-success">Approved</span>) : (user.bukti.approved === false ? <span className="text-danger">Cancel</span> : <span className="text-warning">Pending</span>)}</td>

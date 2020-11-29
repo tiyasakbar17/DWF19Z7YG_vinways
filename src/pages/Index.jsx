@@ -32,7 +32,7 @@ function Index({ action: Action }) {
                     </div>
                 </Row>
                 <Row>
-                    <div className="songList">
+                    <div className="d-flex flex-wrap justify-content-around songList">
                         {
                             globalState.artists.map(artist => artist.songs.map((song, i) => {
                                 i += 1;

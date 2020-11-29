@@ -197,29 +197,28 @@ select.tembus {
 }
 .CardIMG {
   width: 90%;
+  height: 180px;
   border-radius: 10px;
   margin: 4px auto;
 }
 
 /* INDEX */
 .songList {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   max-width: 90%;
   margin: 0px auto;
   padding-bottom: 100px;
-  clear: both;
 }
 
 /* SLIDER */
 
 .showBox {
   width: 95%;
-  height: 30%;
+  height: 300px;
   margin: 120px auto 40px auto;
 }
 .slider {
   width: 95%;
+  height: 300px;
   margin: 5px;
   border-radius: 10px;
 }
@@ -296,4 +295,11 @@ button.submitButton {
   border-radius: 5px;
   top: 40%;
   left: 30%;
+}
+
+/* THUMBNAILS */
+div img.img-thumbnail.img-fluid.showThumbnail {
+  height: 200px;
+  width: 200px;
+  object-fit: "cover";
 }

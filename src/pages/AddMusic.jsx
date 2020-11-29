@@ -55,21 +55,30 @@ function AddMusic({ action }) {
                         <button type="button" onClick={focusTextInput} className="form-control tembus col-4 text-white" > {state.img} </button>
                         <input name="img" type="file" onChange={(e) => fileHandler(e)} ref={textInput} className="fileUpload" />
                     </div>
-                    <div className="row mb-4">
-                        <input type="text" value={state.year} onChange={(e) => changeHandler(e)} placeholder="Year" name="year" className="form-control tembus white" />
-                    </div>
-                    <div className="row mb-4">
-                        <select className="custom-select tembus white" name="singer" onChange={(e) => changeHandler(e)}>
-                            <option className="text-dark">Singer</option>
-                            {globalState.artists.map(artist => (
-                                <option className="text-dark" value={artist.id_a} key={artist.id_a}>{artist.name}</option>
-                            ))}
-                        </select>
-                    </div>
                     <div className="row">
-                        <div className="form-group">
-                            <button type="button" onClick={focusTextInput2} className="col form-group form-control tembus text-center text-white" >{state.audio}</button>
-                            <input name="audio" type="file" onChange={(e) => fileHandler(e)} ref={textInput2} className="fileUpload" />
+                        <div className={state.img !== 'Attach Thumbnail' ? "col-9 mr-4" : "col"}>
+                            <div className="row mb-4">
+                                <input type="text" value={state.year} onChange={(e) => changeHandler(e)} placeholder="Year" name="year" className="form-control tembus white" />
+                            </div>
+                            <div className="row mb-4">
+                                <select className="custom-select tembus white" name="singer" onChange={(e) => changeHandler(e)}>
+                                    <option className="text-dark">Singer</option>
+                                    {globalState.artists.map(artist => (
+                                        <option className="text-dark" value={artist.id_a} key={artist.id_a}>{artist.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="row">
+                                <div className="form-group">
+                                    <button type="button" onClick={focusTextInput2} className="col form-group form-control tembus text-center text-white" >{state.audio}</button>
+                                    <input name="audio" type="file" onChange={(e) => fileHandler(e)} ref={textInput2} className="fileUpload" />
+                                </div>
+                            </div>
+                        </div>
+                        <div className={state.img !== 'Attach Thumbnail' ? "col-2" : ""}>
+                            <div className="row d-flex justify-content-start">
+                                {state.img !== 'Attach Thumbnail' ? <img src={`/img/${state.img}`} alt="Thumbnail" className="img-thumbnail img-fluid showThumbnail" /> : ""}
+                            </div>
                         </div>
                     </div>
                     <div className="row">

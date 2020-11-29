@@ -71,6 +71,9 @@ function Payment({ action }) {
                                 <input type="text" className="input tembus white" name="email" placeholder="Input your account email" value={state.email} onChange={changeHandler} />
                                 <input onClick={focusTextInput} type="text" className="input Upload green" readOnly value={state.file} />
                                 <input type="file" onChange={fileHandler} ref={textInput} className="input fileUpload" />
+                                <div className="row d-flex justify-content-center mb-2">
+                                    {state.file !== 'Attach proof of transfer' ? <img src={`/img/${state.file}`} alt="Thumbnail" className="img-thumbnail img-fluid showThumbnail" /> : ""}
+                                </div>
                                 <button className="input button">Submit</button>
                             </Form>
                         </div>

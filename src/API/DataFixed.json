@@ -2,7 +2,7 @@
   "artists": [
     {
       "id_a": 1,
-      "name": "Tiyas",
+      "name": "Rich Brian",
       "img": "tiyas.jpg",
       "start": 2020,
       "age": 17,
@@ -12,14 +12,62 @@
           "id_s": 1,
           "title": "Black Shout",
           "year": "2018",
-          "img": "https://static.wikia.nocookie.net/bandori/images/9/91/BLACK_SHOUT_Blu-ray.jpg",
+          "img": "img1.jpg",
           "audio": "https://static.wikia.nocookie.net/bandori/images/6/61/03._BLACK_SHOUT_-Instrumental-.ogg"
         },
         {
           "id_s": 2,
           "title": "Louder",
           "year": "2019",
-          "img": "https://static.wikia.nocookie.net/bandori/images/b/bf/LOUDER_Cover.png",
+          "img": "img2.jpg",
+          "audio": "https://static.wikia.nocookie.net/bandori/images/1/16/04._LOUDER_-Instrumental-.ogg"
+        }
+      ]
+    },
+    {
+      "id_a": 2,
+      "name": "Selena Gomes",
+      "img": "tiyas.jpg",
+      "start": 2020,
+      "age": 17,
+      "career": "Solo",
+      "songs": [
+        {
+          "id_s": 1,
+          "title": "Rings",
+          "year": "2018",
+          "img": "img3.jpg",
+          "audio": "https://static.wikia.nocookie.net/bandori/images/6/61/03._BLACK_SHOUT_-Instrumental-.ogg"
+        },
+        {
+          "id_s": 2,
+          "title": "Dosa",
+          "year": "2019",
+          "img": "img4.jpg",
+          "audio": "https://static.wikia.nocookie.net/bandori/images/1/16/04._LOUDER_-Instrumental-.ogg"
+        }
+      ]
+    },
+    {
+      "id_a": 3,
+      "name": "Peterpan",
+      "img": "tiyas.jpg",
+      "start": 2020,
+      "age": 17,
+      "career": "Solo",
+      "songs": [
+        {
+          "id_s": 1,
+          "title": "Rings",
+          "year": "2018",
+          "img": "img5.jpg",
+          "audio": "https://static.wikia.nocookie.net/bandori/images/6/61/03._BLACK_SHOUT_-Instrumental-.ogg"
+        },
+        {
+          "id_s": 2,
+          "title": "Dosa",
+          "year": "2019",
+          "img": "img6.jpg",
           "audio": "https://static.wikia.nocookie.net/bandori/images/1/16/04._LOUDER_-Instrumental-.ogg"
         }
       ]
@@ -60,23 +108,23 @@
   "thumbnails": [
     {
       "id": 1,
-      "img": "https://i.ytimg.com/vi/dFLiUiD4pw4/maxresdefault.jpg"
+      "img": "https://www.thenorthwall.com/wp-content/uploads/2016/08/Banner-Song-of-Riots.jpg"
     },
     {
       "id": 2,
-      "img": "https://i.ytimg.com/vi/HWgxbptCcuA/maxresdefault.jpg"
+      "img": "https://www.countryarts.org.au/wp-content/uploads/2018/08/New-banner-with-coat-and-songs-2.jpg"
     },
     {
       "id": 3,
-      "img": "https://i.ytimg.com/vi/aPCf7_Kk7L8/maxresdefault.jpg"
+      "img": "https://apnapunjablive.com/wp-content/uploads/2015/09/Harvy-Sandhu-Banner.jpg"
     },
     {
       "id": 4,
-      "img": "https://i.ytimg.com/vi/4VodI3JCz0Y/maxresdefault.jpg"
+      "img": "https://afridocs.net/wp-content/uploads/2017/08/Last-Song-Before-the-War-AfriDocs-Sliding-Banner-NEW-STYLE.jpg"
     },
     {
       "id": 5,
-      "img": "https://i.ytimg.com/vi/QaMHYCkt3ps/maxresdefault.jpg"
+      "img": "https://images.squarespace-cdn.com/content/v1/556c8586e4b0943b6a6f76d4/1582933907651-OPPWLE0XC0D2809S89V9/ke17ZwdGBToddI8pDm48kA47qaxzGU3oa60Mv3IrElh7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0hGaawTDWlunVGEFKwsEdnE_ZbuhWuTjDl9Hn0Vaidb23CyzgPgNZ_l0zINYXrCLdg/Ladies+of+Song+Banner.jpg"
     }
   ],
   "tempData": {

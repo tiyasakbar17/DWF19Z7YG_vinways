@@ -7,7 +7,7 @@ import {
 function CardSong(props) {
     return (
         <Fragment>
-            <img className="CardIMG" src={props.state.img} alt="thumbnail" />
+            <img className="CardIMG" src={`/img/${props.state.img}`} alt="thumbnail" />
             <CardBody>
                 <div className="titel">
                     <CardTitle tag="h5" className="left white">{props.state.title}</CardTitle>

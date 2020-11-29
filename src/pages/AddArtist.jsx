@@ -57,18 +57,27 @@ function AddArtist({ action }) {
                         <button type="button" onClick={focusTextInput} className="btn form-control pointer tembus col-4 text-white" >{state.img}</button>
                         <input type="file" onChange={fileHandler} ref={textInput} className="fileUpload" />
                     </div>
-                    <div className="row mb-4">
-                        <input type="text" value={state.old} onChange={(e) => changeHandler(e)} placeholder="Old" name="old" className="form-control tembus white" />
-                    </div>
-                    <div className="row mb-4">
-                        <select className="custom-select tembus white" name="career" onChange={(e) => changeHandler(e)}>
-                            <option className="text-dark">Career as</option>
-                            <option className="text-dark" value="Solo">Solo</option>
-                            <option className="text-dark" value="Group">Group</option>
-                        </select>
-                    </div>
                     <div className="row">
-                        <input type="text" name="start" onChange={(e) => changeHandler(e)} className="col form-group form-control tembus white" value={state.start} placeholder="Start a career" />
+                        <div className={state.img !== 'Attach Thumbnail' ? "col-9 mr-4" : "col"}>
+                            <div className="row mb-4">
+                                <input type="text" value={state.old} onChange={(e) => changeHandler(e)} placeholder="Old" name="old" className="form-control tembus white" />
+                            </div>
+                            <div className="row mb-4">
+                                <select className="custom-select tembus white" name="career" onChange={(e) => changeHandler(e)}>
+                                    <option className="text-dark">Career as</option>
+                                    <option className="text-dark" value="Solo">Solo</option>
+                                    <option className="text-dark" value="Group">Group</option>
+                                </select>
+                            </div>
+                            <div className="row">
+                                <input type="text" name="start" onChange={(e) => changeHandler(e)} className="col form-group form-control tembus white" value={state.start} placeholder="Start a career" />
+                            </div>
+                        </div>
+                        <div className={state.img !== 'Attach Thumbnail' ? "col-2" : ""}>
+                            <div className="row mb-4 d-flex justify-content-end">
+                                {state.img !== 'Attach Thumbnail' ? <img src={`/img/${state.img}`} alt="Thumbnail" className="img-thumbnail img-fluid showThumbnail" /> : ""}
+                            </div>
+                        </div>
                     </div>
                     <div className="row">
                         <div className="col d-flex justify-content-center">
@@ -82,3 +91,4 @@ function AddArtist({ action }) {
 }
 
 export default Actions(AddArtist);
+
