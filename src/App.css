@@ -273,13 +273,13 @@ button.submitButton {
 
 /* MUSIC PLAYER */
 
-/* .musicPlayer {
+.musicPlayer {
   position: fixed;
-  bottom: 10%;
+  bottom: 0;
   left: 0;
   right: 0;
   z-index: 5;
-} */
+}
 
 /* POPUP */
 

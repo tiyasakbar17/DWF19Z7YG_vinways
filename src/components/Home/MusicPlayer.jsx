@@ -11,12 +11,15 @@ function MusicPlayer({ action, song }) {
     }
 
     return ReactDOM.createPortal(
-        <H5AudioPlayer
-            {...options}
-            onEnded={action.CLOSEMUSIC()}
-        >
+        <div className="musicPlayer">
+            <H5AudioPlayer
+                {...options}
+                onEnded={() => action.CLOSEMUSIC()}
+                style={{ backgroundColor: "#363954" }}
+            >
 
-        </H5AudioPlayer>,
+            </H5AudioPlayer>
+        </div>,
         document.getElementById('portal-root')
     )
 }

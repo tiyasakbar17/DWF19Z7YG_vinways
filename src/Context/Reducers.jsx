@@ -64,7 +64,7 @@ const Reducers = (state, action) => {
                 ...state,
                 tempData: {
                     ...state.tempData,
-                    playerComp: true,
+                    playerComp: false,
                     musicToPlay: ""
                 }
             }

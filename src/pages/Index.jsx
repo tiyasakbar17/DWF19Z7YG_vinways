@@ -10,8 +10,6 @@ function Index({ action: Action }) {
 
     const [globalState] = React.useContext(AppContext)
 
-    console.log(globalState);
-
     const clickHandler = (song) => {
 
         if (Action.dataLogin[0].activeDay === 0) {
