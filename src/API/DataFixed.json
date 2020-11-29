@@ -13,14 +13,14 @@
           "title": "Black Shout",
           "year": "2018",
           "img": "img1.jpg",
-          "audio": "https://static.wikia.nocookie.net/bandori/images/6/61/03._BLACK_SHOUT_-Instrumental-.ogg"
+          "audio": "song1.mp3"
         },
         {
           "id_s": 2,
           "title": "Louder",
           "year": "2019",
           "img": "img2.jpg",
-          "audio": "https://static.wikia.nocookie.net/bandori/images/1/16/04._LOUDER_-Instrumental-.ogg"
+          "audio": "song2.mp3"
         }
       ]
     },
@@ -37,14 +37,14 @@
           "title": "Rings",
           "year": "2018",
           "img": "img3.jpg",
-          "audio": "https://static.wikia.nocookie.net/bandori/images/6/61/03._BLACK_SHOUT_-Instrumental-.ogg"
+          "audio": "song3.mp3"
         },
         {
           "id_s": 2,
           "title": "Dosa",
           "year": "2019",
           "img": "img4.jpg",
-          "audio": "https://static.wikia.nocookie.net/bandori/images/1/16/04._LOUDER_-Instrumental-.ogg"
+          "audio": "song4.mp3"
         }
       ]
     },
@@ -61,14 +61,14 @@
           "title": "Rings",
           "year": "2018",
           "img": "img5.jpg",
-          "audio": "https://static.wikia.nocookie.net/bandori/images/6/61/03._BLACK_SHOUT_-Instrumental-.ogg"
+          "audio": "song5.mp3"
         },
         {
           "id_s": 2,
           "title": "Dosa",
           "year": "2019",
           "img": "img6.jpg",
-          "audio": "https://static.wikia.nocookie.net/bandori/images/1/16/04._LOUDER_-Instrumental-.ogg"
+          "audio": "song6.mp3"
         }
       ]
     }

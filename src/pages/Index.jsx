@@ -10,6 +10,8 @@ function Index({ action: Action }) {
 
     const [globalState] = React.useContext(AppContext)
 
+    console.log(globalState);
+
     const clickHandler = (song) => {
 
         if (Action.dataLogin[0].activeDay === 0) {
@@ -18,7 +20,7 @@ function Index({ action: Action }) {
         }
         else {
             // SHOW MUSIC PLAYER
-            Action.MUSICPLAYER(song)
+            Action.MUSICPLAYER(song.audio)
         }
     }
 
@@ -37,7 +39,7 @@ function Index({ action: Action }) {
                             globalState.artists.map(artist => artist.songs.map((song, i) => {
                                 i += 1;
                                 return (
-                                    <div onClick={(song) => clickHandler(song)} className="cardMe" key={i + 1}>
+                                    <div onClick={() => clickHandler(song)} className="cardMe" key={i + 1}>
                                         <CardSong state={{ title: song.title, singer: artist.name, year: song.year, img: song.img }} />
                                     </div>
                                 )

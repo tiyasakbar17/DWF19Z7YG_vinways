@@ -39,6 +39,11 @@ const Actions = (WrappedComponent) => {
                     payload: payload
                 })
             },
+            CLOSEMUSIC: (payload) => {
+                dispatch({
+                    type: "CLOSE_MUSIC"
+                })
+            },
             REGISTER: (payload) => {
                 dispatch({
                     type: "REGISTER",

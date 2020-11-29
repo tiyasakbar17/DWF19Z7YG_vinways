@@ -1,20 +1,24 @@
 import React from 'react'
-import ReactJkMusicPlayer from 'react-jinke-music-player'
 import ReactDOM from 'react-dom'
+import H5AudioPlayer from 'react-h5-audio-player'
+import Actions from '../../Context/Actions'
 
-function MusicPlayer({ song }, props) {
+function MusicPlayer({ action, song }) {
 
-    console.log(props);
+    const options = {
+        autoPlay: true,
+        src: `/song/${song}`
+    }
 
     return ReactDOM.createPortal(
-        <div className="musicPlayer">
-            <ReactJkMusicPlayer mode="full" theme="dark" icon={song.img} showDownload="false" audioLists={[{ src: song.audio }]} >
+        <H5AudioPlayer
+            {...options}
+            onEnded={action.CLOSEMUSIC()}
+        >
 
-            </ReactJkMusicPlayer>
-
-        </div>,
+        </H5AudioPlayer>,
         document.getElementById('portal-root')
     )
 }
 
-export default MusicPlayer
+export default Actions(MusicPlayer);

@@ -21,7 +21,8 @@ const Reducers = (state, action) => {
                     ...state.tempData,
                     isLogin: false,
                     userLogin: null,
-                    playerComp: false
+                    playerComp: false,
+                    musicToPlay: ""
                 },
             }
         case "REGISTER":
@@ -56,6 +57,15 @@ const Reducers = (state, action) => {
                     ...state.tempData,
                     playerComp: true,
                     musicToPlay: action.payload
+                }
+            }
+        case "CLOSE_MUSIC":
+            return {
+                ...state,
+                tempData: {
+                    ...state.tempData,
+                    playerComp: true,
+                    musicToPlay: ""
                 }
             }
         case "UPLOAD_PAYMENT":
