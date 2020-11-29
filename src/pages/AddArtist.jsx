@@ -5,14 +5,15 @@ import { AppContext } from '../Context/AppContext'
 function AddArtist({ action }) {
 
     const [globalState] = React.useContext(AppContext);
-    const [state, setState] = React.useState({
+    const innitialValue = {
         name: '',
         old: '',
         career: '',
         start: '',
         img: 'Attach Thumbnail',
 
-    })
+    }
+    const [state, setState] = React.useState(innitialValue)
 
     const changeHandler = (e) => {
         setState(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
@@ -36,6 +37,7 @@ function AddArtist({ action }) {
         }
         action.ADDARTIST(data)
         window.alert("Artist Added")
+        setState(innitialValue)
     }
 
     const textInput = React.createRef();

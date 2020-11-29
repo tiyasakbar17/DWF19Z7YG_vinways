@@ -4,13 +4,15 @@ import { AppContext } from '../Context/AppContext'
 
 function AddMusic({ action }) {
 
-    const [state, setState] = React.useState({
+    const innitialValue = {
         title: '',
         year: '',
         singer: '',
         img: 'Attach Thumbnail',
         audio: 'Attach'
-    });
+    }
+
+    const [state, setState] = React.useState(innitialValue);
 
     const [globalState] = React.useContext(AppContext);
 
@@ -29,9 +31,9 @@ function AddMusic({ action }) {
             img: state.img,
             audio: state.audio
         }
-        console.log(data);
         action.ADDMUSIC(data)
         window.alert("Music Added")
+        setState(innitialValue)
     }
 
     const textInput = React.createRef();
