@@ -1,11 +1,10 @@
 import React from 'react'
 import Table from '../components/Transaction/Table';
-import { AppContext } from '../Context/AppContext'
+import Actions from '../Context/Actions';
 
-function Transaction() {
+function Transaction({ action }) {
 
-    const [globalState] = React.useContext(AppContext);
-    const payerData = globalState.filter((user) => (user.bukti))
+    const payerData = action.transactions()
 
     return (
         <div className="kontens">
@@ -29,9 +28,9 @@ function Transaction() {
                     </thead>
                     <tbody>
                         {
-                            payerData.users.map((user, i) => {
+                            payerData.map((user, i) => {
                                 i += 1;
-                                return (<Table user={user} counter={i} key={user.id} />)
+                                return (<Table user={user} counter={i} key={i} />)
                             })}
                     </tbody>
                 </table>
@@ -40,4 +39,4 @@ function Transaction() {
     )
 }
 
-export default Transaction
+export default Actions(Transaction);

@@ -46,16 +46,6 @@ div.headerCustom {
   border: 2px white solid;
 }
 /* DROPDOWN */
-div.drpDown {
-  width: 220px;
-  height: 137px;
-  border-radius: 10px;
-  background-color: #191c35;
-  position: absolute;
-  z-index: 4;
-  top: 100px;
-  right: 9%;
-}
 div.dDown {
   width: 220px;
   border-radius: 10px;
@@ -68,12 +58,15 @@ div.dDown {
 .DownItem {
   height: 60px;
   width: 100%;
+  position: relative;
+  z-index: 3;
 }
 
 .segitiga {
   position: absolute;
   margin-top: -20px;
   right: 0;
+  z-index: 2;
 }
 
 .pointer {

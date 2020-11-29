@@ -16,6 +16,7 @@ function DropDown({ action, setClicked }) {
         // LOGOUT
         action.LOGOUT()
         setClicked(prevState => (!prevState))
+        history.push("/");
     }
     const addMusicHandler = () => {
         history.push("/addmusic");
@@ -23,6 +24,10 @@ function DropDown({ action, setClicked }) {
     }
     const addArtistHandler = () => {
         history.push("/addartist");
+        setClicked(prevState => (!prevState));
+    }
+    const transactionHandler = () => {
+        history.push("/transaction");
         setClicked(prevState => (!prevState));
     }
 
@@ -39,6 +44,9 @@ function DropDown({ action, setClicked }) {
                 </div>
                 <div onClick={addArtistHandler} className="d-flex justify-content-center align-items-center DownItem pointer">
                     <span>Add Artist</span>
+                </div>
+                <div onClick={transactionHandler} className="d-flex justify-content-center align-items-center DownItem pointer">
+                    <span>Transactions</span>
                 </div></>)}
             <div className="dropdown-divider" />
             <div onClick={outHandler} className="d-flex justify-content-center align-items-center DownItem pointer">
