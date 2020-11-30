@@ -6,6 +6,7 @@ import DropDown from './DropDown';
 import { AppContext } from '../Context/AppContext';
 import Payment from './Payment/Payment';
 import PopUp from './PopUp';
+import MusicPlayer from './Home/MusicPlayer';
 
 
 function Header() {
@@ -25,6 +26,7 @@ function Header() {
 
     return (
         <>
+            {globalState.tempData.playerComp === true ? (<MusicPlayer song={globalState.tempData.musicToPlay} />) : ""}
             {globalState.tempData.paymentComp === true ? (<Payment />) : ""}
             {globalState.tempData.popUpComp === true ? (<PopUp message={globalState.tempData.popUpMessage} />) : ""}
             <div className="col d-flex headerCustom align-items-xl-center" style={globalState.tempData.isLogin ? {} : style.bgClr}>
@@ -32,9 +34,9 @@ function Header() {
                     <div className="webLogo mt-2">
                         <Link to="/login" >
                             <div className="d-flex align-items-center">
-                                <p className="white">C</p>
+                                <span className="white">C</span>
                                 <img className="logo align-self-center" src={logo} alt="logo" />
-                                <p className="green">Ways</p>
+                                <span className="green">Ways</span>
                             </div>
                         </Link>
                     </div>

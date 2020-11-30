@@ -2,7 +2,6 @@ import React from 'react'
 import CardSong from '../components/Home/CardSong';
 import { Row } from 'reactstrap';
 import ImageSlider from '../components/Home/ImageSlider';
-import MusicPlayer from '../components/Home/MusicPlayer';
 import { AppContext } from '../Context/AppContext'
 import Actions from '../Context/Actions';
 
@@ -24,7 +23,6 @@ function Index({ action: Action }) {
 
     return (
         <>
-            {globalState.tempData.playerComp === true ? (<MusicPlayer song={globalState.tempData.musicToPlay} />) : ""}
             <div>
                 <Row>
                     <div className="showBox">
