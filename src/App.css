@@ -13,6 +13,10 @@
 div.formAdd {
   width: 80%;
 }
+
+div.transactions {
+  max-width: 1400px;
+}
 /* HEADER */
 
 .headerCustom {

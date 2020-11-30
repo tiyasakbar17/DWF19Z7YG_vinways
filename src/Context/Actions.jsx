@@ -39,7 +39,7 @@ const Actions = (WrappedComponent) => {
                     payload: payload
                 })
             },
-            CLOSEMUSIC: (payload) => {
+            CLOSEMUSIC: () => {
                 dispatch({
                     type: "CLOSE_MUSIC"
                 })

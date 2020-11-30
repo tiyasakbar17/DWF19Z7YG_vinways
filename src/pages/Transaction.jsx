@@ -8,7 +8,7 @@ function Transaction({ action }) {
 
     return (
         <div className="kontens">
-            <div className="container formAdd">
+            <div className="container transactions">
                 <div className="row">
                     <h1 className="white mt-5 mb-5">
                         Incoming Transaction
