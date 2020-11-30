@@ -1,7 +1,7 @@
 import React from 'react'
-import { Route } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import { AppContext } from '../Context/AppContext';
-import Login from '../pages/Login';
+// import Login from '../pages/Login';
 
 const LoginRoute = ({ component: Component, ...rest }) => {
 
@@ -11,10 +11,10 @@ const LoginRoute = ({ component: Component, ...rest }) => {
     return (
         <Route
             {...rest}
-            component={globalState.tempData.isLogin ? Component : Login}
-        // render={props => {
-        //     globalState.isLogin ? <Component {...props} /> : <Redirect to="/login" />
-        // }}
+            // component={globalState.tempData.isLogin ? Component : Login}
+            render={props =>
+                (globalState.tempData.isLogin ? <Component {...props} /> : <Redirect to="login" />)
+            }
         />
     );
 }

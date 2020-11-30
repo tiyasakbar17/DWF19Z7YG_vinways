@@ -43,11 +43,11 @@ function Payment({ action }) {
                 action.PAYMENT()
             }
             else {
-                window.alert("CEK EMAIL BRE")
+                action.POPUP({ message: "Please Re-Check Your Email" })
             }
         }
         else {
-            window.alert("MASUKIN DULU FILE ATAU FILENYA MAN")
+            action.POPUP({ message: "Please Input The File" })
         }
     }
 

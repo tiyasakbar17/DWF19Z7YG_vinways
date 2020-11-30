@@ -21,7 +21,7 @@ function Register({ action }) {
         e.preventDefault()
         let id = globalState.users.length
         let dataBaru = {
-            id: id + 1,
+            id_u: id + 1,
             email: state.email,
             password: state.password,
             name: state.name,
