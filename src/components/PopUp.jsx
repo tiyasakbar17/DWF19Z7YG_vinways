@@ -1,12 +1,14 @@
 import React from 'react'
-import Actions from '../Context/Actions';
+import { connect } from 'react-redux';
+import { popUp } from '../Redux/Actions/PopUpActions'
 
 
-function PopUp({ action, message }) {
+function PopUp({ PopUpState, popUp }) {
+    const { message } = PopUpState
 
     const clickHandler = () => {
         // CLOSE POPUP
-        action.POPUP({ message: '' })
+        popUp("")
     }
 
     return (
@@ -17,4 +19,8 @@ function PopUp({ action, message }) {
     )
 }
 
-export default Actions(PopUp);
+const mapStateToProps = (state) => {
+    return { PopUpState: state.PopUp }
+}
+
+export default connect(mapStateToProps, { popUp })(PopUp);

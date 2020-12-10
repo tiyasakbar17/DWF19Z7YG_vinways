@@ -1,49 +1,36 @@
 import React from 'react'
 import Jargon from '../components/FrontPage/Jargon'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Form, FormGroup } from 'reactstrap'
-import { AppContext } from '../Context/AppContext'
-import Actions from '../Context/Actions'
+import { connect } from 'react-redux'
+import { registerUser } from '../Redux/Actions/AuthActions'
 
-function Register({ action }) {
-
-    const [globalState] = React.useContext(AppContext)
-
+function Register({ Auth, registerUser }) {
     const inntialValue = {
         email: '',
         password: '',
-        name: ''
+        fullName: ''
     }
 
     const [state, setState] = React.useState(inntialValue)
 
     const submitHandler = (e) => {
         e.preventDefault()
-        let id = globalState.users.length
         let dataBaru = {
-            id_u: id + 1,
             email: state.email,
             password: state.password,
-            name: state.name,
-            favourite: [],
-            role: 2,
-            activeDay: 0,
-            buktiBayar: []
+            fullName: state.fullName,
         }
-        // ADD USER
-        const cekEmail = globalState.users.find(user => (user.email === state.email))
-        if (cekEmail) {
-            action.POPUP({ message: "Use Another Email" })
-        }
-        else {
-            action.REGISTER(dataBaru)
-            action.POPUP({ message: "Your Account Created Successfully" })
-            setState(inntialValue)
-        }
+        registerUser(dataBaru);
+        setState(inntialValue)
     }
 
     const changeHandler = (e) => {
         setState((prevState) => ({ ...prevState, [e.target.name]: e.target.value }))
+    }
+
+    if (Auth.isLogin) {
+        return <Redirect to="/" />
     }
 
     return (
@@ -59,7 +46,7 @@ function Register({ action }) {
                         <FormGroup>
                             <input className="input tembus" type="text" name="email" value={state.email} placeholder="Email" onChange={(e) => changeHandler(e)} />
                             <input className="input tembus" type="password" name="password" value={state.password} placeholder="Password" onChange={(e) => changeHandler(e)} />
-                            <input className="input tembus" type="text" name="name" placeholder="Full Name" value={state.name} onChange={(e) => changeHandler(e)} />
+                            <input className="input tembus" type="text" name="fullName" placeholder="Full Name" value={state.fullName} onChange={(e) => changeHandler(e)} />
                             <button className="input button" type="submit" onChange={(e) => changeHandler(e)}>Register</button>
                         </FormGroup>
                     </Form>
@@ -69,4 +56,10 @@ function Register({ action }) {
     )
 }
 
-export default Actions(Register)
+const mapStateToProps = (state) => {
+    return {
+        Auth: state.Auth
+    }
+}
+
+export default connect(mapStateToProps, { registerUser })(Register)

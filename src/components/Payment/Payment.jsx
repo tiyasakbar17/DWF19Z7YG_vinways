@@ -1,16 +1,17 @@
 import React from 'react'
 import { Col, Form } from 'reactstrap'
 import ReactDOM from 'react-dom'
-import Actions from '../../Context/Actions'
-import { AppContext } from '../../Context/AppContext'
+import { connect } from 'react-redux'
+import { showPayment, popUp } from '../../Redux/Actions/PopUpActions'
+import { uploadTransaction } from '../../Redux/Actions/TransactionActions'
 
-function Payment({ action }) {
-
-    const [globalState] = React.useContext(AppContext);
+function Payment({ showPayment, popUp, uploadTransaction }) {
 
     const [state, setState] = React.useState({
-        email: '',
+        bankAccountNumber: '',
         file: 'Attach proof of transfer',
+        thumbnail: null,
+        preview: ''
     })
 
     const changeHandler = (e) => {
@@ -21,33 +22,29 @@ function Payment({ action }) {
 
     const fileHandler = e => {
         setState(prevState => ({
-            ...prevState, file: e.target.files[0] ? e.target.files[0].name : 'Attach proof of transfer'
+            ...prevState,
+            file: e.target.files[0] ? e.target.files[0].name : 'Attach proof of transfer',
+            preview: e.target.files[0] ? URL.createObjectURL(e.target.files[0]) : '',
+            thumbnail: e.target.files[0] ? e.target.files[0] : null
         }))
     }
 
     const clickHandler = () => {
         // CLOSE PAYMENT
-        action.PAYMENT()
+        showPayment()
     }
 
     const submitHandler = e => {
         e.preventDefault()
-        if (state.email && state.file !== 'Attach proof of transfer') {
-            if (state.email === action.dataLogin[0].email) {
-                const data = {
-                    id_u: globalState.tempData.userLogin,
-                    img: state.file
-                }
-                action.UPLOADPAYMENT(data)
-                action.POPUP({ message: "Thank you for subscribing to premium, your premium package will be active after our admin approves your transaction, thank you" })
-                action.PAYMENT()
-            }
-            else {
-                action.POPUP({ message: "Please Re-Check Your Email" })
-            }
+        if (state.bankAccountNumber && state.file !== 'Attach proof of transfer') {
+            const formData = new FormData();
+            formData.append("thumbnail", state.thumbnail);
+            formData.append("bankAccountNumber", state.bankAccountNumber)
+            uploadTransaction(formData)
+            showPayment()
         }
         else {
-            action.POPUP({ message: "Please Input The File" })
+            popUp("Please fill all of the inputs")
         }
     }
 
@@ -68,11 +65,11 @@ function Payment({ action }) {
                     <Col>
                         <div className="ReLog middle">
                             <Form onSubmit={submitHandler} >
-                                <input type="text" className="input tembus white" name="email" placeholder="Input your account email" value={state.email} onChange={changeHandler} />
+                                <input type="text" className="input tembus white" name="bankAccountNumber" placeholder="Bank account number" value={state.bankAccountNumber} onChange={changeHandler} />
                                 <input onClick={focusTextInput} type="text" className="input Upload green" readOnly value={state.file} />
-                                <input type="file" onChange={fileHandler} ref={textInput} className="input fileUpload" />
+                                <input type="file" name="thumbnail" onChange={fileHandler} ref={textInput} className="input fileUpload" />
                                 <div className="row d-flex justify-content-center mb-2">
-                                    {state.file !== 'Attach proof of transfer' ? <img src={`/img/${state.file}`} alt="Thumbnail" className="img-thumbnail img-fluid showThumbnail" /> : ""}
+                                    {state.file !== 'Attach proof of transfer' ? <img src={state.preview} alt="Thumbnail" className="img-thumbnail img-fluid showThumbnail" /> : ""}
                                 </div>
                                 <button className="input button">Submit</button>
                             </Form>
@@ -86,4 +83,4 @@ function Payment({ action }) {
 }
 
 
-export default Actions(Payment);
+export default connect(null, { showPayment, popUp, uploadTransaction })(Payment);

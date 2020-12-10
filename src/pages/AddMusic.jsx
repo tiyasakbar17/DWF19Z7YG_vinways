@@ -1,38 +1,45 @@
 import React from 'react'
-import Actions from '../Context/Actions'
-import { AppContext } from '../Context/AppContext'
+import { connect } from 'react-redux';
+import { addMusic } from '../Redux/Actions/MusicActions';
 
-function AddMusic({ action }) {
+function AddMusic({ Musics, addMusic }) {
 
     const innitialValue = {
         title: '',
         year: '',
         singer: '',
         img: 'Attach Thumbnail',
-        audio: 'Attach'
+        audio: 'Attach',
+        thumbnail: null,
+        attachment: null,
+        preview: ''
     }
 
     const [state, setState] = React.useState(innitialValue);
-
-    const [globalState] = React.useContext(AppContext);
+    console.log(state);
 
     const changeHandler = (e) => {
         setState(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
     }
     const fileHandler = (e) => {
-        setState(prevState => ({ ...prevState, [e.target.name]: e.target.files[0] ? e.target.files[0].name : e.target.name === 'img' ? 'Attach Thumbnail' : 'Attach' }))
+        setState(prevState => ({
+            ...prevState,
+            [e.target.name]: (e.target.files[0]) ? (e.target.files[0].name) : (e.target.name === 'img' ? 'Attach Thumbnail' : 'Attach'),
+            [e.target.name === 'img' ? 'thumbnail' : 'attachment']: e.target.files[0],
+            preview: e.target.name === 'img' ? URL.createObjectURL(e.target.files[0]) : state.preview
+        }))
+
+
     }
     const submitHandler = (e) => {
         e.preventDefault()
-        const data = {
-            id_a: Number(state.singer),
-            title: state.title,
-            year: Number(state.year),
-            img: state.img,
-            audio: state.audio
-        }
-        action.ADDMUSIC(data)
-        action.POPUP({ message: "A Music Added Successfully" })
+        const formData = new FormData();
+        formData.append("artistId", Number(state.singer))
+        formData.append("title", state.title)
+        formData.append("year", Number(state.year))
+        formData.append("thumbnail", state.thumbnail)
+        formData.append("attachment", state.attachment)
+        addMusic(formData);
         setState(innitialValue)
     }
 
@@ -63,8 +70,8 @@ function AddMusic({ action }) {
                             <div className="row mb-4">
                                 <select className="custom-select tembus white" name="singer" onChange={(e) => changeHandler(e)}>
                                     <option className="text-dark">Singer</option>
-                                    {globalState.artists.map(artist => (
-                                        <option className="text-dark" value={artist.id_a} key={artist.id_a}>{artist.name}</option>
+                                    {Musics.artists.map(artist => (
+                                        <option className="text-dark" value={artist.id} key={artist.id}>{artist.name}</option>
                                     ))}
                                 </select>
                             </div>
@@ -77,7 +84,7 @@ function AddMusic({ action }) {
                         </div>
                         <div className={state.img !== 'Attach Thumbnail' ? "col-2" : ""}>
                             <div className="row d-flex justify-content-start">
-                                {state.img !== 'Attach Thumbnail' ? <img src={`/img/${state.img}`} alt="Thumbnail" className="img-thumbnail img-fluid showThumbnail" /> : ""}
+                                {state.img !== 'Attach Thumbnail' ? <img src={state.preview} alt="Thumbnail" className="img-thumbnail img-fluid showThumbnail" /> : ""}
                             </div>
                         </div>
                     </div>
@@ -92,4 +99,10 @@ function AddMusic({ action }) {
     )
 }
 
-export default Actions(AddMusic);
+const mapStateToProps = (state) => {
+    return {
+        Musics: state.Musics
+    }
+}
+
+export default connect(mapStateToProps, { addMusic })(AddMusic);

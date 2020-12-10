@@ -2,50 +2,73 @@ import React from 'react'
 import CardSong from '../components/Home/CardSong';
 import { Row } from 'reactstrap';
 import ImageSlider from '../components/Home/ImageSlider';
-import { AppContext } from '../Context/AppContext'
-import Actions from '../Context/Actions';
+import { connect } from 'react-redux';
+import { loadArtists } from '../Redux/Actions/MusicActions'
+import { showPayment, showPlayer } from '../Redux/Actions/PopUpActions'
 
-function Index({ action: Action }) {
+function Index({ Auth, Musics, loadArtists, showPayment, showPlayer }) {
 
-    const [globalState] = React.useContext(AppContext)
+    const clickHandler = (music) => {
 
-    const clickHandler = (song) => {
-
-        if (Action.dataLogin[0].activeDay === 0) {
+        if (!Auth.userData.activeDay) {
             //SHOW PAYMENT
-            Action.PAYMENT()
+            showPayment()
         }
         else {
             // SHOW MUSIC PLAYER
-            Action.MUSICPLAYER(song.audio)
+            showPlayer(music)
         }
     }
 
-    return (
-        <>
+    React.useEffect(() => {
+        loadArtists()
+    }, [])
+
+    if (Musics.loading) {
+        return (
             <div>
                 <Row>
                     <div className="showBox">
-                        <ImageSlider imgs={globalState.thumbnails} />
-                    </div>
-                </Row>
-                <Row>
-                    <div className="d-flex flex-wrap justify-content-around songList">
-                        {
-                            globalState.artists.map(artist => artist.songs.map((song, i) => {
-                                i += 1;
-                                return (
-                                    <div onClick={() => clickHandler(song)} className="cardMe" key={i + 1}>
-                                        <CardSong state={{ title: song.title, singer: artist.name, year: song.year, img: song.img }} />
-                                    </div>
-                                )
-                            }))
-                        }
+                        <h1 className="white">Loading...</h1>
                     </div>
                 </Row>
             </div>
-        </>
-    )
+        )
+    } else {
+        return (
+            <>
+                <div>
+                    <Row>
+                        <div className="showBox">
+                            <ImageSlider imgs={Musics.thumbnails} />
+                        </div>
+                    </Row>
+                    <Row>
+                        <div className="d-flex flex-wrap justify-content-around songList">
+                            {
+                                Musics.musics ? Musics.musics.map((music, i) => {
+                                    i += 1;
+                                    return (
+                                        <div onClick={() => clickHandler(music.attachment)} className="cardMe" key={i + 1}>
+                                            <CardSong state={{ title: music.title, singer: music.artist.name, year: music.year, img: music.thumbnail }} />
+                                        </div>
+                                    )
+                                }) : ""
+                            }
+                        </div>
+                    </Row>
+                </div>
+            </>
+        )
+    }
+
 }
 
-export default Actions(Index);
+const mapStateToProps = (state) => {
+    return {
+        Musics: state.Musics,
+        Auth: state.Auth
+    }
+}
+
+export default connect(mapStateToProps, { loadArtists, showPayment, showPlayer })(Index);

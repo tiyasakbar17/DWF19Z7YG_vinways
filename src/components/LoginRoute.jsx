@@ -1,22 +1,23 @@
 import React from 'react'
+import { connect } from 'react-redux';
 import { Redirect, Route } from "react-router-dom";
-import { AppContext } from '../Context/AppContext';
-// import Login from '../pages/Login';
 
-const LoginRoute = ({ component: Component, ...rest }) => {
-
-    // Cek Login
-    const [globalState] = React.useContext(AppContext);
+const LoginRoute = ({ component: Component, Auth, ...rest }) => {
 
     return (
         <Route
             {...rest}
-            // component={globalState.tempData.isLogin ? Component : Login}
             render={props =>
-                (globalState.tempData.isLogin ? <Component {...props} /> : <Redirect to="login" />)
+                (Auth.isLogin ? <Component {...props} /> : <Redirect to="login" />)
             }
         />
     );
 }
 
-export default LoginRoute;
+const mapStateToProps = (state) => {
+    return {
+        Auth: state.Auth
+    }
+}
+
+export default connect(mapStateToProps)(LoginRoute);

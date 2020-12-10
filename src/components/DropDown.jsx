@@ -1,20 +1,21 @@
 import React from 'react'
 import Pic from '../img/Polygon1.png'
-import Actions from '../Context/Actions'
 import { useHistory } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { logout } from '../Redux/Actions/AuthActions'
+import { showPayment } from '../Redux/Actions/PopUpActions'
 
-function DropDown({ action, setClicked }) {
-
+function DropDown({ setClicked, Auth, logout, showPayment }) {
     const history = useHistory();
 
     const payHandler = () => {
         //Open Pay Comp
-        action.PAYMENT()
+        showPayment()
         setClicked(prevState => (!prevState))
     }
     const outHandler = () => {
         // LOGOUT
-        action.LOGOUT()
+        logout()
         setClicked(prevState => (!prevState))
         history.push("/");
     }
@@ -34,7 +35,7 @@ function DropDown({ action, setClicked }) {
     return (
         < div className="d-flex flex-column col text-center white dDown" >
             <img src={Pic} alt="" className="segitiga" />
-            {(action.dataLogin[0].role === 2) ? (
+            {(Auth.userData.role === 2) ? (
                 <div onClick={payHandler} className="d-flex justify-content-center align-items-center DownItem pointer">
                     <span>Pay</span>
                 </div>
@@ -56,4 +57,10 @@ function DropDown({ action, setClicked }) {
     )
 }
 
-export default Actions(DropDown);
+const mapStateToProps = (state) => {
+    return {
+        Auth: state.Auth
+    }
+}
+
+export default connect(mapStateToProps, { logout, showPayment })(DropDown);

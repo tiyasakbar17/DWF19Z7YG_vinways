@@ -2,12 +2,10 @@ import React from 'react'
 import Jargon from '../components/FrontPage/Jargon'
 import { Link, Redirect } from 'react-router-dom'
 import { Form, FormGroup } from 'reactstrap'
-import { AppContext } from '../Context/AppContext'
-import Actions from '../Context/Actions'
+import { connect } from 'react-redux'
+import { userLogin } from '../Redux/Actions/AuthActions'
 
-function Login({ action: Action }) {
-
-    const [globalState] = React.useContext(AppContext)
+function Login({ Auth, userLogin }) {
 
     const inntialValue = {
         email: '',
@@ -19,8 +17,7 @@ function Login({ action: Action }) {
     const submitHandler = (e) => {
         e.preventDefault()
         //LOGIN
-        const userData = globalState.users.find(user => (user.email === state.email && user.password === state.password))
-        userData ? (Action.LOGIN(userData.id_u)) : Action.POPUP({ message: "Check Your Email And Password" })
+        userLogin(state)
 
     }
 
@@ -28,9 +25,12 @@ function Login({ action: Action }) {
         setState((prevState) => ({ ...prevState, [e.target.name]: e.target.value }))
     }
 
+    if (Auth.isLogin) {
+        return <Redirect to="/" />
+    }
+
     return (
         <div className="content">
-            {globalState.tempData.isLogin && <Redirect to={{ pathname: "/" }} />}
             <div className="pembagi">
                 <div className="awal">
                     <Jargon />
@@ -51,4 +51,10 @@ function Login({ action: Action }) {
     )
 }
 
-export default Actions(Login);
+const mapStateToProps = (state) => {
+    return {
+        Auth: state.Auth
+    }
+}
+
+export default connect(mapStateToProps, { userLogin })(Login);

@@ -1,17 +1,17 @@
 import React from 'react'
-import Actions from '../Context/Actions'
-import { AppContext } from '../Context/AppContext'
+import { connect } from 'react-redux'
+import { addArtist } from '../Redux/Actions/MusicActions'
 
-function AddArtist({ action }) {
+function AddArtist({ addArtist }) {
 
-    const [globalState] = React.useContext(AppContext);
     const innitialValue = {
         name: '',
         old: '',
         career: '',
         start: '',
         img: 'Attach Thumbnail',
-
+        thumbnail: null,
+        preview: ''
     }
     const [state, setState] = React.useState(innitialValue)
 
@@ -20,23 +20,21 @@ function AddArtist({ action }) {
     }
     const fileHandler = e => {
         setState(prevState => ({
-            ...prevState, img: e.target.files[0] ? e.target.files[0].name : 'Attach Thumbnail'
+            ...prevState,
+            img: e.target.files[0] ? e.target.files[0].name : 'Attach Thumbnail',
+            preview: e.target.files[0] ? URL.createObjectURL(e.target.files[0]) : '',
+            thumbnail: e.target.files[0] ? e.target.files[0] : null
         }))
     }
     const submitHandler = (e) => {
         e.preventDefault()
-        const id = globalState.artists.length
-        const data = {
-            id_a: id + 1,
-            name: state.name,
-            img: state.img,
-            start: Number(state.start),
-            age: Number(state.old),
-            career: state.career,
-            songs: []
-        }
-        action.ADDARTIST(data)
-        action.POPUP({ message: "An Artist Added Successfully" })
+        const formData = new FormData();
+        formData.append("name", state.name);
+        formData.append("old", Number(state.old));
+        formData.append("category", state.career);
+        formData.append("startCareer", state.start);
+        formData.append("thumbnail", state.thumbnail);
+        addArtist(formData);
         setState(innitialValue)
     }
 
@@ -55,7 +53,7 @@ function AddArtist({ action }) {
                     <div className="row mb-4">
                         <input type="text" name="name" value={state.name} onChange={(e) => changeHandler(e)} placeholder="Name" className="form-control tembus col-8 white" />
                         <button type="button" onClick={focusTextInput} className="btn form-control pointer tembus col-4 text-white" >{state.img}</button>
-                        <input type="file" onChange={fileHandler} ref={textInput} className="fileUpload" />
+                        <input type="file" name="thumbnail" onChange={fileHandler} ref={textInput} className="fileUpload" />
                     </div>
                     <div className="row">
                         <div className={state.img !== 'Attach Thumbnail' ? "col-9 mr-4" : "col"}>
@@ -67,15 +65,16 @@ function AddArtist({ action }) {
                                     <option className="text-dark">Career as</option>
                                     <option className="text-dark" value="Solo">Solo</option>
                                     <option className="text-dark" value="Group">Group</option>
+                                    <option className="text-dark" value="Band">Band</option>
                                 </select>
                             </div>
                             <div className="row">
-                                <input type="text" name="start" onChange={(e) => changeHandler(e)} className="col form-group form-control tembus white" value={state.start} placeholder="Start a career" />
+                                <input type="date" name="start" onChange={(e) => changeHandler(e)} className="col form-group form-control tembus white" value={state.start} placeholder="Start a career" />
                             </div>
                         </div>
                         <div className={state.img !== 'Attach Thumbnail' ? "col-2" : ""}>
                             <div className="row mb-4 d-flex justify-content-end">
-                                {state.img !== 'Attach Thumbnail' ? <img src={`/img/${state.img}`} alt="Thumbnail" className="img-thumbnail img-fluid showThumbnail" /> : ""}
+                                {state.img !== 'Attach Thumbnail' ? <img src={state.preview} alt="Thumbnail" className="img-thumbnail img-fluid showThumbnail" /> : ""}
                             </div>
                         </div>
                     </div>
@@ -90,5 +89,5 @@ function AddArtist({ action }) {
     )
 }
 
-export default Actions(AddArtist);
+export default connect(null, { addArtist })(AddArtist);
 
