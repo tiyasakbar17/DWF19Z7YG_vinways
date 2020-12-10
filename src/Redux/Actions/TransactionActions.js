@@ -48,3 +48,25 @@ export const uploadTransaction = (data) => async (dispatch) => {
     });
   }
 };
+export const approvePayment = (data) => async (dispatch) => {
+  try {
+    const { status, id } = data;
+    const formData = new FormData();
+    formData.append("paymentStatus", status ? true : false);
+    const result = await Axios.patch(`${baseUrl}/transaction/${id}`, formData);
+    if (result.data.status === "success") {
+      dispatch(popUp(status ? "Payment Approved" : "Payment Rejected"));
+      dispatch(loadTransactions());
+    }
+  } catch (error) {
+    console.log(error);
+    if (error.response) {
+      if (error.response.data.message) {
+        dispatch(popUp(error.response.data.message));
+      }
+    }
+    dispatch({
+      type: "TRANS_ERROR",
+    });
+  }
+};

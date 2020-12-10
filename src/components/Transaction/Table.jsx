@@ -1,33 +1,43 @@
 import React from 'react'
-import Actions from '../../Context/Actions'
+import { connect } from 'react-redux'
+import { approvePayment } from '../../Redux/Actions/TransactionActions'
 
-function Table({ user, counter, action }) {
+function Table({ user, counter, approvePayment }) {
+
+    const today = Date.now();
+
+    const accountActiveDay = new Date(user.user.activeDay).getTime();
+
+    const activeDays = Math.round(((accountActiveDay - today) / (24 * 60 * 60 * 1000)))
 
     const approveHandler = () => {
-        action.APPROVEPAYMENT({
-            id_u: user.id_u,
-            id_b: user.bukti.id_b
-        })
+        const data = {
+            id: user.id,
+            status: true
+        }
+        approvePayment(data)
     }
 
     const cancelHandler = () => {
-        action.CANCELPAYMENT({
-            id_u: user.id_u,
-            id_b: user.bukti.id_b
-        })
+        const data = {
+            id: user.id,
+            status: false
+        }
+        approvePayment(data)
     }
 
     return (
         <tr className="white">
             <th>{counter}</th>
-            <td>{user.name}</td>
-            <td><img src={`/img/${user.bukti.img}`} alt={user.bukti.img} className="img-thumbnail img-fluid showThumbnail" /></td>
-            <td>{user.activeDay}</td>
-            <td>{(user.activeDay > 0) ? <span className="green">Active</span> : <span className="text-danger">Not Active</span>}</td>
-            <td>{user.bukti.approved ? (<span className="text-success">Approved</span>) : (user.bukti.approved === false ? <span className="text-danger">Cancel</span> : <span className="text-warning">Pending</span>)}</td>
-            <td className="d-flex justify-content-around">{(user.bukti.approved === null) ? <button onClick={approveHandler} className="btn btn-success mr-2">Approve</button> : ""} {(user.bukti.approved !== false) ? <button onClick={cancelHandler} className="btn btn-danger">Cancel</button> : <span className="text-light">none</span>}</td>
+            <td>{user.user.fullName}</td>
+            <td>{user.bankAccountNumber}</td>
+            <td><img src={`http://localhost:3001/uploads/img/${user.proofOfTransfer}`} alt={user.proofOfTransfer} className="img-thumbnail img-fluid showThumbnail" /></td>
+            <td>{activeDays > 0 ? activeDays : 0}</td>
+            <td>{(accountActiveDay > today) ? <span className="green">Active</span> : <span className="text-danger">Not Active</span>}</td>
+            <td>{user.paymentStatus ? (<span className="text-success">Approved</span>) : (user.paymentStatus === false ? <span className="text-danger">Cancel</span> : <span className="text-warning">Pending</span>)}</td>
+            <td className="d-flex justify-content-around">{(user.paymentStatus === null) ? <button onClick={approveHandler} className="btn btn-success mr-2">Approve</button> : ""} {(user.paymentStatus !== false) ? <button onClick={cancelHandler} className="btn btn-danger">Cancel</button> : <span className="text-light">none</span>}</td>
         </tr>
     )
 }
 
-export default Actions(Table);
+export default connect(null, { approvePayment })(Table);

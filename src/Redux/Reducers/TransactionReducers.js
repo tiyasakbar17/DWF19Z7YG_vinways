@@ -10,6 +10,7 @@ const Transactions = (state = innitialState, action) => {
       return {
         ...state,
         transactions: payload,
+        loading: false,
       };
     case "TRANS_ERROR":
       return {
