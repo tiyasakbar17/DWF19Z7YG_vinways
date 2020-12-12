@@ -1,14 +1,10 @@
-import React, { Fragment } from 'react'
-import {
-    CardBody,
-    CardTitle, CardSubtitle
-} from 'reactstrap';
+import React from 'react'
 
 function CardSong(props) {
     return (
         <>
             <div className="imgContainer">
-                <img className="CardIMG" src={`http://localhost:3001/uploads/img/${props.state.img}`} alt="thumbnail" />
+                <img className="CardIMG" src={props.state.img} alt="thumbnail" />
                 <div className="overlay">
                     <div className="overlayText"><strong>Play Now</strong></div>
                 </div>

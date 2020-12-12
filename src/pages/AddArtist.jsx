@@ -17,7 +17,7 @@ function AddArtist({ Musics, addArtist }) {
         preview: ''
     }
     const [state, setState] = React.useState(innitialValue)
-    console.log(state);
+
     const changeHandler = (e) => {
         setState(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
     }
@@ -38,7 +38,7 @@ function AddArtist({ Musics, addArtist }) {
         formData.append("startCareer", state.start);
         formData.append("thumbnail", state.thumbnail);
         addArtist(formData);
-        setState(innitialValue)
+        setState({ ...innitialValue })
     }
 
     const textInput = React.createRef();
@@ -95,7 +95,7 @@ function AddArtist({ Musics, addArtist }) {
                             </div>
                         </div>
                         <div className={state.img !== 'Attach Thumbnail' ? "col-2" : ""}>
-                            <div className="row mb-4 d-flex justify-content-end">
+                            <div className="row mb-4 d-flex justify-content-end" style={state.img !== 'Attach Thumbnail' ? { width: "250px" } : {}}>
                                 {state.img !== 'Attach Thumbnail' ? <img src={state.preview} alt="Thumbnail" className="img-thumbnail img-fluid showThumbnail" /> : ""}
                             </div>
                         </div>

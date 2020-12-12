@@ -11,7 +11,6 @@ const configForm = (dispatch) => ({
       (ProgressEvent.loaded * 100) / ProgressEvent.total
     );
     dispatch(showProgress(percentage));
-    console.log(percentage);
   },
 });
 

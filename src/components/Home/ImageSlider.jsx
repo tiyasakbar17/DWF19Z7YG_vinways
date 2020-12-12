@@ -19,7 +19,7 @@ function ImageSlider({ imgs }) {
             {imgs.map((img, i) => {
                 i += 1;
                 return (<div key={i + 1} className="slideBox">
-                    <img className='slider' src={`http://localhost:3001/uploads/img/${img.thumbnail}`} alt='Slider' />
+                    <img className='slider' src={img.thumbnail} alt='Slider' />
                 </div>)
             })}
         </Slider>

@@ -66,6 +66,9 @@ div.dDown {
   position: relative;
   z-index: 3;
 }
+.DownItem:hover {
+  color: #03f387;
+}
 
 .segitiga {
   position: absolute;
@@ -332,8 +335,8 @@ button.submitButton {
 
 /* THUMBNAILS */
 div img.img-thumbnail.img-fluid.showThumbnail {
-  height: 200px;
-  width: 200px;
+  height: auto;
+  max-width: 250px;
   object-fit: "cover";
 }
 

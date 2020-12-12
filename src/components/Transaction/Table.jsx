@@ -31,7 +31,7 @@ function Table({ user, counter, approvePayment }) {
             <th>{counter}</th>
             <td>{user.user.fullName}</td>
             <td>{user.bankAccountNumber}</td>
-            <td><img src={`http://localhost:3001/uploads/img/${user.proofOfTransfer}`} alt={user.proofOfTransfer} className="img-thumbnail img-fluid showThumbnail" /></td>
+            <td><img src={user.proofOfTransfer} alt={user.proofOfTransfer} className="img-thumbnail img-fluid showThumbnail CardIMG" /></td>
             <td>{activeDays > 0 ? activeDays : 0}</td>
             <td>{(accountActiveDay > today) ? <span className="green">Active</span> : <span className="text-danger">Not Active</span>}</td>
             <td>{user.paymentStatus ? (<span className="text-success">Approved</span>) : (user.paymentStatus === false ? <span className="text-danger">Cancel</span> : <span className="text-warning">Pending</span>)}</td>
