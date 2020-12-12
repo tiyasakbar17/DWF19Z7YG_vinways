@@ -9,6 +9,7 @@
 .kontens {
   margin: 80px auto 0 auto;
   width: 100%;
+  overflow: hidden;
 }
 div.formAdd {
   width: 80%;
@@ -51,7 +52,7 @@ div.headerCustom {
 }
 /* DROPDOWN */
 div.dDown {
-  width: 220px;
+  width: 240px;
   border-radius: 10px;
   background-color: #191c35;
   position: absolute;
@@ -172,27 +173,46 @@ select.tembus {
 
 .cardMe {
   width: 192px;
-  padding: 2px 3px;
   border-radius: 10px;
   margin: 5px;
-  box-sizing: border-box;
+  padding: 5px;
   background-color: #363954;
-  overflow: hidden;
-  display: grid;
   cursor: pointer;
 }
-
-.songList :hover {
-  transform: scale(1.1);
-  transition: 1s;
+.imgContainer {
+  width: 100%;
+  height: 192px;
+  position: relative;
 }
-
-.titel {
-  display: flex;
-  align-items: baseline;
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: 0.3s ease;
+  border-radius: 10px;
 }
-.left {
-  text-align: left;
+.overlayText {
+  white-space: nowrap;
+  color: #03f387;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.cardMe:hover .overlay {
+  bottom: 0;
+  height: 100%;
+}
+.px18 {
+  font-size: 18px;
 }
 .tahun {
   font-size: 12px;
@@ -200,10 +220,10 @@ select.tembus {
   width: 60%;
 }
 .CardIMG {
-  width: 90%;
-  height: 180px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
-  margin: 4px auto;
+  object-fit: cover;
 }
 
 /* INDEX */
@@ -216,15 +236,20 @@ select.tembus {
 /* SLIDER */
 
 .showBox {
-  width: 95%;
-  height: 300px;
+  width: 80%;
+  height: 400px;
   margin: 120px auto 40px auto;
 }
-.slider {
-  width: 95%;
-  height: 300px;
-  margin: 5px;
+div.slideBox {
+  width: 200px;
+  height: 400px;
+  padding: 10px;
+}
+img.slider {
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 /* Payment */
@@ -232,13 +257,12 @@ select.tembus {
 .Payment {
   position: fixed;
   top: 80px;
-  bottom: 10%;
   left: 10%;
   right: 10%;
   display: grid;
   place-content: center center;
   text-align: center;
-  background-color: #00031ff6;
+  background-color: #01073df6;
   z-index: 2;
   border-radius: 15px;
 }
@@ -249,15 +273,19 @@ select.tembus {
 
 .closer {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: -10px;
+  top: -10px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  display: grid;
-  place-content: center center;
-  background-color: aliceblue;
+  display: flex;
+  border: 4px #03f387 solid;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  background-color: #00031f;
   cursor: pointer;
+  padding-top: 3px;
 }
 
 .fileUpload {
@@ -288,17 +316,18 @@ button.submitButton {
 /* POPUP */
 
 .popUp {
-  position: fixed;
-  z-index: 100;
+  position: relative;
   width: 742px;
   padding-left: 30px;
   padding-right: 30px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #191c35;
-  border-radius: 5px;
-  top: 40%;
-  left: 30%;
+  border-radius: 10px;
+  text-align: center;
+  border: 2px white solid;
+  /* top: 40%;
+  left: 30%; */
 }
 
 /* THUMBNAILS */
@@ -306,4 +335,172 @@ div img.img-thumbnail.img-fluid.showThumbnail {
   height: 200px;
   width: 200px;
   object-fit: "cover";
+}
+
+/* LOADING */
+.loadingPage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-content: center center;
+  z-index: 100;
+  background-color: #191c3590;
+}
+.loading {
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+}
+.loadingObj {
+  height: 70px;
+  width: 10px;
+  background: white;
+  margin: 0 3px;
+  border-radius: 3px;
+  animation: loading 0.8s infinite;
+}
+.loadingObj:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.loadingObj:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.loadingObj:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.loadingObj:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.loadingObj:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.loadingObj:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.loadingObj:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.loadingObj:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.loadingObj:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+@keyframes loading {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 70px;
+  }
+  100% {
+    height: 0;
+  }
+}
+/* PROGRESS BAR */
+.progressContainer {
+  /* position: relative;
+  width: 800px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: #8b8b8b77;
+  overflow: hidden; */
+  position: relative;
+  height: 400px;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  clear: both;
+}
+.onprogress {
+  /* height: 100%;
+  background-color: #03f387;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center; */
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+circle.progressCircle {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #c9f8e382;
+  stroke-width: 25;
+  transform: translate(5px, 5px);
+  stroke-dasharray: 629;
+}
+.progressCircle:nth-child(1) {
+  stroke-dashoffset: 0;
+}
+.progressCircle:nth-child(2) {
+  stroke-linecap: round;
+  stroke: #03f387;
+}
+.progressObjContainer {
+  position: relative;
+  left: 56%;
+  top: 50%;
+}
+.progressText {
+  /* font-size: 40px;
+  color: black;
+  padding-top: 15px; */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+}
+.progressObj {
+  position: absolute;
+  font-size: 40px;
+  color: white;
+  animation: loading 0.8s infinite;
+  text-emphasis: bold;
+}
+
+.progressObj:nth-child(2) {
+  left: 10%;
+  animation-delay: 0.1s;
+}
+.progressObj:nth-child(3) {
+  left: 20%;
+  animation-delay: 0.2s;
+}
+.progressObj:nth-child(4) {
+  left: 30%;
+  animation-delay: 0.3s;
+}
+.progressObj:nth-child(5) {
+  left: 40%;
+  animation-delay: 0.4s;
+}
+.progressObj:nth-child(6) {
+  left: 50%;
+  animation-delay: 0.5s;
+}
+.progressObj:nth-child(7) {
+  left: 60%;
+  animation-delay: 0.6s;
+}
+.progressObj:nth-child(8) {
+  left: 70%;
+  animation-delay: 0.7s;
+}
+.progressObj:nth-child(9) {
+  left: 80%;
+  animation-delay: 0.8s;
 }

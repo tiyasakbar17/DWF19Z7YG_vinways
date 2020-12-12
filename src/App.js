@@ -6,22 +6,21 @@ import AddMusic from "./pages/AddMusic";
 import AddArtist from "./pages/AddArtist";
 import Transaction from "./pages/Transaction";
 import { AppContextProvider } from "./Context/AppContext";
-import LoginRoute from "./components/LoginRoute";
+import LoginRoute from "./components/RouterLogin/LoginRoute";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Index from "./pages/Index";
-import UjiCoba from "./pages/UjiCoba";
 import SetAuthToken from "./Context/SetAuthToken";
 
 import Store from "./Redux/Store";
 import { Provider } from "react-redux";
 import { loadData } from "./Redux/Actions/AuthActions";
+import Loading from "./components/PopUps/Loading";
 
 function App() {
-  if (localStorage.token) {
-    SetAuthToken(localStorage.token);
+  if (localStorage.getItem("token")) {
+    SetAuthToken(localStorage.getItem("token"));
   }
-
   React.useEffect(() => {
     Store.dispatch(loadData());
   }, []);
@@ -39,7 +38,7 @@ function App() {
               <LoginRoute exact path="/addmusic" component={AddMusic} />
               <LoginRoute exact path="/addartist" component={AddArtist} />
               <LoginRoute exact path="/transaction" component={Transaction} />
-              <Route component={UjiCoba} />
+              <Route component={Loading} />
             </Switch>
           </BrowserRouter>
         </AppContextProvider>

@@ -7,7 +7,7 @@ function ImageSlider({ imgs }) {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 2,
         slidesToScroll: 1,
         centerMode: true,
         autoplay: true
@@ -16,11 +16,12 @@ function ImageSlider({ imgs }) {
 
     return (
         <Slider {...settings}>
-            {imgs.map(img => (
-                <div key={img.id} className="ml-3 mr-3">
-                    <img className='slider ml-3 mr-3' src={img.img} alt='Slider' />
-                </div>
-            ))}
+            {imgs.map((img, i) => {
+                i += 1;
+                return (<div key={i + 1} className="slideBox">
+                    <img className='slider' src={`http://localhost:3001/uploads/img/${img.thumbnail}`} alt='Slider' />
+                </div>)
+            })}
         </Slider>
     )
 }

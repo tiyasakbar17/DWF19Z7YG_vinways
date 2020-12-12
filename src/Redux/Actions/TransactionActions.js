@@ -1,11 +1,18 @@
 import Axios from "axios";
-import { popUp } from "./PopUpActions";
+import { popUp, showLoading, showProgress } from "./PopUpActions";
 
-const configForm = {
+const configForm = (dispatch) => ({
   headers: {
     "Content-type": "multipart/form-data",
   },
-};
+  onUploadProgress: (ProgressEvent) => {
+    let percentage = Math.round(
+      (ProgressEvent.loaded * 100) / ProgressEvent.total
+    );
+    dispatch(showProgress(percentage));
+    console.log(percentage);
+  },
+});
 
 const baseUrl = "http://localhost:3001/api/v1";
 
@@ -30,7 +37,7 @@ export const loadTransactions = () => async (dispatch) => {
 };
 export const uploadTransaction = (data) => async (dispatch) => {
   try {
-    await Axios.post(`${baseUrl}/transaction`, data, configForm);
+    await Axios.post(`${baseUrl}/transaction`, data, configForm(dispatch));
     dispatch(
       popUp(
         "Thank you for subscribing to premium, your premium package will be active after our admin approves your transaction, thank you"
@@ -53,6 +60,7 @@ export const approvePayment = (data) => async (dispatch) => {
     const { status, id } = data;
     const formData = new FormData();
     formData.append("paymentStatus", status ? true : false);
+    dispatch(showLoading());
     const result = await Axios.patch(`${baseUrl}/transaction/${id}`, formData);
     if (result.data.status === "success") {
       dispatch(popUp(status ? "Payment Approved" : "Payment Rejected"));

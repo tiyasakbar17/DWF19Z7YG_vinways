@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../img/Vector.png'
-import userPict from '../img/1579183327044.png';
 import DropDown from './DropDown';
 import Payment from './Payment/Payment';
-import PopUp from './PopUp';
+import PopUp from './PopUps/PopUp';
 import MusicPlayer from './Home/MusicPlayer';
 import { connect } from 'react-redux';
+import ProgressBar from './PopUps/ProgressBar';
+import Loading from './PopUps/Loading';
 
 
 function Header({ PopUpState, Auth }) {
@@ -24,9 +25,11 @@ function Header({ PopUpState, Auth }) {
 
     return (
         <>
-            {PopUpState.playerComp === true ? (<MusicPlayer />) : ""}
-            {PopUpState.paymentComp === true ? (<Payment />) : ""}
-            {PopUpState.isPoped === true ? (<PopUp />) : ""}
+            {PopUpState.loadingComp ? <Loading /> : ""}
+            {PopUpState.progress.isShown ? <ProgressBar /> : ""}
+            {PopUpState.playerComp ? (<MusicPlayer />) : ""}
+            {PopUpState.paymentComp ? (<Payment />) : ""}
+            {PopUpState.isPoped ? (<PopUp />) : ""}
             <div className="col d-flex headerCustom align-items-xl-center" style={Auth.isLogin ? {} : style.bgClr}>
                 <div className="col text-left ">
                     <div className="webLogo mt-2">
@@ -41,7 +44,7 @@ function Header({ PopUpState, Auth }) {
                 </div>
                 <div className="col text-right">
                     <div className="userAccount mt-2">
-                        <img src={userPict} alt="foto" className="userPict" onClick={clickHandler} style={Auth.isLogin ? {} : style.cnt} />
+                        <img src="/Vector(2).png" alt="foto" className="userPict" onClick={clickHandler} style={Auth.isLogin ? {} : style.cnt} />
                     </div>
                 </div>
             </div>

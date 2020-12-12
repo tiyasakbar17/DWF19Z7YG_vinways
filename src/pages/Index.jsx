@@ -5,12 +5,13 @@ import ImageSlider from '../components/Home/ImageSlider';
 import { connect } from 'react-redux';
 import { loadArtists } from '../Redux/Actions/MusicActions'
 import { showPayment, showPlayer } from '../Redux/Actions/PopUpActions'
+import Loading from '../components/PopUps/Loading';
 
 function Index({ Auth, Musics, loadArtists, showPayment, showPlayer }) {
 
     const clickHandler = (music) => {
 
-        if (!Auth.userData.activeDay) {
+        if (!Auth.userData.activeDay && Auth.userData.role === 2) {
             //SHOW PAYMENT
             showPayment()
         }
@@ -26,13 +27,7 @@ function Index({ Auth, Musics, loadArtists, showPayment, showPlayer }) {
 
     if (Musics.loading) {
         return (
-            <div>
-                <Row>
-                    <div className="showBox">
-                        <h1 className="white">Loading...</h1>
-                    </div>
-                </Row>
-            </div>
+            <Loading />
         )
     } else {
         return (

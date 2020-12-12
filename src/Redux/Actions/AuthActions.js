@@ -1,6 +1,6 @@
 import Axios from "axios";
 import SetAuthToken from "../../Context/SetAuthToken";
-import { popUp, closePlayer } from "./PopUpActions";
+import { popUp, closePlayer, showLoading } from "./PopUpActions";
 
 const configJson = {
   headers: {
@@ -48,6 +48,7 @@ export const registerUser = (data) => async (dispatch) => {
 };
 export const userLogin = (data) => async (dispatch) => {
   try {
+    dispatch(showLoading());
     const result = await Axios.post(`${baseUrl}/login`, data, configJson);
     dispatch({
       type: "LOGIN",
@@ -57,6 +58,8 @@ export const userLogin = (data) => async (dispatch) => {
   } catch (error) {
     if (error.response) {
       dispatch(popUp(error.response.data.message));
+    } else {
+      dispatch(popUp("Server Error"));
     }
     dispatch({
       type: "AUTH_ERROR",
@@ -67,6 +70,12 @@ export const logout = () => async (dispatch) => {
   try {
     dispatch({
       type: "LOGOUT",
+    });
+    dispatch({
+      type: "MUSIC_ERROR",
+    });
+    dispatch({
+      type: "TRANS_ERROR",
     });
     dispatch(closePlayer());
   } catch (error) {

@@ -20,38 +20,38 @@ function DropDown({ setClicked, Auth, logout, showPayment }) {
         history.push("/");
     }
     const addMusicHandler = () => {
-        history.push("/addmusic");
         setClicked(prevState => (!prevState));
+        history.push("/addmusic");
     }
     const addArtistHandler = () => {
-        history.push("/addartist");
         setClicked(prevState => (!prevState));
+        history.push("/addartist");
     }
     const transactionHandler = () => {
-        history.push("/transaction");
         setClicked(prevState => (!prevState));
+        history.push("/transaction");
     }
 
     return (
         < div className="d-flex flex-column col text-center white dDown" >
             <img src={Pic} alt="" className="segitiga" />
             {(Auth.userData.role === 2) ? (
-                <div onClick={payHandler} className="d-flex justify-content-center align-items-center DownItem pointer">
-                    <span>Pay</span>
+                <div onClick={payHandler} className="d-flex justify-content-between align-items-center DownItem pointer">
+                    <span>Pay</span><i class="fas fa-receipt"></i>
                 </div>
             ) : (<>
-                <div onClick={addMusicHandler} className="d-flex justify-content-center align-items-center DownItem pointer">
-                    <span>Add Music</span>
+                <div onClick={addMusicHandler} className="d-flex justify-content-between align-items-center DownItem pointer">
+                    <span>Add Music</span><i class="fas fa-music"></i>
                 </div>
-                <div onClick={addArtistHandler} className="d-flex justify-content-center align-items-center DownItem pointer">
-                    <span>Add Artist</span>
+                <div onClick={addArtistHandler} className="d-flex justify-content-between align-items-center DownItem pointer">
+                    <span>Add Artist</span><i class="fas fa-microphone-alt"></i>
                 </div>
-                <div onClick={transactionHandler} className="d-flex justify-content-center align-items-center DownItem pointer">
-                    <span>Transactions</span>
+                <div onClick={transactionHandler} className="d-flex justify-content-between align-items-center DownItem pointer">
+                    <span>Transactions</span><i class="fas fa-receipt"></i>
                 </div></>)}
             <div className="dropdown-divider" />
-            <div onClick={outHandler} className="d-flex justify-content-center align-items-center DownItem pointer">
-                <span>Logout</span>
+            <div onClick={outHandler} className="d-flex justify-content-between align-items-center DownItem pointer">
+                <span>Logout</span><i class="fas fa-sign-out-alt"></i>
             </div>
         </div >
     )

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import Table from '../components/Transaction/Table';
 import { loadTransactions } from '../Redux/Actions/TransactionActions'
+import Loading from '../components/PopUps/Loading'
 
 function Transaction({ TransactionsState, loadTransactions }) {
 
@@ -11,13 +12,7 @@ function Transaction({ TransactionsState, loadTransactions }) {
 
     if (TransactionsState.loading) {
         return (
-            <div>
-                <div className="row">
-                    <div className="showBox">
-                        <h1 className="white">Loading...</h1>
-                    </div>
-                </div>
-            </div>
+            <Loading />
         )
     } else {
         return (
@@ -43,10 +38,10 @@ function Transaction({ TransactionsState, loadTransactions }) {
                         </thead>
                         <tbody>
                             {
-                                TransactionsState.transactions.map((user, i) => {
+                                TransactionsState.transactions ? TransactionsState.transactions.map((user, i) => {
                                     i += 1;
                                     return (<Table user={user} counter={i} key={i} />)
-                                })}
+                                }) : ""}
                         </tbody>
                     </table>
                 </div>

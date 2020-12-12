@@ -30,3 +30,19 @@ export const closePlayer = () => (dispatch) => {
     type: "CLOSE_MPLAYER",
   });
 };
+export const showLoading = () => (dispatch) => {
+  dispatch({
+    type: "OPEN_LOADING",
+  });
+};
+export const closeLoading = () => (dispatch) => {
+  dispatch({
+    type: "CLOSE_LOADING",
+  });
+};
+export const showProgress = (data) => (dispatch) => {
+  dispatch({
+    type: "OPEN_PROGRESS",
+    payload: data,
+  });
+};

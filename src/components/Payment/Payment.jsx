@@ -54,7 +54,7 @@ function Payment({ showPayment, popUp, uploadTransaction }) {
 
     return ReactDOM.createPortal(
         <div className="Payment">
-            <span onClick={() => clickHandler()} className="closer">X</span>
+            <span onClick={() => clickHandler()} className="closer"><i class="fas fa-times"></i></span>
             <div className="holder">
                 <Col>
                     <Col>

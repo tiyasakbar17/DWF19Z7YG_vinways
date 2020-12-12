@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { Form, FormGroup } from 'reactstrap'
 import { connect } from 'react-redux'
 import { userLogin } from '../Redux/Actions/AuthActions'
+import Loading from '../components/PopUps/Loading'
 
 function Login({ Auth, userLogin }) {
 
@@ -28,27 +29,30 @@ function Login({ Auth, userLogin }) {
     if (Auth.isLogin) {
         return <Redirect to="/" />
     }
-
-    return (
-        <div className="content">
-            <div className="pembagi">
-                <div className="awal">
-                    <Jargon />
-                    <Link to={{ pathname: "/register" }}><button className="button"> Register</button></Link>
-                </div>
-                <div className="ReLog">
-                    <h1 className="regis green">Login</h1>
-                    <Form onSubmit={submitHandler}>
-                        <FormGroup>
-                            <input className="input tembus" type="text" name="email" value={state.email} placeholder="Email" onChange={(e) => changeHandler(e)} />
-                            <input className="input tembus" type="password" name="password" value={state.password} placeholder="Password" onChange={(e) => changeHandler(e)} />
-                            <button className="input button" type="submit" onChange={(e) => changeHandler(e)}>Login</button>
-                        </FormGroup>
-                    </Form>
+    if (Auth.loading) {
+        return (<Loading />)
+    } else {
+        return (
+            <div className="content">
+                <div className="pembagi">
+                    <div className="awal">
+                        <Jargon />
+                        <Link to={{ pathname: "/register" }}><button className="button"> Register</button></Link>
+                    </div>
+                    <div className="ReLog">
+                        <h1 className="regis green">Login</h1>
+                        <Form onSubmit={submitHandler}>
+                            <FormGroup>
+                                <input className="input tembus" type="text" name="email" value={state.email} placeholder="Email" onChange={(e) => changeHandler(e)} />
+                                <input className="input tembus" type="password" name="password" value={state.password} placeholder="Password" onChange={(e) => changeHandler(e)} />
+                                <button className="input button" type="submit" onChange={(e) => changeHandler(e)}>Login</button>
+                            </FormGroup>
+                        </Form>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 const mapStateToProps = (state) => {

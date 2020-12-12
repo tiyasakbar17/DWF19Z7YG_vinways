@@ -1,8 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { addArtist } from '../Redux/Actions/MusicActions'
 
-function AddArtist({ addArtist }) {
+function AddArtist({ Musics, addArtist }) {
+
+    const history = useHistory();
 
     const innitialValue = {
         name: '',
@@ -14,7 +17,7 @@ function AddArtist({ addArtist }) {
         preview: ''
     }
     const [state, setState] = React.useState(innitialValue)
-
+    console.log(state);
     const changeHandler = (e) => {
         setState(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
     }
@@ -41,6 +44,16 @@ function AddArtist({ addArtist }) {
     const textInput = React.createRef();
     const focusTextInput = () => { textInput.current.click() }
 
+    if (Musics.push) {
+        history.push("/")
+    }
+    let startYear = 1960;
+    let endYear = new Date().getFullYear();
+    const yearLists = []
+    for (let i = endYear; i > startYear; i--) {
+        yearLists.push(i)
+    }
+
     return (
         <div className="kontens">
             <div className="container formAdd">
@@ -64,12 +77,21 @@ function AddArtist({ addArtist }) {
                                 <select className="custom-select tembus white" name="career" onChange={(e) => changeHandler(e)}>
                                     <option className="text-dark">Career as</option>
                                     <option className="text-dark" value="Solo">Solo</option>
-                                    <option className="text-dark" value="Group">Group</option>
                                     <option className="text-dark" value="Band">Band</option>
+                                    <option className="text-dark" value="Group Band">Group Band</option>
                                 </select>
                             </div>
                             <div className="row">
-                                <input type="date" name="start" onChange={(e) => changeHandler(e)} className="col form-group form-control tembus white" value={state.start} placeholder="Start a career" />
+                                {/* <input type="date" name="start" onChange={(e) => changeHandler(e)} className="col form-group form-control tembus white" value={state.start} placeholder="Start a career" /> */}
+                                <select name="start" onChange={(e) => changeHandler(e)} className="custom-select tembus white mb-5">
+                                    <option className="text-dark">Start Career</option>
+                                    {
+                                        yearLists ? yearLists.map((year, i) => {
+                                            i += 1;
+                                            return (<option className="text-dark" value={year} key={i + 1} >{year}</option>)
+                                        }) : ""
+                                    }
+                                </select>
                             </div>
                         </div>
                         <div className={state.img !== 'Attach Thumbnail' ? "col-2" : ""}>
@@ -89,5 +111,10 @@ function AddArtist({ addArtist }) {
     )
 }
 
-export default connect(null, { addArtist })(AddArtist);
+const mapStateToProps = (state) => ({
+    Musics: state.Musics
+})
+
+
+export default connect(mapStateToProps, { addArtist })(AddArtist);
 

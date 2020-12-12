@@ -4,7 +4,12 @@ const innitialState = {
   loading: true,
   paymentComp: false,
   playerComp: false,
+  loadingComp: false,
   musicToPlay: "",
+  progress: {
+    isShown: false,
+    percentage: 0,
+  },
 };
 
 const PopUp = (state = innitialState, action) => {
@@ -15,6 +20,8 @@ const PopUp = (state = innitialState, action) => {
         ...state,
         isPoped: !state.isPoped,
         message: payload,
+        progress: { isShown: false, percentage: 0 },
+        loadingComp: false,
       };
     case "PAYMENT":
       return {
@@ -32,6 +39,21 @@ const PopUp = (state = innitialState, action) => {
         ...state,
         playerComp: false,
         musicToPlay: "",
+      };
+    case "OPEN_PROGRESS":
+      return {
+        ...state,
+        progress: { isShown: true, percentage: payload },
+      };
+    case "OPEN_LOADING":
+      return {
+        ...state,
+        loadingComp: true,
+      };
+    case "CLOSE_LOADING":
+      return {
+        ...state,
+        loadingComp: false,
       };
     default:
       return state;

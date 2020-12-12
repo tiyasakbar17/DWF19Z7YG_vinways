@@ -13,6 +13,7 @@ const Auth = (state = innitialState, action) => {
         ...state,
         isLogin: true,
         userData: payload,
+        loading: false,
       };
     case "REGISTER":
       localStorage.setItem("token", payload.token);
@@ -31,7 +32,10 @@ const Auth = (state = innitialState, action) => {
       localStorage.removeItem("token");
       return {
         ...state,
-        ...innitialState,
+        isLogin: false,
+        userData: null,
+        token: null,
+        loading: false,
       };
     default:
       return state;

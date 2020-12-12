@@ -1,8 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { addMusic } from '../Redux/Actions/MusicActions';
 
+
 function AddMusic({ Musics, addMusic }) {
+
+    const history = useHistory();
 
     const innitialValue = {
         title: '',
@@ -48,6 +52,10 @@ function AddMusic({ Musics, addMusic }) {
     const textInput2 = React.createRef();
     const focusTextInput2 = () => { textInput2.current.click() }
 
+    if (Musics.push) {
+        history.push("/")
+    }
+
     return (
         <div className="kontens">
             <div className="container formAdd">
@@ -70,9 +78,9 @@ function AddMusic({ Musics, addMusic }) {
                             <div className="row mb-4">
                                 <select className="custom-select tembus white" name="singer" onChange={(e) => changeHandler(e)}>
                                     <option className="text-dark">Singer</option>
-                                    {Musics.artists.map(artist => (
+                                    {Musics.artists ? Musics.artists.map(artist => (
                                         <option className="text-dark" value={artist.id} key={artist.id}>{artist.name}</option>
-                                    ))}
+                                    )) : ""}
                                 </select>
                             </div>
                             <div className="row">
