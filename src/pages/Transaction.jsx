@@ -10,6 +10,25 @@ function Transaction({ TransactionsState, loadTransactions }) {
         loadTransactions()
     }, [])
 
+    const compare = (key) => {
+        return (a, b) => {
+            if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+                console.log("udin");
+                return 0;
+            }
+            let comparison = 0;
+            if (a[key] > b[key]) {
+                comparison = 1;
+            }
+            if (a[key] < b[key]) {
+                comparison = -1;
+            }
+            return comparison * -1;
+        };
+    };
+
+    const TransactionList = TransactionsState.transactions ? TransactionsState.transactions.sort(compare("createdAt")) : "";
+
     if (TransactionsState.loading) {
         return (
             <Loading />
@@ -38,7 +57,7 @@ function Transaction({ TransactionsState, loadTransactions }) {
                         </thead>
                         <tbody>
                             {
-                                TransactionsState.transactions ? TransactionsState.transactions.map((user, i) => {
+                                TransactionsState.transactions ? TransactionList.map((user, i) => {
                                     i += 1;
                                     return (<Table user={user} counter={i} key={i} />)
                                 }) : ""}

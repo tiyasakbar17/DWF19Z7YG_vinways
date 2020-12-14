@@ -8,6 +8,7 @@ import MusicPlayer from './Home/MusicPlayer';
 import { connect } from 'react-redux';
 import ProgressBar from './PopUps/ProgressBar';
 import Loading from './PopUps/Loading';
+import UserProfile from './PopUps/UserProfile';
 
 
 function Header({ PopUpState, Auth }) {
@@ -25,6 +26,7 @@ function Header({ PopUpState, Auth }) {
 
     return (
         <>
+            {PopUpState.userProfile ? <UserProfile /> : ""}
             {PopUpState.loadingComp ? <Loading /> : ""}
             {PopUpState.progress.isShown ? <ProgressBar /> : ""}
             {PopUpState.playerComp ? (<MusicPlayer />) : ""}
@@ -44,7 +46,7 @@ function Header({ PopUpState, Auth }) {
                 </div>
                 <div className="col text-right">
                     <div className="userAccount mt-2">
-                        <img src="/Vector(2).png" alt="foto" className="userPict" onClick={clickHandler} style={Auth.isLogin ? {} : style.cnt} />
+                        <img src={Auth.userData ? Auth.userData.thumbnail ? Auth.userData.thumbnail : "/Vector(2).png" : "/Vector(2).png"} alt="foto" className="userPict" onClick={clickHandler} style={Auth.isLogin ? {} : style.cnt} />
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { closeLoading, popUp, showProgress } from "./PopUpActions";
 
-const baseUrl = "http://localhost:3001/api/v1";
+const baseUrl = "http://localhost:5000/api/v1";
 const configForm = (dispatch) => ({
   headers: {
     "Content-type": "multipart/form-data",

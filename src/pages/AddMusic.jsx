@@ -20,7 +20,6 @@ function AddMusic({ Musics, addMusic }) {
     }
 
     const [state, setState] = React.useState(innitialValue);
-    console.log(state);
 
     const changeHandler = (e) => {
         setState(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
@@ -30,7 +29,7 @@ function AddMusic({ Musics, addMusic }) {
             ...prevState,
             [e.target.name]: (e.target.files[0]) ? (e.target.files[0].name) : (e.target.name === 'img' ? 'Attach Thumbnail' : 'Attach'),
             [e.target.name === 'img' ? 'thumbnail' : 'attachment']: e.target.files[0],
-            preview: e.target.name === 'img' ? URL.createObjectURL(e.target.files[0]) : state.preview
+            [e.target.name === 'img' ? 'preview' : '']: e.target.name === 'img' ? URL.createObjectURL(e.target.files[0]) : ''
         }))
 
 

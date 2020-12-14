@@ -17,11 +17,14 @@ export const showPayment = () => (dispatch) => {
     console.log(error);
   }
 };
-export const showPlayer = (data) => (dispatch) => {
+export const showPlayer = (audio, img) => (dispatch) => {
   try {
     dispatch({
       type: "OPEN_MPLAYER",
-      payload: data,
+      payload: {
+        audio,
+        img,
+      },
     });
   } catch (error) {}
 };
@@ -38,6 +41,16 @@ export const showLoading = () => (dispatch) => {
 export const closeLoading = () => (dispatch) => {
   dispatch({
     type: "CLOSE_LOADING",
+  });
+};
+export const showProfile = () => (dispatch) => {
+  dispatch({
+    type: "OPEN_PROFILE",
+  });
+};
+export const closeProfile = () => (dispatch) => {
+  dispatch({
+    type: "CLOSE_PROFILE",
   });
 };
 export const showProgress = (data) => (dispatch) => {

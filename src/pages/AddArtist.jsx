@@ -77,6 +77,7 @@ function AddArtist({ Musics, addArtist }) {
                                 <select className="custom-select tembus white" name="career" onChange={(e) => changeHandler(e)}>
                                     <option className="text-dark">Career as</option>
                                     <option className="text-dark" value="Solo">Solo</option>
+                                    <option className="text-dark" value="Rapper">Rapper</option>
                                     <option className="text-dark" value="Band">Band</option>
                                     <option className="text-dark" value="Group Band">Group Band</option>
                                 </select>

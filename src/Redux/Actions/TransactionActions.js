@@ -14,7 +14,7 @@ const configForm = (dispatch) => ({
   },
 });
 
-const baseUrl = "http://localhost:3001/api/v1";
+const baseUrl = "http://localhost:5000/api/v1";
 
 export const loadTransactions = () => async (dispatch) => {
   try {
@@ -76,5 +76,17 @@ export const approvePayment = (data) => async (dispatch) => {
     dispatch({
       type: "TRANS_ERROR",
     });
+  }
+};
+export const loadUserTransactions = () => async (dispatch) => {
+  try {
+    const results = await Axios.get(`${baseUrl}/usertransactions`);
+    dispatch({
+      type: "USER_TRANS",
+      payload: results.data.data.transactions,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch(popUp("Can't Get Any Data"));
   }
 };

@@ -5,7 +5,11 @@ const innitialState = {
   paymentComp: false,
   playerComp: false,
   loadingComp: false,
-  musicToPlay: "",
+  userProfile: false,
+  musicToPlay: {
+    audio: "",
+    img: "",
+  },
   progress: {
     isShown: false,
     percentage: 0,
@@ -38,7 +42,10 @@ const PopUp = (state = innitialState, action) => {
       return {
         ...state,
         playerComp: false,
-        musicToPlay: "",
+        musicToPlay: {
+          audio: "",
+          img: "",
+        },
       };
     case "OPEN_PROGRESS":
       return {
@@ -54,6 +61,16 @@ const PopUp = (state = innitialState, action) => {
       return {
         ...state,
         loadingComp: false,
+      };
+    case "OPEN_PROFILE":
+      return {
+        ...state,
+        userProfile: true,
+      };
+    case "CLOSE_PROFILE":
+      return {
+        ...state,
+        userProfile: false,
       };
     default:
       return state;

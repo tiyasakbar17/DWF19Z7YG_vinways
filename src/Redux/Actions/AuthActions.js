@@ -1,14 +1,25 @@
 import Axios from "axios";
 import SetAuthToken from "../../Context/SetAuthToken";
-import { popUp, closePlayer, showLoading } from "./PopUpActions";
+import { popUp, closePlayer, showLoading, showProgress } from "./PopUpActions";
 
 const configJson = {
   headers: {
     "Content-type": "application/json",
   },
 };
+const configForm = (dispatch) => ({
+  headers: {
+    "Content-type": "multipart/form-data",
+  },
+  onUploadProgress: (ProgressEvent) => {
+    let percentage = Math.round(
+      (ProgressEvent.loaded * 100) / ProgressEvent.total
+    );
+    dispatch(showProgress(percentage));
+  },
+});
 
-const baseUrl = "http://localhost:3001/api/v1";
+const baseUrl = "http://localhost:5000/api/v1";
 
 export const loadData = () => async (dispatch) => {
   if (localStorage.getItem("token")) {
@@ -40,7 +51,6 @@ export const registerUser = (data) => async (dispatch) => {
     if (error.response) {
       dispatch(popUp(error.response.data.message));
     }
-    console.log(error);
     dispatch({
       type: "AUTH_ERROR",
     });
@@ -64,6 +74,28 @@ export const userLogin = (data) => async (dispatch) => {
     dispatch({
       type: "AUTH_ERROR",
     });
+  }
+};
+export const changePict = (data) => async (dispatch) => {
+  try {
+    const change = Axios.patch(
+      `${baseUrl}/changePicture`,
+      data,
+      configForm(dispatch)
+    );
+    if (change.data.status === "success") {
+      dispatch(loadData());
+      dispatch(popUp(change.data.message));
+    } else {
+      dispatch(popUp("Something Went Wrong"));
+    }
+  } catch (error) {
+    console.log(error);
+    if (error.response) {
+      dispatch(popUp(error.response.data.message));
+    } else {
+      dispatch(popUp(JSON.stringify(error)));
+    }
   }
 };
 export const logout = () => async (dispatch) => {

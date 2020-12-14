@@ -1,6 +1,7 @@
 const innitialState = {
   isLogin: false,
   userData: null,
+  userTransactions: [],
   token: localStorage.getItem("token") || null,
   loading: true,
 };
@@ -14,6 +15,11 @@ const Auth = (state = innitialState, action) => {
         isLogin: true,
         userData: payload,
         loading: false,
+      };
+    case "USER_TRANS":
+      return {
+        ...state,
+        userTransactions: payload,
       };
     case "REGISTER":
       localStorage.setItem("token", payload.token);
