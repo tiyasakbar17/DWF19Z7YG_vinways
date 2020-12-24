@@ -46,7 +46,7 @@ function Header({ PopUpState, Auth }) {
                 </div>
                 <div className="col text-right">
                     <div className="userAccount mt-2">
-                        <img src={Auth.userData ? Auth.userData.thumbnail ? Auth.userData.thumbnail : "/Vector(2).png" : "/Vector(2).png"} alt="foto" className="userPict" onClick={clickHandler} style={Auth.isLogin ? {} : style.cnt} />
+                        <img src={Auth.userData ? Auth.userData.avatar ? Auth.userData.avatar : "/Vector(2).png" : "/Vector(2).png"} alt="foto" className="userPict" onClick={clickHandler} style={Auth.isLogin ? {} : style.cnt} />
                     </div>
                 </div>
             </div>

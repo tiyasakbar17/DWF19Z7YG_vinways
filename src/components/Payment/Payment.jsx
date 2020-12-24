@@ -39,7 +39,7 @@ function Payment({ showPayment, popUp, uploadTransaction }) {
         if (state.bankAccountNumber && state.file !== 'Attach proof of transfer') {
             const formData = new FormData();
             formData.append("thumbnail", state.thumbnail);
-            formData.append("bankAccountNumber", state.bankAccountNumber)
+            formData.append("bankAccountNumber", Number(state.bankAccountNumber))
             uploadTransaction(formData)
             showPayment()
         }
@@ -54,7 +54,7 @@ function Payment({ showPayment, popUp, uploadTransaction }) {
 
     return ReactDOM.createPortal(
         <div className="Payment">
-            <span onClick={() => clickHandler()} className="closer"><i class="fas fa-times"></i></span>
+            <span onClick={() => clickHandler()} className="closer"><i className="fas fa-times"></i></span>
             <div className="holder">
                 <Col>
                     <Col>

@@ -1,6 +1,12 @@
 import Axios from "axios";
 import SetAuthToken from "../../Context/SetAuthToken";
-import { popUp, closePlayer, showLoading, showProgress } from "./PopUpActions";
+import {
+  popUp,
+  closePlayer,
+  showLoading,
+  showProgress,
+  closeLoading,
+} from "./PopUpActions";
 
 const configJson = {
   headers: {
@@ -19,7 +25,7 @@ const configForm = (dispatch) => ({
   },
 });
 
-const baseUrl = "http://localhost:5000/api/v1";
+const baseUrl = "https://tiyas-co-ways.herokuapp.com/api/v1";
 
 export const loadData = () => async (dispatch) => {
   if (localStorage.getItem("token")) {
@@ -27,12 +33,15 @@ export const loadData = () => async (dispatch) => {
   }
 
   try {
+    dispatch(showLoading());
     const result = await Axios.get(`${baseUrl}/getData`);
     dispatch({
       type: "LOAD_DATA",
       payload: result.data.data.user,
     });
+    dispatch(closeLoading());
   } catch (error) {
+    dispatch(closeLoading());
     dispatch({
       type: "AUTH_ERROR",
     });
@@ -40,13 +49,16 @@ export const loadData = () => async (dispatch) => {
 };
 export const registerUser = (data) => async (dispatch) => {
   try {
+    dispatch(showLoading());
     const result = await Axios.post(`${baseUrl}/register`, data, configJson);
     dispatch({
       type: "REGISTER",
       payload: result.data.data.user,
     });
     dispatch(loadData());
+    dispatch(closeLoading());
   } catch (error) {
+    dispatch(closeLoading());
     console.log(error);
     if (error.response) {
       dispatch(popUp(error.response.data.message));
@@ -65,7 +77,9 @@ export const userLogin = (data) => async (dispatch) => {
       payload: result.data.data.chanel,
     });
     dispatch(loadData());
+    dispatch(closeLoading());
   } catch (error) {
+    dispatch(closeLoading());
     if (error.response) {
       dispatch(popUp(error.response.data.message));
     } else {
@@ -78,7 +92,7 @@ export const userLogin = (data) => async (dispatch) => {
 };
 export const changePict = (data) => async (dispatch) => {
   try {
-    const change = Axios.patch(
+    const change = await Axios.patch(
       `${baseUrl}/changePicture`,
       data,
       configForm(dispatch)

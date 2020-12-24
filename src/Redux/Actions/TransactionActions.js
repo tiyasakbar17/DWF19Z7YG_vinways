@@ -14,7 +14,7 @@ const configForm = (dispatch) => ({
   },
 });
 
-const baseUrl = "http://localhost:5000/api/v1";
+const baseUrl = "https://tiyas-co-ways.herokuapp.com/api/v1";
 
 export const loadTransactions = () => async (dispatch) => {
   try {
@@ -44,7 +44,7 @@ export const uploadTransaction = (data) => async (dispatch) => {
       )
     );
   } catch (error) {
-    console.log(error);
+    console.log(error.response);
     if (error.response) {
       if (error.response.data.message) {
         dispatch(popUp(error.response.data.message));

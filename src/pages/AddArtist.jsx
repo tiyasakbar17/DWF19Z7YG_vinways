@@ -35,10 +35,12 @@ function AddArtist({ Musics, addArtist }) {
         formData.append("name", state.name);
         formData.append("old", Number(state.old));
         formData.append("category", state.career);
-        formData.append("startCareer", state.start);
+        formData.append("startCareer", Number(state.start));
         formData.append("thumbnail", state.thumbnail);
-        addArtist(formData);
-        setState({ ...innitialValue })
+        addArtist(formData)
+            .then(() => {
+                setState({ ...innitialValue })
+            });
     }
 
     const textInput = React.createRef();
@@ -65,7 +67,8 @@ function AddArtist({ Musics, addArtist }) {
                 <form onSubmit={(e) => submitHandler(e)}>
                     <div className="row mb-4">
                         <input type="text" name="name" value={state.name} onChange={(e) => changeHandler(e)} placeholder="Name" className="form-control tembus col-8 white" />
-                        <button type="button" onClick={focusTextInput} className="btn form-control pointer tembus col-4 text-white" >{state.img}</button>
+                        <span style={{ marginLeft: "15px" }}></span>
+                        <button type="button" onClick={focusTextInput} className="btn form-control pointer tembus text-white" style={{ width: "32%" }} >{state.img}</button>
                         <input type="file" name="thumbnail" onChange={fileHandler} ref={textInput} className="fileUpload" />
                     </div>
                     <div className="row">

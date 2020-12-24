@@ -28,13 +28,9 @@ const Musics = (state = innitialState, action) => {
         thumbnails: thumbnailLists,
       };
     case "LOAD_MUSICS":
-      const musicLists = [];
-      state.artists.map((artist) =>
-        artist.musics.map((music) => musicLists.push(music))
-      );
       return {
         ...state,
-        musics: musicLists,
+        musics: payload,
         loading: false,
       };
     case "MUSIC_ERROR":

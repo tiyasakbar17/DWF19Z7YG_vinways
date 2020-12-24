@@ -37,21 +37,26 @@ function UjiCoba({ Auth, closeProfile, loadUserTransactions, changePict }) {
         setstate(prevstate => ({ file: e.target.files[0] ? e.target.files[0] : null, count: prevstate.count + 1 }))
     }
 
-    if (state.count > 0) {
-        console.log(state);
-        if (state.file) {
-            const formData = new FormData()
-            formData.append("thumbnail", state.file)
-            changePict(formData)
+    const upload = () => {
+        if (state.count > 0) {
+            if (state.file) {
+                const formData = new FormData()
+                formData.append("thumbnail", state.file)
+                changePict(formData)
+            }
         }
     }
 
+    React.useEffect(() => {
+        upload()
+    }, [state.count])
+
     return (
-        <div className="userProfile">
+        <div className="userProfile" style={{ fontSize: "18px" }}>
             <div className="profilePictContainer">
 
                 <div className="profilePict">
-                    <img src={Auth.userData.thumbnail ? Auth.userData.thumbnail : "/Vector(2).png"} alt="Pict" className="CardIMG" />
+                    <img src={Auth.userData.avatar ? Auth.userData.avatar : "/Vector(2).png"} alt="Pict" className="CardIMG" />
                     <div onClick={focusTextInput} className="changePict">
                         <div className="d-flex justify-content-center" style={{ width: "100%" }}><i className="fas fa-camera"></i></div>
                         <span>Change Picture</span>
@@ -64,15 +69,15 @@ function UjiCoba({ Auth, closeProfile, loadUserTransactions, changePict }) {
 
             <div className="userDetails d-flex flex-column">
                 <div className="flex-fill">
-                    <span style={{ fontSize: "26px", color: "#03f387" }}> <strong>Name</strong></span>
+                    <span style={{ fontSize: "24px", color: "#03f387" }}> <strong>Name</strong></span>
                     <p className="white">{Auth.userData.fullName}</p>
                 </div>
                 <div className="flex-fill">
-                    <span style={{ fontSize: "26px", color: "#03f387" }}> <strong>Remaining Active</strong></span>
+                    <span style={{ fontSize: "24px", color: "#03f387" }}> <strong>Remaining Active</strong></span>
                     <p className="white">{activeDays > 0 ? activeDays : 0} Day(s)</p>
                 </div>
                 <div className="flex-fill">
-                    <span style={{ fontSize: "26px", color: "#03f387" }}> <strong>Payment(s) Made</strong></span>
+                    <span style={{ fontSize: "24px", color: "#03f387" }}> <strong>Payment(s) Made</strong></span>
                     <div className="container pl-5">
                         <div className="row pl-5">
                             <div className="col-5"><span className="white">Approved</span></div>
@@ -90,7 +95,7 @@ function UjiCoba({ Auth, closeProfile, loadUserTransactions, changePict }) {
                     {/* <p className="white">{approve}</p> */}
                 </div>
             </div>
-            <div style={{ position: "absolute", top: "20px", left: "44%" }}><i onClick={closerProfile} className="fas fa-times fa-3x white bigClose"></i></div>
+            <div style={{ position: "absolute", top: "10px", right: "10px" }}><i onClick={closerProfile} className="fas fa-times fa-2x white bigClose"></i></div>
         </div>
 
     )

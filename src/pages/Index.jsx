@@ -3,26 +3,25 @@ import CardSong from '../components/Home/CardSong';
 import { Row } from 'reactstrap';
 import ImageSlider from '../components/Home/ImageSlider';
 import { connect } from 'react-redux';
-import { loadArtists } from '../Redux/Actions/MusicActions'
+import { loadArtists, loadMusics } from '../Redux/Actions/MusicActions'
 import { showPayment, showPlayer } from '../Redux/Actions/PopUpActions'
 import Loading from '../components/PopUps/Loading';
 import New from '../components/Home/New';
 
-function Index({ Auth, Musics, loadArtists, showPayment, showPlayer }) {
+function Index({ Auth, Musics, loadArtists, loadMusics, showPayment, showPlayer }) {
     const compare = (key) => {
         return (a, b) => {
             if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-                console.log("udin");
                 return 0;
             }
             let comparison = 0;
-            if (a[key] > b[key]) {
+            if (a[key] < b[key]) {
                 comparison = 1;
             }
-            if (a[key] < b[key]) {
+            if (a[key] > b[key]) {
                 comparison = -1;
             }
-            return comparison * -1;
+            return comparison;
         };
     };
 
@@ -40,7 +39,10 @@ function Index({ Auth, Musics, loadArtists, showPayment, showPlayer }) {
             showPlayer(music, img)
         }
     }
-    const load = () => loadArtists()
+    const load = () => {
+        loadArtists()
+        loadMusics()
+    }
     React.useEffect(() => {
         load()
     }, [])
@@ -67,7 +69,7 @@ function Index({ Auth, Musics, loadArtists, showPayment, showPlayer }) {
                                     return (
                                         <div onClick={() => clickHandler(music.attachment, music.thumbnail)} className="cardMe d-flex flex-column align-content-stretch" key={i + 1}>
                                             <CardSong state={{ title: music.title, singer: music.artist.name, year: music.year, img: music.thumbnail }} />
-                                            <div style={{ position: "absolute", top: "5px", right: "5px", width: "30px", height: "30px" }}>{created < (12 * 60 * 60 * 1000) ? <New /> : ""}</div>
+                                            <div style={{ position: "absolute", top: "5px", right: "20px", width: "30px", height: "30px" }}>{created < (12 * 60 * 60 * 1000) ? <New /> : ""}</div>
                                         </div>
                                     )
                                 }) : ""
@@ -88,4 +90,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { loadArtists, showPayment, showPlayer })(Index);
+export default connect(mapStateToProps, { loadMusics, showPayment, loadArtists, showPlayer })(Index);

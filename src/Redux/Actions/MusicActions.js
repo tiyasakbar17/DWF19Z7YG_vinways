@@ -1,7 +1,7 @@
 import Axios from "axios";
-import { closeLoading, popUp, showProgress } from "./PopUpActions";
+import { closeLoading, popUp, showLoading, showProgress } from "./PopUpActions";
 
-const baseUrl = "http://localhost:5000/api/v1";
+const baseUrl = "https://tiyas-co-ways.herokuapp.com/api/v1";
 const configForm = (dispatch) => ({
   headers: {
     "Content-type": "multipart/form-data",
@@ -14,6 +14,21 @@ const configForm = (dispatch) => ({
   },
 });
 
+export const loadMusics = () => async (dispatch) => {
+  try {
+    dispatch(showLoading());
+    const result = await Axios.get(`${baseUrl}/songs`);
+    dispatch({
+      type: "LOAD_MUSICS",
+      payload: result.data.data.musics,
+    });
+    dispatch(closeLoading());
+  } catch (error) {
+    console.log("ERROR LOAD MUSIC", error);
+    dispatch(closeLoading());
+    dispatch(popUp(JSON.stringify(error)));
+  }
+};
 export const loadArtists = () => async (dispatch) => {
   try {
     const result = await Axios.get(`${baseUrl}/artists`);
@@ -24,12 +39,9 @@ export const loadArtists = () => async (dispatch) => {
     dispatch({
       type: "LOAD_THUMBNAILS",
     });
-    dispatch({
-      type: "LOAD_MUSICS",
-    });
     dispatch(closeLoading());
   } catch (error) {
-    console.log(error);
+    console.log("ERROR LOAD ARTIST", error);
     if (error.response) {
       if (error.response.data.message) {
         dispatch(popUp(error.response.data.message));
@@ -63,7 +75,7 @@ export const addArtist = (data) => async (dispatch) => {
 export const addMusic = (data) => async (dispatch) => {
   try {
     const result = await Axios.post(
-      `${baseUrl}/music`,
+      `${baseUrl}/song`,
       data,
       configForm(dispatch)
     );

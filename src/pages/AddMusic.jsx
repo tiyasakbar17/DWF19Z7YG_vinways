@@ -16,7 +16,8 @@ function AddMusic({ Musics, addMusic }) {
         audio: 'Attach',
         thumbnail: null,
         attachment: null,
-        preview: ''
+        preview: '',
+        genre: ''
     }
 
     const [state, setState] = React.useState(innitialValue);
@@ -41,6 +42,7 @@ function AddMusic({ Musics, addMusic }) {
         formData.append("title", state.title)
         formData.append("year", Number(state.year))
         formData.append("thumbnail", state.thumbnail)
+        formData.append("genre", state.genre)
         formData.append("attachment", state.attachment)
         addMusic(formData);
         setState(innitialValue)
@@ -66,11 +68,15 @@ function AddMusic({ Musics, addMusic }) {
                 <form onSubmit={(e) => submitHandler(e)}>
                     <div className="row mb-4">
                         <input type="text" name="title" value={state.title} onChange={(e) => changeHandler(e)} placeholder="Title" className="form-control tembus col-8 white" />
-                        <button type="button" onClick={focusTextInput} className="form-control tembus col-4 text-white" > {state.img} </button>
+                        <span style={{ marginLeft: "15px" }}></span>
+                        <button type="button" onClick={focusTextInput} className="form-control tembus text-white" style={{ width: "32%" }} > {state.img} </button>
                         <input name="img" type="file" onChange={(e) => fileHandler(e)} ref={textInput} className="fileUpload" />
                     </div>
                     <div className="row">
                         <div className={state.img !== 'Attach Thumbnail' ? "col-9 mr-4" : "col"}>
+                            <div className="row mb-4">
+                                <input type="text" value={state.genre} onChange={(e) => changeHandler(e)} placeholder="Genre" name="genre" className="form-control tembus white" />
+                            </div>
                             <div className="row mb-4">
                                 <input type="text" value={state.year} onChange={(e) => changeHandler(e)} placeholder="Year" name="year" className="form-control tembus white" />
                             </div>
