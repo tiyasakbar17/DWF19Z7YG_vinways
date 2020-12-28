@@ -1,10 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { addMusic } from '../Redux/Actions/MusicActions';
+import { addMusic, loadArtists } from '../Redux/Actions/MusicActions';
 
 
-function AddMusic({ Musics, addMusic }) {
+function AddMusic({ Musics, addMusic, loadArtists }) {
+
+    React.useEffect(() => {
+        loadArtists()
+    }, [])
 
     const history = useHistory();
 
@@ -118,4 +122,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { addMusic })(AddMusic);
+export default connect(mapStateToProps, { addMusic, loadArtists })(AddMusic);
