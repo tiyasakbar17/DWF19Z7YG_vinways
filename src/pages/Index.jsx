@@ -9,7 +9,7 @@ import Loading from '../components/PopUps/Loading';
 import New from '../components/Home/New';
 
 function Index({ Auth, Musics, loadArtists, loadMusics, showPayment, showPlayer }) {
-    const compare = (key) => {
+    const compare = (key, order) => {
         return (a, b) => {
             if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
                 return 0;
@@ -21,12 +21,19 @@ function Index({ Auth, Musics, loadArtists, loadMusics, showPayment, showPlayer 
             if (a[key] > b[key]) {
                 comparison = -1;
             }
-            return comparison;
+            return order === "DEC" ? comparison : (comparison * -1);
         };
     };
 
-    const musicList = Musics.musics ? Musics.musics.sort(compare("createdAt")) : "";
+    const [state, setState] = React.useState({
+        key: "id",
+        cond: "DEC"
+    })
+    const musicList = Musics.musics ? Musics.musics.sort(compare(state.key, state.cond)) : "";
 
+    const selectHandler = (e) => {
+        setState((prevState) => ({ ...prevState, [e.target.name]: e.target.value }))
+    }
 
     const clickHandler = (music, img) => {
 
@@ -61,6 +68,24 @@ function Index({ Auth, Musics, loadArtists, loadMusics, showPayment, showPlayer 
                         </div>
                     </Row>
                     <Row>
+                        <div className="sorting d-flex">
+                            <select className="selection pointer" name="key" value={state.key} onChange={selectHandler}>
+                                <option value="createdAt">Sort By</option>
+                                <option value="year">Year</option>
+                                <option value="createdAt">Date Publish</option>
+                                <option value="title">Title</option>
+                                <option value="likes">Likes</option>
+                                <option value="title">Title</option>
+                                <option value="artistId">Artist</option>
+                            </select>
+                            <select className="selection pointer ml-2" name="cond" value={state.key} onChange={selectHandler}>
+                                <option value="DEC">Order</option>
+                                <option value="INC">Increment</option>
+                                <option value="DEC">Decrement</option>
+                            </select>
+                        </div>
+                    </Row>
+                    <Row>
                         <div className="d-flex flex-wrap align-content-stretch songList">
                             {
                                 Musics.musics ? musicList.map((music, i) => {
@@ -68,7 +93,7 @@ function Index({ Auth, Musics, loadArtists, loadMusics, showPayment, showPlayer 
                                     i += 1;
                                     return (
                                         <div className="cardMe d-flex flex-column align-content-stretch" key={i + 1}>
-                                            <CardSong onClick={() => clickHandler(music.attachment, music.thumbnail)} state={{ title: music.title, singer: music.artist.name, year: music.year, img: music.thumbnail, artistId: music.artistId }} />
+                                            <CardSong onClick={() => clickHandler(music.attachment, music.thumbnail)} state={{ title: music.title, singer: music.artist.name, year: music.year, img: music.thumbnail, artistId: music.artistId, like: music.likedBy, songId: music.id }} />
                                             <div style={{ position: "absolute", top: "5px", right: "20px", width: "30px", height: "30px" }}>{created < (12 * 60 * 60 * 1000) ? <New /> : ""}</div>
                                         </div>
                                     )

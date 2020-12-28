@@ -14,7 +14,7 @@ function PopUp({ PopUpState, popUp }) {
     return (
         <div className="loadingPage" onClick={() => clickHandler()}>
             <div className="d-flex justify-content-center align-items-center popUp green">
-                <span className="closer"><i class="fas fa-times-circle"></i></span>
+                <span className="closer"><i className="fas fa-times-circle"></i></span>
                 <span>{message}</span>
             </div>
         </div>

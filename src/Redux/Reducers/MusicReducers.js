@@ -34,9 +34,16 @@ const Musics = (state = innitialState, action) => {
         thumbnails: thumbnailLists,
       };
     case "LOAD_MUSICS":
+      const musics = [];
+      payload.forEach((music) => {
+        musics.push({
+          ...music,
+          likes: music.likedBy.length,
+        });
+      });
       return {
         ...state,
-        musics: payload,
+        musics: musics,
         loading: false,
       };
     case "MUSIC_ERROR":

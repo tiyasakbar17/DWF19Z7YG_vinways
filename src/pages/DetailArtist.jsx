@@ -51,7 +51,7 @@ function DetailArtist({ Musics, loadArtist, loadArtists, Auth, showPayment, show
     React.useEffect(() => {
         loadArtist(id)
         loadArtists()
-    }, [id])
+    }, [id, Musics.musics])
     React.useEffect(() => {
         getAlbum()
     }, [Musics.artist])
@@ -101,7 +101,7 @@ function DetailArtist({ Musics, loadArtist, loadArtists, Auth, showPayment, show
                             i += 1;
                             return (
                                 <div className="cardMe d-flex flex-column align-content-stretch" key={i + 1} style={{ width: "23%" }}>
-                                    <CardSong onClick={() => clickHandler(song.attachment, song.thumbnail)} state={{ title: song.title, singer: name, year: song.year, img: song.thumbnail, artistId: song.artistId }} />
+                                    <CardSong onClick={() => clickHandler(song.attachment, song.thumbnail)} state={{ title: song.title, singer: name, year: song.year, img: song.thumbnail, artistId: song.artistId, like: song.likedBy, songId: song.id }} />
                                     <div style={{ position: "absolute", top: "5px", right: "20px", width: "30px", height: "30px" }}>{created < (12 * 60 * 60 * 1000) ? <New /> : ""}</div>
                                 </div>
                             )
