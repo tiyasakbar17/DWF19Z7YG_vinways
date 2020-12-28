@@ -67,8 +67,8 @@ function Index({ Auth, Musics, loadArtists, loadMusics, showPayment, showPlayer 
                                     const created = Date.now() - new Date(music.createdAt).getTime();
                                     i += 1;
                                     return (
-                                        <div onClick={() => clickHandler(music.attachment, music.thumbnail)} className="cardMe d-flex flex-column align-content-stretch" key={i + 1}>
-                                            <CardSong state={{ title: music.title, singer: music.artist.name, year: music.year, img: music.thumbnail }} />
+                                        <div className="cardMe d-flex flex-column align-content-stretch" key={i + 1}>
+                                            <CardSong onClick={() => clickHandler(music.attachment, music.thumbnail)} state={{ title: music.title, singer: music.artist.name, year: music.year, img: music.thumbnail }} />
                                             <div style={{ position: "absolute", top: "5px", right: "20px", width: "30px", height: "30px" }}>{created < (12 * 60 * 60 * 1000) ? <New /> : ""}</div>
                                         </div>
                                     )

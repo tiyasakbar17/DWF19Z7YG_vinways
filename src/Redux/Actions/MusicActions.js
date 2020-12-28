@@ -41,6 +41,7 @@ export const loadArtists = () => async (dispatch) => {
     });
     dispatch(closeLoading());
   } catch (error) {
+    dispatch(closeLoading());
     console.log("ERROR LOAD ARTIST", error);
     if (error.response) {
       if (error.response.data.message) {
@@ -50,6 +51,25 @@ export const loadArtists = () => async (dispatch) => {
     dispatch({
       type: "MUSIC_ERROR",
     });
+  }
+};
+export const loadArtist = (data) => async (dispatch) => {
+  try {
+    dispatch(showLoading());
+    const result = await Axios.get(`${baseUrl}/artist/${data}`);
+    dispatch({
+      type: "LOAD_ARTIST",
+      payload: result.data.data.artist,
+    });
+    dispatch(closeLoading());
+  } catch (error) {
+    dispatch(closeLoading());
+    console.log("ERROR LOAD ARTIST", error);
+    if (error.response) {
+      if (error.response.data.message) {
+        return dispatch(popUp(error.response.data.message));
+      }
+    }
   }
 };
 export const addArtist = (data) => async (dispatch) => {

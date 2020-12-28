@@ -1,6 +1,7 @@
 const innitialState = {
   loading: true,
   artists: null,
+  artist: null,
   musics: null,
   thumbnails: [],
   push: false,
@@ -14,6 +15,11 @@ const Musics = (state = innitialState, action) => {
         ...state,
         artists: payload,
         push: false,
+      };
+    case "LOAD_ARTIST":
+      return {
+        ...state,
+        artist: payload,
       };
     case "LOAD_THUMBNAILS":
       const thumbnailLists = [];

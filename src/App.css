@@ -177,16 +177,16 @@ select.tembus {
 .cardMe {
   width: 192px;
   border-radius: 10px;
-  margin: 5px;
+  margin: 10px;
   padding: 5px;
   background-color: #363954;
-  cursor: pointer;
   position: relative;
 }
 .imgContainer {
   width: 100%;
   height: 192px;
   position: relative;
+  cursor: pointer;
 }
 .overlay {
   position: absolute;
@@ -211,7 +211,7 @@ select.tembus {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-.cardMe:hover .overlay {
+.imgContainer:hover .overlay {
   bottom: 0;
   height: 100%;
 }
@@ -232,7 +232,7 @@ select.tembus {
 
 /* INDEX */
 .songList {
-  max-width: 90%;
+  max-width: 80%;
   margin: 0px auto;
   padding-bottom: 100px;
 }
@@ -254,6 +254,7 @@ img.slider {
   height: 100%;
   border-radius: 10px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 /* Payment */
@@ -570,4 +571,51 @@ div.profilePict:hover .changePict {
 }
 .bigClose {
   cursor: pointer;
+}
+
+/* Detail Artist */
+.detailArtistContainer {
+  width: 80%;
+  display: flex;
+  margin: 10% auto 80px auto;
+}
+.leftDetailArtist {
+  width: 30%;
+  padding-right: 5px;
+}
+.rightDetailArtist {
+  width: 70%;
+  padding-left: 5px;
+}
+.artistDetails {
+  position: fixed;
+  width: 24%;
+  top: 20%;
+  left: 10%;
+}
+.f18 {
+  font-size: 18px;
+}
+.f24 {
+  font-size: 24px;
+}
+.f40 {
+  font-size: 40px;
+}
+.itemCont {
+  margin: 10px auto;
+}
+.detailItem {
+  width: 50%;
+}
+.artistThumbnail {
+  border-radius: 10px;
+  width: 100%;
+  overflow: hidden;
+  height: 400px;
+}
+.songsCont {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }

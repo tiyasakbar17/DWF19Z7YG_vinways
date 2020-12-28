@@ -15,7 +15,7 @@ import SetAuthToken from "./Context/SetAuthToken";
 import Store from "./Redux/Store";
 import { Provider } from "react-redux";
 import { loadData } from "./Redux/Actions/AuthActions";
-import Loading from "./components/PopUps/Loading";
+import DetailArtist from "./pages/DetailArtist";
 
 function App() {
   if (localStorage.getItem("token")) {
@@ -34,11 +34,30 @@ function App() {
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <LoginRoute exact path="/" component={Index} />
-              <LoginRoute exact path="/addmusic" component={AddMusic} />
-              <LoginRoute exact path="/addartist" component={AddArtist} />
-              <LoginRoute exact path="/transaction" component={Transaction} />
-              <Route component={Loading} />
+              <LoginRoute exact path="/" role={2} component={Index} />
+              <LoginRoute
+                exact
+                path="/addmusic"
+                role={1}
+                component={AddMusic}
+              />
+              <LoginRoute
+                exact
+                path="/addartist"
+                role={1}
+                component={AddArtist}
+              />
+              <LoginRoute
+                exact
+                path="/transaction"
+                role={1}
+                component={Transaction}
+              />
+              <LoginRoute
+                path="/artist/:id"
+                role={2}
+                component={DetailArtist}
+              />
             </Switch>
           </BrowserRouter>
         </AppContextProvider>
