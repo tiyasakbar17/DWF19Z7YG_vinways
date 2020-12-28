@@ -67,7 +67,7 @@ function AddArtist({ Musics, addArtist }) {
                 <form onSubmit={(e) => submitHandler(e)}>
                     <div className="row mb-4">
                         <input type="text" name="name" value={state.name} onChange={(e) => changeHandler(e)} placeholder="Name" className="form-control tembus col-8 white" />
-                        <span style={{ marginLeft: "15px" }}></span>
+                        <span style={{ marginLeft: "1.2%" }}></span>
                         <button type="button" onClick={focusTextInput} className="btn form-control pointer tembus text-white" style={{ width: "32%" }} >{state.img}</button>
                         <input type="file" name="thumbnail" onChange={fileHandler} ref={textInput} className="fileUpload" />
                     </div>
