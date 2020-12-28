@@ -58,6 +58,7 @@ function App() {
                 role={2}
                 component={DetailArtist}
               />
+              <Route component={Login} />
             </Switch>
           </BrowserRouter>
         </AppContextProvider>

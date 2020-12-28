@@ -36,7 +36,7 @@ function Transaction({ TransactionsState, loadTransactions }) {
     } else {
         return (
             <div className="kontens">
-                <div className="container transactions">
+                <div className="container transactions" style={{ fontSize: "20px" }}>
                     <div className="row">
                         <h1 className="white mt-5 mb-5">
                             Incoming Transaction

@@ -16,7 +16,8 @@ div.formAdd {
 }
 
 div.transactions {
-  max-width: 1400px;
+  max-width: 90%;
+  margin: auto;
 }
 /* HEADER */
 
@@ -364,6 +365,14 @@ button.submitButton {
   border: 2px white solid;
   /* top: 40%;
   left: 30%; */
+}
+.clickableBackground {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.742);
 }
 
 /* THUMBNAILS */
