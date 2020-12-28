@@ -78,7 +78,7 @@ function Index({ Auth, Musics, loadArtists, loadMusics, showPayment, showPlayer 
                                 <option value="title">Title</option>
                                 <option value="artistId">Artist</option>
                             </select>
-                            <select className="selection pointer ml-2" name="cond" value={state.key} onChange={selectHandler}>
+                            <select className="selection pointer ml-2" name="cond" value={state.cond} onChange={selectHandler}>
                                 <option value="DEC">Order</option>
                                 <option value="INC">Increment</option>
                                 <option value="DEC">Decrement</option>
