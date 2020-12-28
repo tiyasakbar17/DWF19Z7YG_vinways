@@ -3,10 +3,25 @@ import { connect } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import CardSong from '../components/Home/CardSong'
 import New from '../components/Home/New'
-import { loadArtist } from '../Redux/Actions/MusicActions'
+import { loadArtist, loadArtists } from '../Redux/Actions/MusicActions'
 import { showPayment, showPlayer } from '../Redux/Actions/PopUpActions'
 
-function DetailArtist({ Musics, loadArtist, Auth, showPayment, showPlayer }) {
+function DetailArtist({ Musics, loadArtist, loadArtists, Auth, showPayment, showPlayer }) {
+    const compare = (key) => {
+        return (a, b) => {
+            if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+                return 0;
+            }
+            let comparison = 0;
+            if (a[key] < b[key]) {
+                comparison = 1;
+            }
+            if (a[key] > b[key]) {
+                comparison = -1;
+            }
+            return comparison;
+        };
+    };
     const { id } = useParams()
     const innitialValue = {
         album: []
@@ -35,6 +50,7 @@ function DetailArtist({ Musics, loadArtist, Auth, showPayment, showPlayer }) {
 
     React.useEffect(() => {
         loadArtist(id)
+        loadArtists()
     }, [id])
     React.useEffect(() => {
         getAlbum()
@@ -80,12 +96,12 @@ function DetailArtist({ Musics, loadArtist, Auth, showPayment, showPlayer }) {
                 </div>
                 <div className="songsCont">
                     {
-                        songs.map((song, i) => {
+                        songs.sort(compare("createdAt")).map((song, i) => {
                             const created = Date.now() - new Date(song.createdAt).getTime();
                             i += 1;
                             return (
-                                <div className="cardMe d-flex flex-column align-content-stretch" key={i + 1}>
-                                    <CardSong onClick={() => clickHandler(song.attachment, song.thumbnail)} state={{ title: song.title, singer: name, year: song.year, img: song.thumbnail }} />
+                                <div className="cardMe d-flex flex-column align-content-stretch" key={i + 1} style={{ width: "23%" }}>
+                                    <CardSong onClick={() => clickHandler(song.attachment, song.thumbnail)} state={{ title: song.title, singer: name, year: song.year, img: song.thumbnail, artistId: song.artistId }} />
                                     <div style={{ position: "absolute", top: "5px", right: "20px", width: "30px", height: "30px" }}>{created < (12 * 60 * 60 * 1000) ? <New /> : ""}</div>
                                 </div>
                             )
@@ -106,7 +122,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
     loadArtist,
     showPayment,
-    showPlayer
+    showPlayer,
+    loadArtists
 }
 
 

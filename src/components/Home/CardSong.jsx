@@ -1,7 +1,12 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom';
 
 function CardSong(props) {
-    const { onClick, state: { img, title, year, singer } } = props;
+    const history = useHistory()
+    const { onClick, state: { img, title, year, singer, artistId } } = props;
+    const clickHandler = (id) => {
+        history.push(`/artist/${id}`)
+    }
     return (
         <>
             <div className="imgContainer" onClick={onClick}>
@@ -19,7 +24,7 @@ function CardSong(props) {
                 </div>
             </div>
             <div className="h6 green">
-                <span>{singer}</span>
+                <span className="bigClose" onClick={() => clickHandler(artistId)}>{singer}</span>
             </div>
         </>
     )

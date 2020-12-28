@@ -175,12 +175,14 @@ select.tembus {
 /* CARD */
 
 .cardMe {
-  width: 192px;
+  width: 14.65%;
   border-radius: 10px;
-  margin: 10px;
+  margin: 1%;
   padding: 5px;
   background-color: #363954;
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
 }
 .imgContainer {
   width: 100%;
@@ -232,7 +234,7 @@ select.tembus {
 
 /* INDEX */
 .songList {
-  max-width: 80%;
+  max-width: 85%;
   margin: 0px auto;
   padding-bottom: 100px;
 }
@@ -537,7 +539,7 @@ circle.progressCircle {
 }
 div.profilePictContainer {
   width: 400px;
-  height: 330px;
+  height: 280px;
   display: grid;
   place-content: end center;
 }
@@ -567,7 +569,7 @@ div.profilePict:hover .changePict {
 }
 .userDetails {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .bigClose {
   cursor: pointer;

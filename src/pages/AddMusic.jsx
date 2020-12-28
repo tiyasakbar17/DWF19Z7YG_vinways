@@ -68,8 +68,8 @@ function AddMusic({ Musics, addMusic }) {
                 <form onSubmit={(e) => submitHandler(e)}>
                     <div className="row mb-4">
                         <input type="text" name="title" value={state.title} onChange={(e) => changeHandler(e)} placeholder="Title" className="form-control tembus col-8 white" />
-                        <span style={{ marginLeft: "15px" }}></span>
-                        <button type="button" onClick={focusTextInput} className="form-control tembus text-white" style={{ width: "32%" }} > {state.img} </button>
+                        <span style={{ marginLeft: "1.2%" }}></span>
+                        <button type="button" onClick={focusTextInput} className="form-control tembus text-white" style={{ width: "32%", overflow: "hidden" }} > {state.img} </button>
                         <input name="img" type="file" onChange={(e) => fileHandler(e)} ref={textInput} className="fileUpload" />
                     </div>
                     <div className="row">

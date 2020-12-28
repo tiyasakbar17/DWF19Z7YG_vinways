@@ -13,7 +13,6 @@ function UjiCoba({ Auth, closeProfile, loadUserTransactions, changePict }) {
 
     const count = (key) => {
         const status = Auth.userTransactions ? Auth.userTransactions.filter(trans => trans.paymentStatus === key).length : 0
-
         return status;
     }
 
@@ -54,7 +53,6 @@ function UjiCoba({ Auth, closeProfile, loadUserTransactions, changePict }) {
     return (
         <div className="userProfile" style={{ fontSize: "18px" }}>
             <div className="profilePictContainer">
-
                 <div className="profilePict">
                     <img src={Auth.userData.avatar ? Auth.userData.avatar : "/Vector(2).png"} alt="Pict" className="CardIMG" />
                     <div onClick={focusTextInput} className="changePict">
