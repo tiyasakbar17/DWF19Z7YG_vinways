@@ -25,6 +25,9 @@ function UjiCoba({ Auth, closeProfile, loadUserTransactions, changePict }) {
     const textInput = React.createRef();
     const focusTextInput = () => { textInput.current.click() }
     const fileHandler = (e) => {
+        if (!e.target.files[0]) {
+            return null
+        }
         setstate(prevstate => ({ file: e.target.files[0] ? e.target.files[0] : null, count: prevstate.count + 1 }))
     }
     const upload = () => {
