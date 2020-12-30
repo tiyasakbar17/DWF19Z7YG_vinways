@@ -1,3 +1,6 @@
+.primCol {
+  color: #191c35;
+}
 .Penampung {
   background-color: #00031f;
   width: 100%;
@@ -367,12 +370,27 @@ button.submitButton {
   left: 30%; */
 }
 .clickableBackground {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
+  z-index: 102;
+}
+.visibleBackground {
+  position: fixed;
+  top: 80px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: grid;
+  place-content: center center;
   background-color: rgba(0, 0, 0, 0.742);
+  z-index: 101;
+}
+.containpop {
+  position: relative;
+  z-index: 103;
 }
 
 /* THUMBNAILS */

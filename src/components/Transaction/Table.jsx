@@ -31,9 +31,8 @@ function Table({ user, counter, approvePayment }) {
 
     const styles = {
         height: "80%",
-        width: "30%",
-        position: "relative",
-        margin: "85px auto 0 auto",
+        width: "70%",
+        margin: "auto",
     }
     const Image = () => {
         return (
