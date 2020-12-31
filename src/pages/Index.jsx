@@ -68,7 +68,7 @@ function Index({ Auth, Musics, loadArtists, loadMusics, showPayment, showPlayer 
                             <ImageSlider imgs={Musics.thumbnails} />
                         </div>
                     </Row>
-                    <Row>
+                    {/* <Row>
                         <div className="sorting d-flex">
                             <select name="key" value={state.key} onChange={selectHandler} className="selection">
                                 <option value="createdAt">time uploaded</option>
@@ -82,7 +82,7 @@ function Index({ Auth, Musics, loadArtists, loadMusics, showPayment, showPlayer 
                                 <option value="asc">ascending</option>
                             </select>
                         </div>
-                    </Row>
+                    </Row> */}
                     <Row>
                         <div className="d-flex flex-wrap align-content-stretch songList">
                             {
