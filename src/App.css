@@ -182,9 +182,9 @@ select.tembus {
 /* CARD */
 
 .cardMe {
-  width: 14.65%;
+  width: 168px;
   border-radius: 10px;
-  margin: 1%;
+  margin: 10px;
   padding: 5px;
   background-color: #363954;
   position: relative;
@@ -264,17 +264,6 @@ img.slider {
   border-radius: 10px;
   object-fit: cover;
   cursor: pointer;
-}
-.sorting {
-  width: 83%;
-  margin: auto;
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-.selection {
-  width: 15%;
-  height: 30px;
-  border-radius: 5px;
 }
 
 /* Payment */
@@ -608,6 +597,21 @@ div.profilePict:hover .changePict {
   opacity: 0.8;
   top: 0;
 }
+.f18 {
+  font-size: 18px;
+}
+.f24 {
+  font-size: 24px;
+}
+.f40 {
+  font-size: 40px;
+}
+.itemCont {
+  margin: 10px auto;
+}
+.detailItem {
+  width: 50%;
+}
 .userDetails {
   text-align: center;
   margin-top: 30px;
@@ -636,21 +640,6 @@ div.profilePict:hover .changePict {
   top: 20%;
   left: 10%;
 }
-.f18 {
-  font-size: 18px;
-}
-.f24 {
-  font-size: 24px;
-}
-.f40 {
-  font-size: 40px;
-}
-.itemCont {
-  margin: 10px auto;
-}
-.detailItem {
-  width: 50%;
-}
 .artistThumbnail {
   border-radius: 10px;
   width: 100%;
@@ -661,4 +650,15 @@ div.profilePict:hover .changePict {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+}
+.sorting {
+  width: 83%;
+  margin: auto;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.selection {
+  width: 15%;
+  height: 30px;
+  border-radius: 5px;
 }

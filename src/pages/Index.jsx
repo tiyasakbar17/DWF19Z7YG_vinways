@@ -9,31 +9,32 @@ import Loading from '../components/PopUps/Loading';
 import New from '../components/Home/New';
 
 function Index({ Auth, Musics, loadArtists, loadMusics, showPayment, showPlayer }) {
+    const [state, setstate] = React.useState({
+        key: "createdAt",
+        order: "dec"
+    })
+    const selectHandler = (e) => {
+        setstate(prevstate => ({
+            ...prevstate,
+            [e.target.name]: e.target.value
+        }))
+    }
+
     const compare = (key, order) => {
         return (a, b) => {
-            if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-                return 0;
-            }
-            let comparison = 0;
+            let position = 0
             if (a[key] < b[key]) {
-                comparison = 1;
+                position = 1
             }
             if (a[key] > b[key]) {
-                comparison = -1;
+                position = -1
             }
-            return order === "DEC" ? comparison : (comparison * -1);
-        };
-    };
 
-    const [state, setState] = React.useState({
-        key: "id",
-        cond: "DEC"
-    })
-    const musicList = Musics.musics ? Musics.musics.sort(compare(state.key, state.cond)) : "";
-
-    const selectHandler = (e) => {
-        setState((prevState) => ({ ...prevState, [e.target.name]: e.target.value }))
+            return order === "dec" ? position : (position * -1)
+        }
     }
+
+    const listMusic = Musics.musics ? Musics.musics.sort(compare(state.key, state.order)) : null;
 
     const clickHandler = (music, img) => {
 
@@ -69,26 +70,23 @@ function Index({ Auth, Musics, loadArtists, loadMusics, showPayment, showPlayer 
                     </Row>
                     <Row>
                         <div className="sorting d-flex">
-                            <select className="selection pointer" name="key" value={state.key} onChange={selectHandler}>
-                                <option value="createdAt">Sort By</option>
-                                <option value="year">Year</option>
-                                <option value="createdAt">Date Publish</option>
-                                <option value="title">Title</option>
-                                <option value="likes">Likes</option>
-                                <option value="title">Title</option>
-                                <option value="artistId">Artist</option>
+                            <select name="key" value={state.key} onChange={selectHandler} className="selection">
+                                <option value="createdAt">time uploaded</option>
+                                <option value="year">year</option>
+                                <option value="title">title</option>
+                                <option value="likes">likes</option>
+                                <option value="artistId">artist</option>
                             </select>
-                            <select className="selection pointer ml-2" name="cond" value={state.cond} onChange={selectHandler}>
-                                <option value="DEC">Order</option>
-                                <option value="INC">Increment</option>
-                                <option value="DEC">Decrement</option>
+                            <select name="order" value={state.order} onChange={selectHandler} className="selection ml-3">
+                                <option value="dec">descending</option>
+                                <option value="asc">ascending</option>
                             </select>
                         </div>
                     </Row>
                     <Row>
                         <div className="d-flex flex-wrap align-content-stretch songList">
                             {
-                                Musics.musics ? musicList.map((music, i) => {
+                                Musics.musics ? Musics.musics.map((music, i) => {
                                     const created = Date.now() - new Date(music.createdAt).getTime();
                                     i += 1;
                                     return (
