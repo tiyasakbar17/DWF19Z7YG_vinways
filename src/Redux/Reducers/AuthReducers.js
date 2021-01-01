@@ -25,13 +25,13 @@ const Auth = (state = innitialState, action) => {
       localStorage.setItem("token", payload.token);
       return {
         ...state,
-        isLogin: true,
         token: payload.token,
       };
     case "LOGIN":
       localStorage.setItem("token", payload.token);
       return {
         ...state,
+        token: payload.token,
       };
     case "AUTH_ERROR":
     case "LOGOUT":
